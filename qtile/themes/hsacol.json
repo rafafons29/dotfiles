@@ -1,0 +1,16 @@
+{
+  "bg": ["#0d1320", "#0d1320"],
+  "active": ["#9f9f9f", "#9f9f9f"],
+  "inactive": ["#2f3541", "#2f3541"],
+  "focus": ["#42d6a4", "#42d6a4"],
+  "color1": ["#d323ac", "#d323ac"],
+  "color2": ["#08cad1", "#08cad1"],
+  "color3": ["#ffb480", "#ffb480"],
+  "color4": ["#fce43c", "#fce43c"],
+  "color5": ["#42d6a4", "#42d6a4"],
+  "color6": ["#59adf6", "#59adf6"],
+  "color7": ["#8abec6", "#8abec6"],
+  "color8": ["#d56d77", "#d56d77"],
+  "color9": ["#ff5722", "#ff5722"],
+  "wallpaper": "28.jpg"
+}
