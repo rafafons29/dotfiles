@@ -1,37 +1,6 @@
-if not status --is-interactive
-  exit
-end
-
-# Load private config
-if [ -f $HOME/.config/fish/private.fish ]
-    source $HOME/.config/fish/private.fish
-end
-
-# Git
-if [ -f $HOME/.config/fish/git.fish ]
-    source $HOME/.config/fish/git.fish
-end
-
-# Aliases
-if [ -f $HOME/.config/fish/alias.fish ]
-    source $HOME/.config/fish/alias.fish
-end
-
-# reload fish config
-function reload
-    exec fish
-    set -l config (status -f)
-    echo "reloading: $config"
-end
-
 # User paths
 set -e fish_user_paths
 set -U fish_user_paths $HOME/.bin $HOME/.local/bin $HOME/Applications $fish_user_paths
-
-# Starship prompt
-#if command -sq starship
-#    starship init fish | source
-#end
 
 # sets tools
 set -x EDITOR nvim
@@ -42,9 +11,6 @@ set TERM "xterm-256color"
 
 # Suppresses fish's intro message
 set fish_greeting
-#function fish_greeting
-#    fish_logo
-#end
 
 # Prevent directories names from being shortened
 set fish_prompt_pwd_dir_length 0
@@ -52,27 +18,6 @@ set -x FZF_DEFAULT_OPTS "--color=16,header:13,info:5,pointer:3,marker:9,spinner:
 # "bat" as manpager
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 set -g theme_nerd_fonts yes
-
-
-if status --is-login
-    set -gx PATH $PATH ~/.bin
-end
-
-if status --is-login
-    set -gx PATH $PATH ~/.local/bin
-end
-
-if type -q bat
-    alias cat="bat --paging=never"
-end
-
-if command -sq fzf && type -q fzf_configure_bindings
-  fzf_configure_bindings --directory=\ct
-end
-
-if not set -q -g fish_user_abbreviations
-  set -gx fish_user_abbreviations
-end
 
 
 if test tree >/dev/null
@@ -89,28 +34,10 @@ if type -q direnv
 end
 
 
-
 ### FUNCTIONS ###
 # Fish command history
 function history
     builtin history --show-time='%F %T ' | sort
-end
-
-# Make a backup file
-function backup --argument filename
-    cp $filename $filename.bak
-end
-
-# recently installed packages
-function ripp --argument length -d "List the last n (100) packages installed"
-    if test -z $length
-        set length 100
-    end
-    expac --timefmt='%Y-%m-%d %T' '%l\t%n' | sort | tail -n $length | nl
-end
-
-function gl
-    git log --graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" $argv | fzf --ansi --no-sort --reverse --tiebreak=index --toggle-sort=\` --bind "ctrl-m:execute: echo '{}' | grep -o '[a-f0-9]\{7\}' | head -1 | xargs -I % sh -c 'git show --color=always % | less -R'"
 end
 
 function ex --description "Extract bundled & compressed files"
@@ -152,10 +79,6 @@ function ex --description "Extract bundled & compressed files"
    end
 end
 
-function less
-    command less -R $argv
-end
-
 function cd
     builtin cd $argv; and ls
 end
@@ -187,9 +110,8 @@ end
 alias depends='function_depends'
 
 if type -q exa
-    alias ls="exa"
-    alias xls="exa -a --icons --color=always --group-directories-first"
-    alias xll="exa -lag --icons --color=always --group-directories-first --octal-permissions"
+    alias ls="exa -a --icons --color=always --group-directories-first"
+    alias ll="exa -lag --icons --color=always --group-directories-first --octal-permissions"
 end
 
 #fix obvious typo's
@@ -221,16 +143,6 @@ alias give-me-qwerty-us="sudo localectl set-x11-keymap us"
 alias setlocale="sudo localectl set-locale LANG=en_US.UTF-8"
 alias setlocales="sudo localectl set-x11-keymap be && sudo localectl set-locale LANG=en_US.UTF-8"
 
-#pacman unlock
-alias unlock="sudo rm /var/lib/pacman/db.lck"
-alias rmpacmanlock="sudo rm /var/lib/pacman/db.lck"
-
-#arcolinux logout unlock
-alias rmlogoutlock="sudo rm /tmp/arcologout.lock"
-
-#which graphical card is working
-alias whichvga="/usr/local/bin/arcolinux-which-vga"
-
 #free
 alias free="free -mt"
 
@@ -239,9 +151,6 @@ alias wget="wget -c"
 
 #userlist
 alias userlist="cut -d: -f1 /etc/passwd | sort"
-
-#merge new settings
-alias merge="xrdb -merge ~/.Xresources"
 
 # Aliases for software managment
 # pacman

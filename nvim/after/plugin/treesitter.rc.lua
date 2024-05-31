@@ -1,7 +1,5 @@
 local status, ts = pcall(require, "nvim-treesitter.configs")
--- local statusn, nvt = pcall(require, "nvim-treesitter.configs")
 if (not status) then return end
--- if (not statusn) then return end
 
 ts.setup {
   auto_install = false,
@@ -36,3 +34,5 @@ ts.setup {
     additional_vim_regex_highlighting = false,
   },
 }
+
+-- vim.treesitter.language.add('html', { path = "/path/to/python.so" })

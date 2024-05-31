@@ -20,7 +20,6 @@ vim.o.smartcase = true
 vim.o.ai = true -- Auto ident
 vim.o.si = true -- Smart ident
 vim.o.cursorline = false
-vim.o.termguicolors = true
 vim.o.winblend = 0
 vim.o.wildoptions = 'pum'
 vim.o.pumblend = 5

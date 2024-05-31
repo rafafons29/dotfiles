@@ -27,9 +27,7 @@ def icon(fg=1, bg=0, font=font, fontsize=35, padding=padding, icon=""):
 
 def separator(fg=10, bg=0, fontsize=25, padding=padding, text=""):
     return widget.TextBox(
-        **base(fg=fg, bg=bg,),
-        fontsize=fontsize,
-        padding=padding,
+        **base(fg=fg, bg=bg,), fontsize=fontsize, padding=padding,
         text=text,
     )
 

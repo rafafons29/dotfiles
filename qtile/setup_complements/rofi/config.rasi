@@ -11,17 +11,23 @@ configuration {
 }
 
 #window {
-    background-color: @background-color;
-    border:           0;
-    border-radius:    3;
-    border-color:     @active-background;
-    padding:          10;
-    width:            500;
-    height:           250;
+    transparency:                "real";
+    background-color:            @background-color;
+    border:                      0;
+    border-radius:               20px;
+    border-color:                @active-background;
+    padding:                     10;
+    width:                       500;
+    height:                      250;
 }
 #mainbox {
     border:  0;
     padding: 0;
+    enabled:                     true;
+    spacing:                     5px;
+    margin:                      0px;
+    border-radius:               0px 0px 0px 0px;
+    background-color:            transparent;
 }
 #message {
     border:       0px;
@@ -32,16 +38,36 @@ configuration {
     text-color: @foreground;
 }
 #listview {
-    fixed-height: 0;
-    border:       0px;
-    border-color: @active-background;
-    spacing:      2px ;
-    scrollbar:    false;
-    padding:      2px 0px 0px ;
+    border:                      0px;
+    spacing:                     2px ;
+    scrollbar:                   false;
+
+    enabled:                     true;
+    columns:                     1;
+    lines:                       10;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    reverse:                     false;
+    fixed-height:                true;
+    fixed-columns:               true;
+    
+    spacing:                     10px;
+    background-color:            transparent;
+    cursor:                      "default";
 }
 #element {
-    border:  0;
-    padding: 3px ;
+    enabled:                     true;
+    spacing:                     10px;
+    margin:                      0px;
+    padding:                     5px;
+    border:                      0px;
+    border-radius:               100%;
+    border-color:                gray/15%;
+    background-color:            transparent;
+    text-color:                  gray;
+    cursor:                      pointer;
 }
 #element.normal.normal {
     background-color: @background-color;
@@ -94,9 +120,13 @@ configuration {
     text-color:       @foreground;
 }
 #inputbar {
-    spacing:    0;
-    text-color: @foreground;
-    padding:    1px ;
+    spacing:                     0;
+    text-color:                  @foreground;
+    padding:                     1px ;
+    enabled:                     true;
+    margin:                      0px;
+    border:                      0px 0px 0px 0px;
+    border-radius:               4px;
 }
 #case-indicator {
     spacing:    0;
@@ -105,19 +135,31 @@ configuration {
 #entry {
     spacing:    0;
     text-color: @foreground;
+
+    enabled:                     true;
+    border:                      0px;
+    background-color:            transparent;
+    cursor:                      text;
+    placeholder:                 "Search...";
+    placeholder-color:           inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
 }
 #prompt {
-    spacing:    0;
-    text-color: @foreground;
+    spacing:                     0;
+    text-color:                  @foreground;
+    enabled:                     true;
 }
 #inputbar {
     children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
 }
 #textbox-prompt-colon {
-    expand:     false;
-    str:        ">";
-    margin:     0px 0.3em 0em 0em ;
-    text-color: @foreground;
+    expand:                      false;
+    margin:                      8px 7.3em 0em 0em ;
+    background-color:            @background-color;
+    text-color:                  @foreground;
+    enabled:                     true;
+    str:                         "";
 }
 element-text, element-icon {
     background-color: inherit;

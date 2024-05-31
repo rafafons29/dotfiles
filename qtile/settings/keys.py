@@ -6,9 +6,7 @@ from .widgets.general import browser
 from .groups import groups
 from .windows import window_to_next_screen, window_to_previous_screen
 
-# mod4 or mod = super key
 mod = "mod4"
-# alt = "alt"
 alt = "mod1"
 ctrl = "control"
 home = os.path.expanduser('~')
@@ -21,11 +19,9 @@ keys = [
     Key([mod, "shift"], "f", lazy.window.toggle_fullscreen()),
 
     # SUPER + SHIFT KEYS
-    Key([mod, "shift"], "q", lazy.window.kill()),
     Key([mod, "shift"], "r", lazy.restart()),
 
     # QTILE LAYOUT KEYS
-    Key([mod], "n", lazy.layout.normalize()),
     Key([mod], "space", lazy.next_layout()),
 
     # Toggle floating
@@ -62,15 +58,6 @@ keys = [
         lazy.layout.increase_nmaster(),
         ),
 
-    # FLIP LAYOUT FOR MONADTALL/MONADWIDE
-    # Key([mod, "shift"], "f", lazy.layout.flip()),
-
-    # FLIP LAYOUT FOR BSP
-    Key([mod, alt], "k", lazy.layout.flip_up()),
-    Key([mod, alt], "j", lazy.layout.flip_down()),
-    Key([mod, alt], "l", lazy.layout.flip_right()),
-    Key([mod, alt], "h", lazy.layout.flip_left()),
-
     # MOVE WINDOWS UP OR DOWN BSP LAYOUT
     Key([mod, "shift"], "k", lazy.layout.shuffle_up()),
     Key([mod, "shift"], "j", lazy.layout.shuffle_down()),
@@ -89,8 +76,6 @@ keys = [
     # ---------------Using rofi for all---------------#
     Key([mod], "m", lazy.spawn(
         "rofi -show drun -config ~/.config/qtile/setup_complements/rofi/config.rasi")),
-    # Key([mod], "r", lazy.spawn("rofi-theme-selector")),
-    # Key([mod], "w", lazy.spawn("wifimenu")),
     Key([mod, "shift"], "m", lazy.spawn(
         "rofi -config ~/.config/qtile/setup_complements/rofi/config.rasi -show")),
 
@@ -102,17 +87,11 @@ keys = [
     Key([mod], "e", lazy.spawn("kitty yazi")),
     Key([mod, "shift"], "e", lazy.spawn("thunar")),
 
-    # Use conky
-    Key([mod], "c", lazy.spawn("conky-toggle")),
-
     # Logout
     Key([mod], "x", lazy.spawn("archlinux-logout")),
 
     # Default terminal emulator
     Key([mod], "Return", lazy.spawn("kitty")),
-
-    # Other terminal emulator
-    # Key([mod, "shift"], "Return", lazy.spawn("alacritty")),
 
     # Using Flameshot
     Key([mod], "g", lazy.spawn("flameshot gui")),

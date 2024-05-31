@@ -1,7 +1,7 @@
 local status, ill = pcall(require, "illuminate")
 if not status then return end
 
-ill.configure{
+ill.configure {
   color = "#A0A0A0"
 }
 
