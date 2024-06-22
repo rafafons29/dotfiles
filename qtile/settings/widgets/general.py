@@ -2,7 +2,8 @@ from libqtile import qtile, widget
 
 from settings.theme import colors
 
-font = "JetBrains Mono NL"
+
+font = "Iosevka Nerd Font"
 browser = "firefox"
 terminal = "alacritty"
 padding = 6

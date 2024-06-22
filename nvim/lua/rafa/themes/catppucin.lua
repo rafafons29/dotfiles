@@ -1,4 +1,7 @@
-require("catppuccin").setup({
+local catppuccin = vim.get_plugin("catppuccin")
+if not catppuccin then return end
+
+catppuccin.setup({
   flavour = "mocha", -- latte, frappe, macchiato, mocha
   background = {     -- :h background
     light = "latte",
@@ -47,5 +50,4 @@ require("catppuccin").setup({
 vim.cmd("colorscheme catppuccin")
 
 local colors = require("rafa.colors.colors_catppucin")
-require("rafa.plugin.lualine.lualine")(colors)
-require("rafa.plugin.bufferline.bufferline")(colors)
+return colors

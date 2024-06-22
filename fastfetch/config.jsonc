@@ -89,12 +89,12 @@
       "type": "custom",
       "format": "└──────────────────────────────────────────────────────┘",
     },
-    "break",
-    {
-      "type": "colors",
-      "paddingLeft": 20,
-      "symbol": "circle",
-    },
-    "break",
+    // "break",
+    // {
+    //   "type": "colors",
+    //   "paddingLeft": 20,
+    //   "symbol": "square",
+    // },
+    // "break",
   ],
 }

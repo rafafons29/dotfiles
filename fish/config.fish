@@ -20,24 +20,23 @@ set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 set -g theme_nerd_fonts yes
 
 
-if test tree >/dev/null
-    function l1;  tree --dirsfirst -ChFL 1 $argv; end
-    function l2;  tree --dirsfirst -ChFL 2 $argv; end
-    function l3;  tree --dirsfirst -ChFL 3 $argv; end
-    function ll1; tree --dirsfirst -ChFupDaL 1 $argv; end
-    function ll2; tree --dirsfirst -ChFupDaL 2 $argv; end
-    function ll3; tree --dirsfirst -ChFupDaL 3 $argv; end
-end
-
-if type -q direnv
-    eval (direnv hook fish)
-end
-
-
 ### FUNCTIONS ###
 # Fish command history
 function history
     builtin history --show-time='%F %T ' | sort
+end
+
+
+# recently installed packages
+function ripp --argument length -d "List the last n (100) packages installed"
+    if test -z $length
+        set length 100
+    end
+    expac --timefmt='%Y-%m-%d %T' '%l\t%n' | sort | tail -n $length | nl
+end
+
+function gl
+    git log --graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" $argv | fzf --ansi --no-sort --reverse --tiebreak=index --toggle-sort=\` --bind "ctrl-m:execute: echo '{}' | grep -o '[a-f0-9]\{7\}' | head -1 | xargs -I % sh -c 'git show --color=always % | less -R'"
 end
 
 function ex --description "Extract bundled & compressed files"
@@ -79,6 +78,10 @@ function ex --description "Extract bundled & compressed files"
    end
 end
 
+function less
+    command less -R $argv
+end
+
 function cd
     builtin cd $argv; and ls
 end
@@ -86,9 +89,11 @@ end
 ### ALIASES ###
 
 #list
-alias ls="ls --color=auto"
-alias la="ls -a"
-alias ll="ls -al"
+alias tree="eza --color=always --icons=always --tree"
+alias ls="eza --color=always --icons=always"
+alias la="eza -a --color=always --long  --no-filesize --icons=always --group-directories-first"
+alias ll="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
+alias xll="exa -lag --icons --color=always --group-directories-first --octal-permissions"
 alias l="ls"
 alias l.="ls -A | egrep '^\.'"
 alias listdir="ls -d */ > list"
@@ -109,11 +114,6 @@ end
 
 alias depends='function_depends'
 
-if type -q exa
-    alias ls="exa -a --icons --color=always --group-directories-first"
-    alias ll="exa -lag --icons --color=always --group-directories-first --octal-permissions"
-end
-
 #fix obvious typo's
 alias cd..="cd .."
 alias pdw="pwd"
@@ -126,8 +126,6 @@ alias upal="paru -Syu --noconfirm"
 
 ## Colorize the grep command output for ease of use (good for log files)##
 alias grep="grep --color=auto"
-alias egrep="egrep --color=auto"
-alias fgrep="fgrep --color=auto"
 
 # Color output of ip
 alias ip="ip -color"
@@ -143,6 +141,16 @@ alias give-me-qwerty-us="sudo localectl set-x11-keymap us"
 alias setlocale="sudo localectl set-locale LANG=en_US.UTF-8"
 alias setlocales="sudo localectl set-x11-keymap be && sudo localectl set-locale LANG=en_US.UTF-8"
 
+#pacman unlock
+alias unlock="sudo rm /var/lib/pacman/db.lck"
+alias rmpacmanlock="sudo rm /var/lib/pacman/db.lck"
+
+#arcolinux logout unlock
+alias rmlogoutlock="sudo rm /tmp/arcologout.lock"
+
+#which graphical card is working
+alias whichvga="/usr/local/bin/arcolinux-which-vga"
+
 #free
 alias free="free -mt"
 
@@ -151,6 +159,9 @@ alias wget="wget -c"
 
 #userlist
 alias userlist="cut -d: -f1 /etc/passwd | sort"
+
+#merge new settings
+alias merge="xrdb -merge ~/.Xresources"
 
 # Aliases for software managment
 # pacman
@@ -182,31 +193,6 @@ alias update-fc="sudo fc-cache -fv"
 #backup contents of /etc/skel to hidden backup folder in home/user
 alias bupskel="cp -Rf /etc/skel ~/.skel-backup-(date +%Y.%m.%d-%H.%M.%S)"
 
-#copy shell configs
-alias cb="cp /etc/skel/.bashrc ~/.bashrc && echo "Copied.""
-alias cz="cp /etc/skel/.zshrc ~/.zshrc && echo "Copied.""
-alias cf="cp /etc/skel/.config/fish/config.fish ~/.config/fish/config.fish && exec fish"
-
-#switch between bash, zsh and fish
-alias tobash="sudo chsh $USER -s /bin/bash && echo 'Done. Now log out.'"
-alias tozsh="sudo chsh $USER -s /bin/zsh && echo 'Done. Now log out.'"
-alias tofish="sudo chsh $USER -s /bin/fish && echo 'Done. Now log out.'"
-
-#switch between lightdm and sddm
-alias tolightdm="sudo pacman -S lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings --noconfirm --needed ; sudo systemctl enable lightdm.service -f ; echo 'Lightm is active - reboot now'"
-alias tosddm="sudo pacman -S sddm --noconfirm --needed ; sudo systemctl enable sddm.service -f ; echo 'Sddm is active - reboot now'"
-alias toly="sudo pacman -S ly --noconfirm --needed ; sudo systemctl enable ly.service -f ; echo 'Ly is active - reboot now'"
-alias togdm="sudo pacman -S gdm --noconfirm --needed ; sudo systemctl enable gdm.service -f ; echo 'Gdm is active - reboot now'"
-alias tolxdm="sudo pacman -S lxdm --noconfirm --needed ; sudo systemctl enable lxdm.service -f ; echo 'Lxdm is active - reboot now'"
-
-# kill commands
-# quickly kill conkies
-alias kc="killall conky"
-# quickly kill polybar
-alias kp="killall polybar"
-# quickly kill picom
-alias kpi="killall picom"
-
 #hardware info --short
 alias hw="hwinfo --short"
 
@@ -223,26 +209,6 @@ alias microcode="grep . /sys/devices/system/cpu/vulnerabilities/*"
 
 #check cpu
 alias cpu="cpuid -i | grep uarch | head -n 1"
-
-#get fastest mirrors in your neighborhood
-alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
-alias mirrord="sudo reflector --latest 30 --number 10 --sort delay --save /etc/pacman.d/mirrorlist"
-alias mirrors="sudo reflector --latest 30 --number 10 --sort score --save /etc/pacman.d/mirrorlist"
-alias mirrora="sudo reflector --latest 30 --number 10 --sort age --save /etc/pacman.d/mirrorlist"
-#our experimental - best option for the moment
-alias mirrorx="sudo reflector --age 6 --latest 20  --fastest 20 --threads 5 --sort rate --protocol https --save /etc/pacman.d/mirrorlist"
-alias mirrorxx="sudo reflector --age 6 --latest 20  --fastest 20 --threads 20 --sort rate --protocol https --save /etc/pacman.d/mirrorlist"
-alias ram="rate-mirrors --allow-root --disable-comments arch | sudo tee /etc/pacman.d/mirrorlist"
-alias rams="rate-mirrors --allow-root --disable-comments --protocol https arch  | sudo tee /etc/pacman.d/mirrorlist"
-
-#mounting the folder Public for exchange between host and guest on virtualbox
-alias vbm="sudo /usr/local/bin/arcolinux-vbox-share"
-
-#enabling vmware services
-alias start-vmware="sudo systemctl enable --now vmtoolsd.service"
-alias vmware-start="sudo systemctl enable --now vmtoolsd.service"
-alias sv="sudo systemctl enable --now vmtoolsd.service"
-
 
 #youtube download
 alias yta-aac="yt-dlp --extract-audio --audio-format aac"
@@ -385,73 +351,35 @@ alias lta="leftwm-theme apply"
 alias ltupd="leftwm-theme update"
 alias ltupg="leftwm-theme upgrade"
 
-#arcolinux applications
-#att is a symbolic link now
-#alias att="archlinux-tweak-tool"
-alias adt="arcolinux-desktop-trasher"
-alias abl="arcolinux-betterlockscreen"
-alias agm="arcolinux-get-mirrors"
-alias amr="arcolinux-mirrorlist-rank-info"
-alias aom="arcolinux-osbeck-as-mirror"
-alias ars="arcolinux-reflector-simple"
-alias atm="arcolinux-tellme"
-alias avs="arcolinux-vbox-share"
-alias awa="arcolinux-welcome-app"
-
 #git
 alias rmgitcache="rm -r ~/.cache/git"
 alias grh="git reset --hard"
-
-#pamac
-alias pamac-unlock="sudo rm /var/tmp/pamac/dbs/db.lock"
-
-# use vim to open neovim
-alias vim="nvim"
-alias vim.="nvim ."
-alias code.="code ."
-alias icat="kitty +kitten icat"
-alias cls="clear"
-
-# alias for git
 alias gst="git status"
 alias gaa="git add"
 alias gc="git commit"
 alias gp="git push"
 alias gl="git pull"
+alias cat="bat"
 
-# alias to navigate more fast to .config folder and other folther in this. 
-alias cdc="cd ~/.config"
-alias cdq="cd ~/.config/qtile"
+#pamac
+alias pamac-unlock="sudo rm /var/tmp/pamac/dbs/db.lock"
 
-#moving your personal files and folders from /personal to ~
-function personal
-    cp -rf /personal/ ~
-    cp -rf /personal/.* ~
-end
+alias vim="nvim"
+alias vim.="nvim ."
+alias opvimfl="fzf --preview='bat --style=numbers --color=always {}'"
+alias code.="code ."
+alias icat="kitty +kitten icat"
+alias cls="clear"
+alias z..="z .."
 
-# git
-# using plugin
-# omf install https://github.com/jhillyerd/plugin-git
-alias undopush "git push -f origin HEAD^:master"
+export PATH="/home/rafa/.flutter/flutter/bin:$PATH"
+export PATH="/home/rafa/.flutter/cmdline-tools/bin:$PATH"
+export PATH="/home/rafa/.flutter/bin:$PATH"
+export PATH="/home/rafa/.flutter/platform-tools:$PATH"
+export PATH="/home/rafa/.flutter/gradle/bin:$PATH"
+export CHROME_EXECUTABLE="/usr/bin/chromium"
 
-# reporting tools - install when not installed
 fastfetch
-# neofetch
-#screenfetch
-#alsi
-#paleofetch
-#fetch
-#hfetch
-#sfetch
-#ufetch
-#ufetch-arco
-#pfetch
-#sysinfo
-#sysinfo-retro
-#cpufetch
-#colorscript random
-
-# colors to set or unset
 
 set fish_color_autosuggestion "#969896"
 set fish_color_cancel -r
@@ -482,3 +410,5 @@ set fish_pager_color_prefix normal --bold underline
 set fish_pager_color_prefix white --bold --underline
 set fish_pager_color_progress brwhite --background=cyan
 set fish_color_search_match --background="#60AEFF"
+
+zoxide init fish | source

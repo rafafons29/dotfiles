@@ -1,6 +1,6 @@
 {
   "bg": ["#161616", "#161616"],
-  "active": ["#ffffff", "#ffffff"],
+  "active": ["#f0f0f0", "#f0f0f0"],
   "inactive": ["#1F1F1F", "#1F1F1F"],
   "focus": ["#3ddbd9", "#3ddbd9"],
   "color1": ["#ee5396", "#ee5396"],

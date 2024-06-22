@@ -1,5 +1,5 @@
-local setatus, andromeda = pcall(require, "andromeda")
-if not setatus then return end
+local andromeda = vim.get_plugin("andromeda")
+if not andromeda then return end
 
 andromeda.setup({
   preset = "andromeda",
@@ -7,5 +7,4 @@ andromeda.setup({
 })
 
 local colors = require("rafa.colors.colors_andromeda")
-require("rafa.plugin.lualine.lualine")(colors)
-require("rafa.plugin.bufferline.bufferline")(colors)
+return colors

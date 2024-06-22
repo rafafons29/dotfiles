@@ -14,7 +14,7 @@ find_position = { fg = "#E5C07B", italic = true }  # Orange
 marker_copied = { fg = "#ABB2BF", bg = "#98C379" }  # Light gray on Green
 marker_cut = { fg = "#ABB2BF", bg = "#E06C75" }  # Light gray on Red
 marker_marked = { fg = "#ABB2BF", bg = "#56B6C2" }  # Light gray on cyan
-marker_selected = { fg = "#ABB2BF", bg = "#E5C07B" }  # Light gray on Orange
+marker_selected = { fg = "#61AFEF", bg = "#282C34" }  # Light gray on Orange
 
 # Tab
 tab_active = { bg = "#282C34", fg = "#61AFEF" }  # Darkened background, Blue text
@@ -34,8 +34,8 @@ border_style = { fg = "#282C34" }  # Darkened background
 
 # : Status {{{
 [status]
-separator_open = ""
-separator_close = ""
+separator_open = ""
+separator_close = ""
 separator_style = { fg = "#282C34", bg = "#282C34" }  # Blue on Darkened background
 
 # Mode

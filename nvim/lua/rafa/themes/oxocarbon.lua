@@ -6,5 +6,4 @@ vim.api.nvim_set_hl(1, "NormalFloat", { bg = "none" })
 
 
 local colors = require("rafa.colors.colors_oxocarbon")
-require("rafa.plugin.lualine.lualine")(colors)
-require("rafa.plugin.bufferline.bufferline")(colors)
+return colors

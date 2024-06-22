@@ -280,7 +280,7 @@ keymap = [
 	{ on = [ "<C-p>" ], run = "arrow -1", desc = "Move cursor up" },
 	{ on = [ "<C-n>" ], run = "arrow 1",  desc = "Move cursor down" },
 
-	{ on = [ "~" ], run = "help", desc = "Open help" }
+	{ on = [ "~" ], run = "help", desc = "oPen help" }
 ]
 
 [help]

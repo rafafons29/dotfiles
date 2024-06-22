@@ -1,0 +1,30 @@
+-- local dashboard = vim.get_plugin('dashboard')
+-- if not dashboard then return end
+--
+-- local logo = [[
+--       ██████╗  █████╗ ███████╗ █████╗
+--       ██╔══██╗██╔══██╗██╔════╝██╔══██╗
+--       ██████╔╝███████║█████╗  ███████║
+--       ██╔══██╗██╔══██║██╔══╝  ██╔══██║
+--       ██║  ██║██║  ██║██║     ██║  ██║
+--       ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝  ╚═╝
+-- ]]
+--
+-- dashboard.setup {
+--   theme = 'doom', -- O 'hyper' según prefieras
+--   hide = {
+--     statusline = false,
+--   },
+--   config = {
+--     header = vim.split(logo, '\n'),
+--     center = {
+--       { icon = '  ', desc = 'Recently opened files', action = 'Telescope oldfiles', key = 'r' },
+--       { icon = '  ', desc = 'Find File          ', action = 'Telescope find_files', key = 'f' },
+--       { icon = '  ', desc = 'Open last session  ', action = 'SessionLoad', key = 'l' },
+--       { icon = '  ', desc = 'New File           ', action = 'DashboardNewFile', key = 'n' },
+--       { icon = '  ', desc = 'Configuration      ', action = 'edit $MYVIMRC', key = 'c' },
+--       { icon = '  ', desc = 'Exit               ', action = 'exit', key = 'q' },
+--     },
+--     footer = {} -- Puedes añadir mensajes personalizados aquí
+--   }
+-- }

@@ -14,6 +14,7 @@ layouts = [
     layout.MonadWide(**layout_theme),
     layout.Matrix(**layout_theme),
     layout.Bsp(**layout_theme),
+    layout.Floating(**layout_theme),
     layout.Max(**layout_theme)
 ]
 
@@ -27,7 +28,7 @@ floating_layout = layout.Floating(
         Match(title='branchdialog'),
         Match(title='pinentry'),
     ],
-    border_width=0,
-    border_focus=colors[9][0],
+    border_width=1,
+    border_focus=colors[3][0],
     border_normal=colors[1][0]
 )

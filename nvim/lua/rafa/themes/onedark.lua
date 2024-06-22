@@ -1,9 +1,9 @@
-local status, odark = pcall(require, "onedark")
-if not status then return end
+local onedark = vim.get_plugin("onedark")
+if not onedark then return end
 
-odark.setup {
+onedark.setup {
   style = 'darker',             -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
-  transparent = false,           -- Show/hide background
+  transparent = false,          -- Show/hide background
   term_colors = true,           -- Change terminal color as per the selected theme style
   ending_tildes = false,        -- Show the end-of-buffer tildes. By default they are hidden
   cmp_itemkind_reverse = false, -- reverse item kind highlights in cmp menu
@@ -41,6 +41,6 @@ odark.setup {
 }
 
 vim.cmd('colorscheme onedark')
+
 local colors = require("rafa.colors.colors_onedark")
-require("rafa.plugin.lualine.lualine")(colors)
-require("rafa.plugin.bufferline.bufferline")(colors)
+return colors

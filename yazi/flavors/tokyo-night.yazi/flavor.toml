@@ -15,7 +15,7 @@ find_position = { fg = "#bb9af7", bg = "reset", bold = true, italic = true }  # 
 marker_copied   = { fg = "#9ece6a", bg = "#9ece6a" }  # Green
 marker_cut      = { fg = "#e0af68", bg = "#f7768e" }  # Red
 marker_marked   = { fg = "#7aa2f7", bg = "#7dcfff" }  # Cyan
-marker_selected = { fg = "#e0af68", bg = "#e0af68" }  # Yellow
+marker_selected = { fg = "#7aa2f7", bg = "#282C34" }  # Yellow
 
 # Tab
 tab_active = { bg = "#282C34", fg = "#7aa2f7" }  # Darkened background, Blue text
@@ -37,8 +37,8 @@ border_style  = { fg = "#414868" }  # Darkened black
 # : Status {{{
 
 [status]
-separator_open  = ""
-separator_close = ""
+separator_open = ""
+separator_close = ""
 separator_style = { fg = "#414868", bg = "#414868" }  # Blue on Darkened black
 
 # Mode

@@ -1,6 +1,6 @@
 import os
 from libqtile.config import Key
-from libqtile.command import lazy
+from libqtile.lazy import lazy
 
 from .widgets.general import browser
 from .groups import groups
@@ -10,7 +10,6 @@ mod = "mod4"
 alt = "mod1"
 ctrl = "control"
 home = os.path.expanduser('~')
-
 
 keys = [
     # SUPER + FUNCTION KEYS
@@ -72,6 +71,8 @@ keys = [
     Key(["control", "shift"], "5", lazy.window.togroup("5")),
     Key(["control", "shift"], "6", lazy.window.togroup("6")),
     Key(["control", "shift"], "7", lazy.window.togroup("7")),
+
+    Key([mod, "control"], "q", lazy.spawncmd()),
 
     # ---------------Using rofi for all---------------#
     Key([mod], "m", lazy.spawn(
