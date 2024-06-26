@@ -10,7 +10,7 @@ return {
   green = '#42be65',
   red = '#EF4240',
   violet = '#9040C4',
-  blue = '#0f62fe',
+  blue = '#33b1ff',
   yellow = '#ffd666',
   orange = '#FF6F00',
 }

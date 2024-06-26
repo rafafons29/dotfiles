@@ -1,4 +1,4 @@
-@import "colors/tokyonight.rasi"
+@import "colors/oxocarbon.rasi"
 
 * {
     font: "Jetbrains Mono 12";

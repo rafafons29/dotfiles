@@ -19,7 +19,9 @@ return function(colors)
       "cpp",
       "c",
       "python",
-      "go"
+      "go",
+      "html",
+      "markdown"
     },
 
     -- Install parsers synchronously (only applied to `ensure_installed`)

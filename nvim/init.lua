@@ -1,1 +1,1 @@
-require("rafa.init")
+require("rafa")

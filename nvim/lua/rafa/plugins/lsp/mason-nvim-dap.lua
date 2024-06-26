@@ -44,13 +44,3 @@ dap.configurations.cpp = {
     runInTerminal = false,
   },
 }
-
--- Asignar <leader>db para establecer un breakpoint
-vim.api.nvim_set_keymap('n', '<leader>db', '<cmd>lua require"dap".toggle_breakpoint()<CR>',
-  { noremap = true, silent = true })
-
--- Asignar <leader>dr para continuar a la próxima instrucción o iniciar la depuración
-vim.api.nvim_set_keymap('n', '<leader>dr', '<cmd>lua require"dap".continue()<CR>', { noremap = true, silent = true })
-
--- Asigar <leader>dq para salir de la depuración
-vim.api.nvim_set_keymap('n', '<leader>dq', '<cmd>lua require"dap".close()<CR>', { noremap = true, silent = true })

@@ -371,6 +371,7 @@ alias code.="code ."
 alias icat="kitty +kitten icat"
 alias cls="clear"
 alias z..="z .."
+alias ffile="fzf --preview='bat --style=numbers --color=always {}'"
 
 export PATH="/home/rafa/.flutter/flutter/bin:$PATH"
 export PATH="/home/rafa/.flutter/cmdline-tools/bin:$PATH"

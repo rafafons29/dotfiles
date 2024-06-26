@@ -89,3 +89,13 @@ vim.keymap.set('n', '<C-w>o', '<cmd>ZenMode<cr>', { silent = true })
 
 vim.api.nvim_set_keymap('n', '<Leader>D', '<cmd>MultipleCursorsAddDow<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<Leader>U', '<cmd>MultipleCursorsAddUp<CR>', { noremap = true, silent = true })
+
+-- Asignar <leader>db para establecer un breakpoint
+vim.api.nvim_set_keymap('n', '<leader>db', '<cmd>lua require"dap".toggle_breakpoint()<CR>',
+  { noremap = true, silent = true })
+
+-- Asignar <leader>dr para continuar a la próxima instrucción o iniciar la depuración
+vim.api.nvim_set_keymap('n', '<leader>dr', '<cmd>lua require"dap".continue()<CR>', { noremap = true, silent = true })
+
+-- Asigar <leader>dq para salir de la depuración
+vim.api.nvim_set_keymap('n', '<leader>dq', '<cmd>lua require"dap".close()<CR>', { noremap = true, silent = true })
