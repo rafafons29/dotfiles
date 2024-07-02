@@ -79,6 +79,8 @@ keys = [
         "rofi -show drun -config ~/.config/qtile/setup_complements/rofi/config.rasi")),
     Key([mod, "shift"], "m", lazy.spawn(
         "rofi -config ~/.config/qtile/setup_complements/rofi/config.rasi -show")),
+    Key([mod], "d", lazy.spawn(
+        "rofi -config ~/.config/qtile/setup_complements/rofi/full_menu.rasi -show")),
 
     # ---------------Commands for apps---------------#
     # Browser
