@@ -13,7 +13,7 @@ if [ $keybLayout = "be" ]; then
   cp $HOME/.config/qtile/config-azerty.py $HOME/.config/qtile/config.py
 fi
 
-feh --bg-fill ~/.wallpapers/102.png &
+feh --bg-fill ~/.wallpapers/285.jpg &
 
 run nm-applet &
 run pamac-tray &

@@ -35,10 +35,6 @@ function ripp --argument length -d "List the last n (100) packages installed"
     expac --timefmt='%Y-%m-%d %T' '%l\t%n' | sort | tail -n $length | nl
 end
 
-function gl
-    git log --graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" $argv | fzf --ansi --no-sort --reverse --tiebreak=index --toggle-sort=\` --bind "ctrl-m:execute: echo '{}' | grep -o '[a-f0-9]\{7\}' | head -1 | xargs -I % sh -c 'git show --color=always % | less -R'"
-end
-
 function ex --description "Extract bundled & compressed files"
     if test -f "$argv[1]"
         switch $argv[1]
@@ -373,6 +369,7 @@ alias cls="clear"
 alias z..="z .."
 alias ffile="fzf --preview='bat --style=numbers --color=always {}'"
 
+export PATH="/home/rafa/.scripts:$PATH"
 export PATH="/home/rafa/.flutter/flutter/bin:$PATH"
 export PATH="/home/rafa/.flutter/cmdline-tools/bin:$PATH"
 export PATH="/home/rafa/.flutter/bin:$PATH"
