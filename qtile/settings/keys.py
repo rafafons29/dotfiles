@@ -76,9 +76,9 @@ keys = [
 
     # ---------------Using rofi for all---------------#
     Key([mod], "m", lazy.spawn(
-        "rofi -show drun -config ~/.config/qtile/setup_complements/rofi/config.rasi")),
+        "rofi -show drun -config ~/.config/qtile/setup_complements/rofi/menu.rasi")),
     Key([mod, "shift"], "m", lazy.spawn(
-        "rofi -config ~/.config/qtile/setup_complements/rofi/config.rasi -show")),
+        "rofi -config ~/.config/qtile/setup_complements/rofi/menu.rasi -show")),
     Key([mod], "d", lazy.spawn(
         "rofi -config ~/.config/qtile/setup_complements/rofi/full_menu.rasi -show")),
 

@@ -5,13 +5,17 @@
 }
 
 configuration {
+    modi:            "drun";
     show-icons:      true;
-    display-drun:    "";
+    display-drun:    "Applications";
     disable-history: false;
+    drun-display-format: "{name}";
 }
 
 #window {
     transparency:                "real";
+    location:                    center;
+    anchor:                      center;
     background-color:            @background-color;
     border:                      0;
     border-radius:               20px;
@@ -54,19 +58,25 @@ configuration {
     fixed-columns:               true;
     
     spacing:                     10px;
+    margin:                      0px;
+    padding:                     0px;
+    border:                      0px solid;
+    border-radius:               0px;
+    border-color:                @active-background;
     background-color:            transparent;
+    text-color:                  @foreground;
     cursor:                      "default";
 }
 #element {
     enabled:                     true;
     spacing:                     10px;
-    margin:                      0px;
+    margin:                      3px;
     padding:                     5px;
-    border:                      0px;
+    border:                      0px solid;
     border-radius:               100%;
-    border-color:                gray/15%;
+    border-color:                @active-background;
     background-color:            transparent;
-    text-color:                  gray;
+    text-color:                  @foreground;
     cursor:                      pointer;
 }
 #element.normal.normal {
@@ -82,8 +92,11 @@ configuration {
     text-color:       @active-foreground;
 }
 #element.selected.normal {
-    background-color: @active-background;
-    text-color:       @active-foreground;
+    border:           0px 2px 2px 2px;
+    border-radius:    100%;
+    border-color:     @active-background;
+    background-color: @background-color;
+    text-color:       @active-background;
 }
 #element.selected.urgent {
     background-color: @active-background;
@@ -137,6 +150,7 @@ configuration {
     text-color: @foreground;
 
     enabled:                     true;
+    padding:                     5px;
     border:                      0px;
     background-color:            transparent;
     cursor:                      text;
@@ -146,20 +160,31 @@ configuration {
     horizontal-align:            0.0;
 }
 #prompt {
-    spacing:                     0;
-    text-color:                  @foreground;
     enabled:                     true;
+    padding:                     5px;
+    border-radius:               100%;
+    background-color:            @active-background;
+    spacing:                     0;
+    text-color:                  @active-foreground;
 }
 #inputbar {
-    children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
-}
-#textbox-prompt-colon {
-    expand:                      false;
-    margin:                      8px 7.3em 0em 0em ;
+    enabled:                     true;
+    spacing:                     0px;
+    margin:                      0px;
+    padding:                     0px;
+    border:                      0px 0px 2px 0px;
+    border-radius:               100%;
+    border-color:                @active-background;
     background-color:            @background-color;
     text-color:                  @foreground;
+    children:                    [ "prompt", "entry" ];
+}
+#textbox-prompt-colon {
     enabled:                     true;
-    str:                         "";
+    expand:                      false;
+    str:                         "::";
+    background-color:            @background-color;
+    text-color:                  @foreground;
 }
 element-text, element-icon {
     background-color: inherit;
