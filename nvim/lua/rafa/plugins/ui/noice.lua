@@ -51,12 +51,44 @@ noice.setup({
   ---@type table<string, NoiceFilter>
   status = {}, --- @see section on statusline components
   routes = {},
+  lsp = {
+    -- usa Noice para manejar los mensajes de LSP
+    override = {
+      ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+      ["vim.lsp.util.stylize_markdown"] = true,
+      ["cmp.entry.get_documentation"] = true,
+    },
+  },
+  -- configuración de notificaciones
+  notify = {
+    enabled = true,
+    view = "notify",
+  },
+  -- configuración de los comandos
+  commands = {
+    history = {
+      view = "split",
+      opts = { enter = true, format = "details" },
+      filter = {},
+    },
+  },
 })
+
+_G.noice_messages = _G.noice_messages or {}
+vim.api.nvim_create_user_command('SaveMessages', function()
+  -- Concatenar todos los mensajes
+  local messages = table.concat(_G.noice_messages, '\n')
+  local filepath = vim.fn.input("Save messages to: ", vim.fn.expand("~/messages.log"), "file")
+  local file = io.open(filepath, "a")
+  if file then
+    file:write(messages)
+    file:close()
+    print("Messages saved to " .. filepath)
+  else
+    print("Failed to open file: " .. filepath)
+  end
+end, {})
 
 vim.keymap.set("n", "<leader>nl", function()
   noice.cmd("last")
-end)
-
-vim.keymap.set("n", "<leader>nh", function()
-  noice.cmd("history")
 end)

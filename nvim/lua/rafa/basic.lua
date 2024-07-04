@@ -69,8 +69,10 @@ vim.cmd([[let &t_Ce = "\e[4:0m"]])
 
 -- highlight yanked text for 200ms using the "Visual" highlight group
 vim.cmd [[
+  augroup CaptureNoiceMessages
   augroup highlight_yank
   autocmd!
+  autocmd CmdlineLeave * lua table.insert(_G.noice_messages, vim.fn.getcmdline())
   au TextYankPost * silent! lua vim.highlight.on_yank({higroup="Visual", timeout=100})
   augroup END
 ]]
