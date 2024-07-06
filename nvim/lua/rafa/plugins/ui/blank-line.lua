@@ -32,8 +32,26 @@ return function(colors)
   if not ibl then return end
 
   ibl.setup {
-    scope = { highlight = highlight() }, -- show_start = true, show_end = false
-    indent = { char = "▏" }
+    scope = { highlight = highlight(), show_start = false, show_end = false, enabled = false }, -- show_start = true, show_end = false
+    indent = {
+      char = "▏",
+      tab_char = "▏",
+    },
+    exclude = {
+      filetypes = {
+        "help",
+        "alpha",
+        "dashboard",
+        "neo-tree",
+        "Trouble",
+        "trouble",
+        "lazy",
+        "mason",
+        "notify",
+        "toggleterm",
+        "lazyterm",
+      },
+    },
   }
   hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
 end

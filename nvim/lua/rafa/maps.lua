@@ -61,6 +61,10 @@ keymap.set('n', '<C-w><right>', '<C-w>>')
 keymap.set('n', '<C-w><up>', '<C-w>+')
 keymap.set('n', '<C-w><down>', '<C-w>-')
 
+-- Open terminal on different modes
+keymap.set('n', '<C-v>', '<cmd>ToggleTerm size=80 direction=vertical<CR>')
+keymap.set('n', '<C-m>', '<cmd>ToggleTerm size=70 direction=horizontal<CR>')
+
 -- Jump between markdown headers
 vim.keymap.set("n", "gj", [[/^##\+ .*<CR>]], { buffer = true, silent = true })
 vim.keymap.set("n", "gk", [[?^##\+ .*<CR>]], { buffer = true, silent = true })
@@ -95,3 +99,48 @@ keymap.set("s", "<C-E>", "luasnip#choice_active() ? '<Plug>luasnip-next-choice' 
 keymap.set("n", "<leader>mf", function()
   require('md-pdf').convert_md_to_pdf()
 end)
+
+-- Keymaos for telescope
+vim.keymap.set('n', ';f',
+  function()
+    vim.builtin.find_files({
+      no_ignore = false,
+      hidden = true
+    })
+  end)
+vim.keymap.set('n', ';r', function()
+  vim.builtin.live_grep()
+end)
+vim.keymap.set('n', '\\\\', function()
+  vim.builtin.buffers()
+end)
+vim.keymap.set('n', ';t', function()
+  vim.builtin.help_tags()
+end)
+vim.keymap.set('n', ';;', function()
+  vim.builtin.resume()
+end)
+vim.keymap.set('n', ';e', function()
+  vim.builtin.diagnostics()
+end)
+local function telescope_buffer_dir()
+  return vim.fn.expand('%:p:h')
+end
+vim.keymap.set("n", "sf", function()
+  vim.telescope.extensions.file_browser.file_browser({
+    path = "%:p:h",
+    cwd = telescope_buffer_dir(),
+    respect_gitignore = false,
+    hidden = true,
+    grouped = true,
+    previewer = false,
+    initial_mode = "normal",
+    layout_config = { height = 20 }
+  })
+end)
+
+-- Icons on telescope
+local opts = { noremap = true, silent = true }
+vim.keymap.set("n", "<Leader><Leader>i", "<cmd>IconPickerNormal<cr>", opts)
+vim.keymap.set("n", "<Leader><Leader>y", "<cmd>IconPickerYank<cr>", opts)
+vim.keymap.set("i", "<C-i>", "<cmd>IconPickerInsert<cr>", opts)

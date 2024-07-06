@@ -50,7 +50,19 @@ noice.setup({
   ---@type NoiceRouteConfig[]
   ---@type table<string, NoiceFilter>
   status = {}, --- @see section on statusline components
-  routes = {},
+  routes = {
+    {
+      filter = {
+        event = "msg_show",
+        any = {
+          { find = "%d+L, %d+B" },
+          { find = "; after #%d+" },
+          { find = "; before #%d+" },
+        },
+      },
+      view = "mini",
+    },
+  },
   lsp = {
     -- usa Noice para manejar los mensajes de LSP
     override = {

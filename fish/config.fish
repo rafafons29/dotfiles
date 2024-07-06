@@ -369,13 +369,13 @@ alias cls="clear"
 alias z..="z .."
 alias ffile="fzf --preview='bat --style=numbers --color=always {}'"
 
-export PATH="/home/rafa/.scripts:$PATH"
-export PATH="/home/rafa/.flutter/flutter/bin:$PATH"
-export PATH="/home/rafa/.flutter/cmdline-tools/bin:$PATH"
-export PATH="/home/rafa/.flutter/bin:$PATH"
-export PATH="/home/rafa/.flutter/platform-tools:$PATH"
-export PATH="/home/rafa/.flutter/gradle/bin:$PATH"
-export CHROME_EXECUTABLE="/usr/bin/chromium"
+# export PATH="/home/rafa/.scripts:$PATH"
+# export PATH="/home/rafa/.flutter/flutter/bin:$PATH"
+# export PATH="/home/rafa/.flutter/cmdline-tools/bin:$PATH"
+# export PATH="/home/rafa/.flutter/bin:$PATH"
+# export PATH="/home/rafa/.flutter/platform-tools:$PATH"
+# export PATH="/home/rafa/.flutter/gradle/bin:$PATH"
+# export CHROME_EXECUTABLE="/usr/bin/chromium"
 
 fastfetch
 

@@ -6,9 +6,9 @@ if not telescope then return end
 if not actions then return end
 if not builtin then return end
 
-local function telescope_buffer_dir()
-  return vim.fn.expand('%:p:h')
-end
+vim.telescope = telescope
+vim.builtin = builtin
+
 
 local fb_actions = require "telescope".extensions.file_browser.actions
 
@@ -22,6 +22,13 @@ telescope.setup {
     },
   },
   extensions = {
+    media_files = {
+      -- filetypes whitelist
+      -- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
+      filetypes = { "png", "webp", "jpg", "jpeg" },
+      -- find command (defaults to `fd`)
+      find_cmd = "rg"
+    },
     file_browser = {
       theme = "dropdown",
       -- disables netrw and use telescope-file-browser in its place
@@ -41,42 +48,9 @@ telescope.setup {
         },
       },
     },
+
   },
 }
 
 telescope.load_extension("file_browser")
-
-vim.keymap.set('n', ';f',
-  function()
-    builtin.find_files({
-      no_ignore = false,
-      hidden = true
-    })
-  end)
-vim.keymap.set('n', ';r', function()
-  builtin.live_grep()
-end)
-vim.keymap.set('n', '\\\\', function()
-  builtin.buffers()
-end)
-vim.keymap.set('n', ';t', function()
-  builtin.help_tags()
-end)
-vim.keymap.set('n', ';;', function()
-  builtin.resume()
-end)
-vim.keymap.set('n', ';e', function()
-  builtin.diagnostics()
-end)
-vim.keymap.set("n", "sf", function()
-  telescope.extensions.file_browser.file_browser({
-    path = "%:p:h",
-    cwd = telescope_buffer_dir(),
-    respect_gitignore = false,
-    hidden = true,
-    grouped = true,
-    previewer = false,
-    initial_mode = "normal",
-    layout_config = { height = 20 }
-  })
-end)
+telescope.load_extension("media_files")
