@@ -367,7 +367,11 @@ alias code.="code ."
 alias icat="kitty +kitten icat"
 alias cls="clear"
 alias z..="z .."
-alias ffile="fzf --preview='bat --style=numbers --color=always {}'"
+# alias ffile="fzf --preview='bat --style=numbers --color=always {}'"
+
+export FZF_DEFAULT_OPTS="--height=80% --layout=reverse --info=inline --preview 'bat --style=numbers --color=always {}' --border --margin=1 --padding=1"
+
+# fd - cd to selected directory
 
 # export PATH="/home/rafa/.scripts:$PATH"
 # export PATH="/home/rafa/.flutter/flutter/bin:$PATH"
