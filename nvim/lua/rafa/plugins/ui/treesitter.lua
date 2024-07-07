@@ -1,84 +1,80 @@
-return function(colors)
-  local ts = vim.get_plugin("nvim-treesitter.configs")
-  local ts_context = vim.get_plugin("treesitter-context")
+local ts = vim.get_plugin("nvim-treesitter.configs")
+local ts_context = vim.get_plugin("treesitter-context")
 
-  if not ts then return end
-  if not ts_context then return end
+if not ts then return end
+if not ts_context then return end
 
 
-  ts.setup {
-    auto_install = false,
-    ignore_install = {},
-    modules = {},
+ts.setup {
+  auto_install = false,
+  ignore_install = {},
+  modules = {},
 
-    -- A list of parser names, or "all"
-    ensure_installed = {
-      "fish",
-      "json",
-      "lua",
-      "cpp",
-      "c",
-      "python",
-      "go",
-      "html",
-      "markdown"
-    },
+  -- A list of parser names, or "all"
+  ensure_installed = {
+    "fish",
+    "json",
+    "lua",
+    "cpp",
+    "c",
+    "python",
+    "go",
+    "html",
+    "markdown"
+  },
 
-    -- Install parsers synchronously (only applied to `ensure_installed`)
-    sync_install = false,
+  -- Install parsers synchronously (only applied to `ensure_installed`)
+  sync_install = false,
 
-    highlight = {
-      -- `false` will disable the whole extension
-      enable = true,
+  highlight = {
+    -- `false` will disable the whole extension
+    enable = true,
 
-      -- list of language that will be disabled
-      disable = {},
+    -- list of language that will be disabled
+    disable = {},
 
-      -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-      -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-      -- Using this option may slow down your editor, and you may see some duplicate highlights.
-      -- Instead of true it can also be a list of languages
-      additional_vim_regex_highlighting = false,
-    },
-    indent = { enable = true },
-    incremental_selection = {
-      enable = true,
-      keymaps = {
-        init_selection = "gnn",
-        node_incremental = "grn",
-        scope_incremental = "grc",
-        node_decremental = "grm"
-      }
-    },
-    rainbow = {
-      enable = true,
-      extended_mode = true,
-      max_file_lines = nil,
-      colors = {
-        colors.cyan,
-        colors.green,
-        colors.red,
-        colors.violet,
-        colors.blue,
-        colors.yellow,
-        colors.orange
-      },
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+  indent = { enable = true },
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "gnn",
+      node_incremental = "grn",
+      scope_incremental = "grc",
+      node_decremental = "grm"
     }
+  },
+  rainbow = {
+    enable = true,
+    extended_mode = true,
+    max_file_lines = nil,
+    colors = {
+      '#86e1fc', -- cyan
+      '#98c379', --  green,
+      '#e86671', -- red,
+      '#c678dd', -- violet,
+      '#82aaff', -- blue
+      '#e5c07b', -- yellow,
+      '#ff966c', -- orange
+    },
   }
+}
 
-  ts_context.setup {
-    enable = true,            -- Enable this plugin (Can be enabled/disabled later via commands)
-    max_lines = 0,            -- How many lines the window should span. Values <= 0 mean no limit.
-    min_window_height = 0,    -- Minimum editor window height to enable context. Values <= 0 mean no limit.
-    line_numbers = true,
-    multiline_threshold = 20, -- Maximum number of lines to show for a single context
-    trim_scope = 'outer',     -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
-    mode = 'cursor',          -- Line used to calculate context. Choices: 'cursor', 'topline'
-    -- Separator between context and content. Should be a single character string, like '-'.
-    -- When separator is set, the context will only show up when there are at least 2 lines above cursorline.
-    separator = nil,
-    zindex = 20,     -- The Z-index of the context window
-    on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
-  }
-  -- vim.treesitter.language.add('html', { path = "/path/to/python.so" })
-end
+ts_context.setup {
+  enable = true,            -- Enable this plugin (Can be enabled/disabled later via commands)
+  max_lines = 0,            -- How many lines the window should span. Values <= 0 mean no limit.
+  min_window_height = 0,    -- Minimum editor window height to enable context. Values <= 0 mean no limit.
+  line_numbers = true,
+  multiline_threshold = 20, -- Maximum number of lines to show for a single context
+  trim_scope = 'outer',     -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
+  -- Separator between context and content. Should be a single character string, like '-'.
+  -- When separator is set, the context will only show up when there are at least 2 lines above cursorline.
+  separator = nil,
+  zindex = 20,     -- The Z-index of the context window
+  on_attach = nil, -- (fun(buf: integer): boolean) return false to disable 'ataching
+}
