@@ -46,15 +46,8 @@ packer.startup(function(use)
   use 'folke/noice.nvim'
   use 'sindrets/diffview.nvim'
   use 'stevearc/dressing.nvim'
+  use "ziontee113/icon-picker.nvim"
 
-  use {
-    "ziontee113/icon-picker.nvim",
-    config = function()
-      require("icon-picker").setup({
-        disable_legacy_commands = true
-      })
-    end,
-  }
 
   use {
     "WilsonOh/emoji_picker-nvim",

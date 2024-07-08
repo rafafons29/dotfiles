@@ -32,6 +32,7 @@ require("rafa.plugins.zen-mode")
 require("rafa.plugins.emoji_picker")
 require("rafa.plugins.diffview")
 require("rafa.plugins.which_key")
+require("rafa.plugins.icon_picker")
 
 local colors = require("rafa.themes.oxocarbon")
 -- require("rafa.plugins.ui.blank-line")(colors)

@@ -54,3 +54,8 @@ telescope.setup {
 
 telescope.load_extension("file_browser")
 telescope.load_extension("media_files")
+
+
+vim.telescope_buffer_dir = function()
+  return vim.fn.expand('%:p:h')
+end

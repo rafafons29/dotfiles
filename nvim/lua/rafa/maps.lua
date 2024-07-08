@@ -123,13 +123,13 @@ end)
 vim.keymap.set('n', ';e', function()
   vim.builtin.diagnostics()
 end)
-local function telescope_buffer_dir()
-  return vim.fn.expand('%:p:h')
-end
+vim.keymap.set('n', ';s', function()
+  vim.builtin.current_buffer_fuzzy_find()
+end)
 vim.keymap.set("n", "sf", function()
   vim.telescope.extensions.file_browser.file_browser({
     path = "%:p:h",
-    cwd = telescope_buffer_dir(),
+    cwd = vim.telescope_buffer_dir(),
     respect_gitignore = false,
     hidden = true,
     grouped = true,

@@ -73,6 +73,7 @@ vim.cmd [[
   augroup highlight_yank
   autocmd!
   autocmd CmdlineLeave * lua table.insert(_G.noice_messages, vim.fn.getcmdline())
+  autocmd FileType alpha setlocal nofoldenable
   au TextYankPost * silent! lua vim.highlight.on_yank({higroup="Visual", timeout=100})
   augroup END
 ]]
