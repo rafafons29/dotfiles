@@ -7,7 +7,7 @@ configuration {
 }
 
 /*****----- Global Properties -----*****/
-@import                          "shared/colors.rasi"
+@import                          "shared/onedark.rasi"
 @import                          "shared/fonts.rasi"
 
 /*****----- Main Window -----*****/

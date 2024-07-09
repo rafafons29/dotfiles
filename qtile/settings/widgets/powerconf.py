@@ -6,7 +6,7 @@ from settings.theme import colors
 
 SIZE = 35
 MARGIN = [0, 0, 0, 0]
-OPACITY = 0.75
+OPACITY = 0.85
 
 group_names = ["1", "2", "3", "4"]
 group_labels = [" ", " ", " ", " "]
@@ -62,6 +62,13 @@ widgets_list = [
 ]
 
 widgets_list_m2 = [
+    icon(fg=8, fontsize=16, padding=0, icon='  '),
+    widget.Backlight(
+        **base(fg=8),
+        backlight_name='intel_backlight',
+        brightness_file='brightness',
+        fontsize=12
+    ),
     widget.Spacer(
         background=colors[0],
     ),
@@ -73,13 +80,9 @@ widgets_list_m2 = [
         background=colors[0],
     ),
 
-    icon(fg=8, fontsize=16, padding=0, icon='  '),
-    widget.Backlight(
-        **base(fg=8),
-        backlight_name='intel_backlight',
-        brightness_file='brightness',
-        fontsize=12
-    ),
+    # The layout in this workspace
+    widget.CurrentLayoutIcon(**base(bg=0), font=font,
+                             padding=padding, scale=0.50),
 ]
 
 screen = [

@@ -144,3 +144,10 @@ local opts = { noremap = true, silent = true }
 vim.keymap.set("n", "<Leader><Leader>i", "<cmd>IconPickerNormal<cr>", opts)
 vim.keymap.set("n", "<Leader><Leader>y", "<cmd>IconPickerYank<cr>", opts)
 vim.keymap.set("i", "<C-i>", "<cmd>IconPickerInsert<cr>", opts)
+
+vim.keymap.set('n', '<leader>e', '<cmd>NvimTreeToggle<cr>')
+
+vim.keymap.set('n', "<leader>rn", ":IncRename ")
+vim.keymap.set("n", "<leader>rn", function()
+  return ":IncRename " .. vim.fn.expand("<cword>")
+end, { expr = true })

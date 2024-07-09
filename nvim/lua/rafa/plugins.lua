@@ -46,7 +46,9 @@ packer.startup(function(use)
   use 'folke/noice.nvim'
   use 'sindrets/diffview.nvim'
   use 'stevearc/dressing.nvim'
-  use "ziontee113/icon-picker.nvim"
+  use 'ziontee113/icon-picker.nvim'
+  use 'nvim-tree/nvim-tree.lua'
+  use "b0o/incline.nvim"
 
 
   use {
@@ -98,6 +100,13 @@ packer.startup(function(use)
         -- refer to the configuration section below
       }
     end
+  }
+
+  use {
+    "smjonas/inc-rename.nvim",
+    config = function()
+      require("inc_rename").setup()
+    end,
   }
 
   -- Animations
