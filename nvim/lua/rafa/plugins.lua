@@ -50,6 +50,7 @@ packer.startup(function(use)
   use 'nvim-tree/nvim-tree.lua'
   use "b0o/incline.nvim"
 
+  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
   use {
     "WilsonOh/emoji_picker-nvim",
@@ -102,12 +103,12 @@ packer.startup(function(use)
     end
   }
 
-  use {
-    "smjonas/inc-rename.nvim",
-    config = function()
-      require("inc_rename").setup()
-    end,
-  }
+  -- use {
+  --   "smjonas/inc-rename.nvim",
+  --   config = function()
+  --     require("inc_rename").setup()
+  --   end,
+  -- }
 
   -- Animations
   use { 'echasnovski/mini.nvim', version = '*' }

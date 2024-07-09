@@ -15,9 +15,9 @@ noice.setup({
   format = {
     level = {
       icons = {
-        error = "✖",
-        warn = "▼",
-        info = "●",
+        error = " ",
+        warn = " ",
+        info = " ",
       },
     },
   },
@@ -38,7 +38,7 @@ noice.setup({
     command_palette = true,        -- position the cmdline and popupmenu together
     long_message_to_split = false, -- long messages will be sent to a split
     inc_rename = true,             -- enables an input dialog for inc-rename.nvim
-    lsp_doc_border = false,        -- add a border to hover docs and signature help
+    lsp_doc_border = true,         -- add a border to hover docs and signature help
   },
   throttle = 1000 / 30,            -- how frequently does Noice need to check for ui updates? This has no effect when in blocking mode.
   ---@type NoiceConfigViews
@@ -80,27 +80,23 @@ noice.setup({
   commands = {
     history = {
       view = "split",
-      opts = { enter = true, format = "details" },
+      opts = { enter = true, skip = true, format = "details" },
       filter = {},
     },
   },
 })
 
-_G.noice_messages = _G.noice_messages or {}
-vim.api.nvim_create_user_command('SaveMessages', function()
-  -- Concatenar todos los mensajes
-  local messages = table.concat(_G.noice_messages, '\n')
-  local filepath = vim.fn.input("Save messages to: ", vim.fn.expand("~/messages.log"), "file")
-  local file = io.open(filepath, "a")
-  if file then
-    file:write(messages)
-    file:close()
-    print("Messages saved to " .. filepath)
-  else
-    print("Failed to open file: " .. filepath)
-  end
-end, {})
-
-vim.keymap.set("n", "<leader>nl", function()
-  noice.cmd("last")
-end)
+-- _G.noice_messages = _G.noice_messages or {}
+-- vim.api.nvim_create_user_command('SaveMessages', function()
+--   -- Concatenar todos los mensajes
+--   local messages = table.concat(_G.noice_messages, '\n')
+--   local filepath = vim.fn.input("Save messages to: ", vim.fn.expand("~/messages.log"), "file")
+--   local file = io.open(filepath, "a")
+--   if file then
+--     file:write(messages)
+--     file:close()
+--     print("Messages saved to " .. filepath)
+--   else
+--     print("Failed to open file: " .. filepath)
+--   end
+-- end, {})

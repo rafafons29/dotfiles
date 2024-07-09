@@ -7,7 +7,7 @@ import json
 
 
 def load_theme():
-    theme = "onedark"
+    theme = "oxocarbon"
     theme_file = path.join(qtile_path, "themes", f"{theme}.json")
 
     if not path.isfile(theme_file):

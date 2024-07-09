@@ -6,6 +6,7 @@ local M = {
   normal = '#a050d5',
   bg_b_y = '#2e3651',
 
+  base = '#25293A',
   cyan = '#89DDFF',
   green = '#9CCC65',
   red = '#EF5350',

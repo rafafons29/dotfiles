@@ -63,11 +63,11 @@ keymap.set('n', '<C-w><down>', '<C-w>-')
 
 -- Open terminal on different modes
 keymap.set('n', '<C-v>', '<cmd>ToggleTerm size=80 direction=vertical<CR>')
-keymap.set('n', '<C-m>', '<cmd>ToggleTerm size=70 direction=horizontal<CR>')
+keymap.set('n', '<C-n>', '<cmd>ToggleTerm size=70 direction=horizontal<CR>')
 
 -- Jump between markdown headers
-vim.keymap.set("n", "gj", [[/^##\+ .*<CR>]], { buffer = true, silent = true })
-vim.keymap.set("n", "gk", [[?^##\+ .*<CR>]], { buffer = true, silent = true })
+keymap.set("n", "gj", [[/^##\+ .*<CR>]], { buffer = true, silent = true })
+keymap.set("n", "gk", [[?^##\+ .*<CR>]], { buffer = true, silent = true })
 
 -- Dismiss Noice Message
 keymap.set('n', '<leader>nd', '<cmd>NoiceDismiss<CR>', { desc = 'Dismiss Noice Message' })
@@ -78,11 +78,6 @@ keymap.set("i", "<Tab>", "luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-o
 keymap.set("i", "<S-Tab>", "<cmd>lua require'luasnip'.jump(-1)<Cr>", { silent = true })
 keymap.set("s", "<Tab>", "<cmd>lua require('luasnip').jump(1)<Cr>", { silent = true })
 keymap.set("s", "<S-Tab>", "<cmd>lua require('luasnip').jump(-1)<Cr>", { silent = true })
-keymap.set('n', '<leader>?', '<cmd>Telescope oldfiles<cr>')
-keymap.set('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
-keymap.set('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
-keymap.set('n', '<leader>fd', '<cmd>Telescope diagnostics<cr>')
-keymap.set('n', '<leader>fs', '<cmd>Telescope current_buffer_fuzzy_find<cr>')
 keymap.set('i', '<M-e>', '<cmd>EmojiPicker<cr>')
 keymap.set('n', '<C-w>o', '<cmd>ZenMode<cr>', { silent = true })
 keymap.set('n', '<Leader>D', '<cmd>MultipleCursorsAddDow<CR>', { noremap = true, silent = true })
@@ -101,32 +96,32 @@ keymap.set("n", "<leader>mf", function()
 end)
 
 -- Keymaos for telescope
-vim.keymap.set('n', ';f',
+keymap.set('n', ';f',
   function()
     vim.builtin.find_files({
       no_ignore = false,
       hidden = true
     })
   end)
-vim.keymap.set('n', ';r', function()
+keymap.set('n', ';r', function()
   vim.builtin.live_grep()
 end)
-vim.keymap.set('n', '\\\\', function()
+keymap.set('n', '\\\\', function()
   vim.builtin.buffers()
 end)
-vim.keymap.set('n', ';t', function()
+keymap.set('n', ';t', function()
   vim.builtin.help_tags()
 end)
-vim.keymap.set('n', ';;', function()
+keymap.set('n', ';;', function()
   vim.builtin.resume()
 end)
-vim.keymap.set('n', ';e', function()
+keymap.set('n', ';e', function()
   vim.builtin.diagnostics()
 end)
-vim.keymap.set('n', ';s', function()
+keymap.set('n', ';s', function()
   vim.builtin.current_buffer_fuzzy_find()
 end)
-vim.keymap.set("n", "sf", function()
+keymap.set("n", "sf", function()
   vim.telescope.extensions.file_browser.file_browser({
     path = "%:p:h",
     cwd = vim.telescope_buffer_dir(),
@@ -141,13 +136,10 @@ end)
 
 -- Icons on telescope
 local opts = { noremap = true, silent = true }
-vim.keymap.set("n", "<Leader><Leader>i", "<cmd>IconPickerNormal<cr>", opts)
-vim.keymap.set("n", "<Leader><Leader>y", "<cmd>IconPickerYank<cr>", opts)
-vim.keymap.set("i", "<C-i>", "<cmd>IconPickerInsert<cr>", opts)
+keymap.set("n", "<Leader><Leader>i", "<cmd>IconPickerNormal<cr>", opts)
+keymap.set("n", "<Leader><Leader>y", "<cmd>IconPickerYank<cr>", opts)
+keymap.set("i", "<C-i>", "<cmd>IconPickerInsert<cr>", opts)
 
-vim.keymap.set('n', '<leader>e', '<cmd>NvimTreeToggle<cr>')
+keymap.set('n', '<leader>e', '<cmd>NvimTreeToggle<cr>')
 
-vim.keymap.set('n', "<leader>rn", ":IncRename ")
-vim.keymap.set("n", "<leader>rn", function()
-  return ":IncRename " .. vim.fn.expand("<cword>")
-end, { expr = true })
+-- keymap.set("n", "<leader>rn", ":IncRename ")

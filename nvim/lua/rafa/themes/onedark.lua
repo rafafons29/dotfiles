@@ -2,7 +2,7 @@ local onedark = vim.get_plugin("onedark")
 if not onedark then return end
 
 onedark.setup {
-  style = 'darker',             -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
+  style = 'warmer',             -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
   transparent = false,          -- Show/hide background
   term_colors = true,           -- Change terminal color as per the selected theme style
   ending_tildes = false,        -- Show the end-of-buffer tildes. By default they are hidden

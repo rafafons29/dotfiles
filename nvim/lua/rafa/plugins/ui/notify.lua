@@ -16,11 +16,11 @@ notify.setup({
   end,
   fps = 90,
   icons = {
-    DEBUG = "",
-    ERROR = "",
-    INFO = "",
+    DEBUG = " ",
+    ERROR = " ",
+    INFO = " ",
     TRACE = "✎",
-    WARN = ""
+    WARN = " "
   },
   level = 2,
   minimum_width = 50,
@@ -59,7 +59,7 @@ vim.notify = notify
 vim.get_plugin = function(plugin_name)
   local statuss, plugin = pcall(require, plugin_name)
   if not statuss then
-    vim.notify(plugin_name .. " is not working", "warn")
+    vim.notify(plugin_name .. " is not working 😳", "warn")
     return nil
   end
   return plugin
