@@ -3,6 +3,10 @@ if not nvim_lsp then return end
 
 local lspf = require("rafa.plugins.servers.lsp_functions")
 
+local luasnip = vim.get_plugin("luasnip")
+if not luasnip then return end
+_G.luasnip = luasnip
+
 -- Icons
 local protocol = require('vim.lsp.protocol')
 protocol.CompletionItemKind = lspf.protocolCompletionItemKind

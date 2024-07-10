@@ -6,11 +6,7 @@ if not telescope then return end
 if not actions then return end
 if not builtin then return end
 
-vim.telescope = telescope
-vim.builtin = builtin
-
-
-local fb_actions = require "telescope".extensions.file_browser.actions
+local fb_actions = telescope.extensions.file_browser.actions
 
 telescope.load_extension("noice")
 telescope.setup {
@@ -62,6 +58,8 @@ telescope.load_extension("file_browser")
 telescope.load_extension("media_files")
 telescope.load_extension("fzf")
 
+_G.telescope = telescope
+_G.builtin = builtin
 
 vim.telescope_buffer_dir = function()
   return vim.fn.expand('%:p:h')

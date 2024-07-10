@@ -48,7 +48,8 @@ packer.startup(function(use)
   use 'stevearc/dressing.nvim'
   use 'ziontee113/icon-picker.nvim'
   use 'nvim-tree/nvim-tree.lua'
-  use "b0o/incline.nvim"
+  use 'b0o/incline.nvim'
+  use 'folke/flash.nvim'
 
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
@@ -103,12 +104,12 @@ packer.startup(function(use)
     end
   }
 
-  -- use {
-  --   "smjonas/inc-rename.nvim",
-  --   config = function()
-  --     require("inc_rename").setup()
-  --   end,
-  -- }
+  use {
+    "smjonas/inc-rename.nvim",
+    config = function()
+      require("inc_rename").setup()
+    end,
+  }
 
   -- Animations
   use { 'echasnovski/mini.nvim', version = '*' }

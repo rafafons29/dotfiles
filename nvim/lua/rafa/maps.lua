@@ -75,21 +75,22 @@ keymap.set('n', '<leader>nd', '<cmd>NoiceDismiss<CR>', { desc = 'Dismiss Noice M
 keymap.set("i", "<Tab>", "luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'",
   { expr = true, silent = true })
 
-keymap.set("i", "<S-Tab>", "<cmd>lua require'luasnip'.jump(-1)<Cr>", { silent = true })
-keymap.set("s", "<Tab>", "<cmd>lua require('luasnip').jump(1)<Cr>", { silent = true })
-keymap.set("s", "<S-Tab>", "<cmd>lua require('luasnip').jump(-1)<Cr>", { silent = true })
+keymap.set({ 's', 'i' }, "<Tab>", function() luasnip.jump(1) end, { silent = true })
+keymap.set({ 's', 'i' }, "<S-Tab>", function() luasnip.jump(-1) end, { silent = true })
+
+-- Looks all icons, and use to insert the select icon
 keymap.set('i', '<M-e>', '<cmd>EmojiPicker<cr>')
+
+-- Open ZenMode Menu
 keymap.set('n', '<C-w>o', '<cmd>ZenMode<cr>', { silent = true })
+
+-- Using multicursors like vscode
 keymap.set('n', '<Leader>D', '<cmd>MultipleCursorsAddDow<CR>', { noremap = true, silent = true })
 keymap.set('n', '<Leader>U', '<cmd>MultipleCursorsAddUp<CR>', { noremap = true, silent = true })
-keymap.set('n', '<leader>dr', '<cmd>lua require"dap".continue()<CR>', { noremap = true, silent = true })
-keymap.set('n', '<leader>dq', '<cmd>lua require"dap".close()<CR>', { noremap = true, silent = true })
-keymap.set('n', '<leader>db', '<cmd>lua require"dap".toggle_breakpoint()<CR>',
-  { noremap = true, silent = true })
-keymap.set("i", "<C-E>", "luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'",
-  { expr = true, silent = true })
-keymap.set("s", "<C-E>", "luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'",
-  { expr = true, silent = true })
+
+keymap.set('n', '<leader>dr', function() dap.continue() end, { noremap = true, silent = true })
+keymap.set('n', '<leader>dq', function() dap.close() end, { noremap = true, silent = true })
+keymap.set('n', '<leader>db', function() dap.toggle_breakpoint() end, { noremap = true, silent = true })
 
 keymap.set("n", "<leader>mf", function()
   require('md-pdf').convert_md_to_pdf()
@@ -98,31 +99,19 @@ end)
 -- Keymaos for telescope
 keymap.set('n', ';f',
   function()
-    vim.builtin.find_files({
+    builtin.find_files({
       no_ignore = false,
       hidden = true
     })
   end)
-keymap.set('n', ';r', function()
-  vim.builtin.live_grep()
-end)
-keymap.set('n', '\\\\', function()
-  vim.builtin.buffers()
-end)
-keymap.set('n', ';t', function()
-  vim.builtin.help_tags()
-end)
-keymap.set('n', ';;', function()
-  vim.builtin.resume()
-end)
-keymap.set('n', ';e', function()
-  vim.builtin.diagnostics()
-end)
-keymap.set('n', ';s', function()
-  vim.builtin.current_buffer_fuzzy_find()
-end)
+keymap.set('n', ';r', function() builtin.live_grep() end)
+keymap.set('n', '\\\\', function() builtin.buffers() end)
+keymap.set('n', ';t', function() builtin.help_tags() end)
+keymap.set('n', ';;', function() builtin.resume() end)
+keymap.set('n', ';e', function() builtin.diagnostics() end)
+keymap.set('n', ';s', function() builtin.current_buffer_fuzzy_find() end)
 keymap.set("n", "sf", function()
-  vim.telescope.extensions.file_browser.file_browser({
+  telescope.extensions.file_browser.file_browser({
     path = "%:p:h",
     cwd = vim.telescope_buffer_dir(),
     respect_gitignore = false,
@@ -140,6 +129,18 @@ keymap.set("n", "<Leader><Leader>i", "<cmd>IconPickerNormal<cr>", opts)
 keymap.set("n", "<Leader><Leader>y", "<cmd>IconPickerYank<cr>", opts)
 keymap.set("i", "<C-i>", "<cmd>IconPickerInsert<cr>", opts)
 
+-- Files Tree
 keymap.set('n', '<leader>e', '<cmd>NvimTreeToggle<cr>')
 
--- keymap.set("n", "<leader>rn", ":IncRename ")
+-- Rename a word on all files
+keymap.set("n", "<leader>rn", ":IncRename ")
+vim.keymap.set("n", "<leader>rn", function()
+  return ":IncRename " .. vim.fn.expand("<cword>")
+end, { expr = true })
+
+-- Keymaps for Flash
+keymap.set({ 'n', 'x', 'o' }, 's', function() flash.jump() end, { desc = "Flash" })
+keymap.set({ 'n', 'x', 'o' }, 'S', function() flash.treesitter() end, { desc = "Flash Treesitter" })
+keymap.set({ 'o' }, 'r', function() flash.remote() end, { desc = "Remote Flash" })
+keymap.set({ 'o', 'x' }, 'R', function() flash.treesitter_search() end, { desc = "Treesitter Search" })
+keymap.set({ 'c' }, '<C-s>', function() flash.toggle() end, { desc = "Toggle Flash Search" })

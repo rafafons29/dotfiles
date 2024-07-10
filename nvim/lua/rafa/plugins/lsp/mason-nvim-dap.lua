@@ -3,6 +3,7 @@ local dapui = vim.get_plugin("dapui")
 if not dap then return end
 if not dapui then return end
 
+_G.dap = dap
 
 -- Configuración de nvim-dap-ui
 dapui.setup()
