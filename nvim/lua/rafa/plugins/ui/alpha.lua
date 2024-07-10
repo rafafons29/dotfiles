@@ -17,7 +17,7 @@ dashboard.section.header.val = {
 -- Set menu
 dashboard.section.buttons.val = {
   dashboard.button("e", "  > New file", function()
-    vim.telescope.extensions.file_browser.file_browser({
+    telescope.extensions.file_browser.file_browser({
       path = "%:p:h",
       cwd = vim.telescope_buffer_dir(),
       respect_gitignore = false,
