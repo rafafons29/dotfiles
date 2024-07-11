@@ -54,13 +54,13 @@ ts.setup {
     extended_mode = true,
     max_file_lines = nil,
     colors = {
-      '#86e1fc', -- cyan
-      '#98c379', --  green,
-      '#e86671', -- red,
-      '#c678dd', -- violet,
-      '#82aaff', -- blue
-      '#e5c07b', -- yellow,
-      '#ff966c', -- orange
+      '#00e8c6', -- cyan
+      '#42be65', --  green,
+      '#FC644D', -- red,
+      '#9040C4', -- violet,
+      '#00b0ff', -- blue
+      '#FFE66D', -- yellow,
+      '#FF855B', -- orange
     },
   }
 }

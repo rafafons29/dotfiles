@@ -1,7 +1,7 @@
 local function minimal_theme(colors)
   return {
     normal = {
-      a = { fg = colors.normal },
+      a = { fg = colors.fg_a_z, bg = colors.normal },
       b = { fg = colors.fg_b_y },
       c = { fg = colors.insert },
       x = { fg = colors.insert },
@@ -10,11 +10,11 @@ local function minimal_theme(colors)
     },
 
     insert = {
-      a = { fg = colors.insert },
+      a = { fg = colors.fg_a_z, bg = colors.insert },
       z = { fg = colors.fg_b_y }
     },
     visual = {
-      a = { fg = colors.visual },
+      a = { fg = colors.fg_a_z, bg = colors.visual },
       z = { fg = colors.fg_b_y }
     },
     replace = {
@@ -44,11 +44,23 @@ return function(colors)
     },
     sections = {
       lualine_a = {
-        'mode', -- right = ' '
+        { 'mode', fmt = function(str)
+          if str == "NORMAL" then
+            return "󰝆" --󰎖
+          end
+          if str == "V-LINE" then
+            return "" --   
+          end
+          if str == "INSERT" then
+            return "" -- 󰬐 
+          end
+
+          return str:sub(1, 1)
+        end }, -- right = ' '
       },
       lualine_b = {
-        { 'branch', icon = { '', align = 'right' }, color = { fg = 'lightgray' }, separator = { right = '|' } },
-        -- { 'filetype', icon_only = true, separator = { right = '' } },
+        { 'branch', icon = { '', align = 'right' }, color = { fg = colors.fg_b_y } },
+        { 'filetype', icon_only = true },
       },
       lualine_c = {
         {
