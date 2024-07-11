@@ -144,3 +144,7 @@ keymap.set({ 'n', 'x', 'o' }, 'S', function() flash.treesitter() end, { desc = "
 keymap.set({ 'o' }, 'r', function() flash.remote() end, { desc = "Remote Flash" })
 keymap.set({ 'o', 'x' }, 'R', function() flash.treesitter_search() end, { desc = "Treesitter Search" })
 keymap.set({ 'c' }, '<C-s>', function() flash.toggle() end, { desc = "Toggle Flash Search" })
+
+-- Using fzf to seahrch Files
+keymap.set('n', 'ff', '<cmd>FZF<cr>', { desc = "Search and open files using fzf" })
+keymap.set('n', 'fzf', '<cmd>FZF!<cr>', { desc = "Search and open files using fzf" })

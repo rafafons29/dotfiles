@@ -1,19 +1,31 @@
 local function minimal_theme(colors)
   return {
     normal = {
-      a = { fg = colors.fg_a_z, bg = colors.normal },
-      b = { fg = colors.fg_b_y, bg = colors.bg_b_y },
-      c = { fg = colors.insert, bg = nil },
+      a = { fg = colors.normal },
+      b = { fg = colors.fg_b_y },
+      c = { fg = colors.insert },
+      x = { fg = colors.insert },
+      y = { fg = colors.fg_b_y },
+      z = { fg = colors.fg_b_y },
     },
 
-    insert = { a = { fg = colors.fg_a_z, bg = colors.insert } },
-    visual = { a = { fg = colors.fg_a_z, bg = colors.visual } },
-    replace = { a = { fg = colors.fg_a_z } },
+    insert = {
+      a = { fg = colors.insert },
+      z = { fg = colors.fg_b_y }
+    },
+    visual = {
+      a = { fg = colors.visual },
+      z = { fg = colors.fg_b_y }
+    },
+    replace = {
+      a = { fg = colors.fg_a_z },
+      z = { fg = colors.fg_b_y }
+    },
 
     inactive = {
-      a = { fg = colors.fg_b_y, bg = nil },
-      b = { fg = colors.fg_b_y, bg = nil },
-      c = { fg = colors.fg_a_z, bg = nil },
+      a = { fg = colors.fg_b_y },
+      b = { fg = colors.fg_b_y },
+      c = { fg = colors.fg_a_z },
     },
   }
 end
@@ -26,27 +38,33 @@ return function(colors)
     options = {
       icons_enabled = true,
       theme = minimal_theme(colors),
-      component_separators = '|',
-      section_separators = { left = '', right = '' },
+      component_separators = { left = '', right = '' },
+      section_separators = { left = '', right = '' },
+      globalstatus = true,
     },
     sections = {
       lualine_a = {
-        { 'mode', separator = { right = '' }, right_padding = 0 },
+        'mode', -- right = ' '
       },
-      lualine_b = { 'branch', 'filetype' },
+      lualine_b = {
+        { 'branch', icon = { '', align = 'right' }, color = { fg = 'lightgray' }, separator = { right = '|' } },
+        -- { 'filetype', icon_only = true, separator = { right = '' } },
+      },
       lualine_c = {
-        'filename',
         {
           'diagnostics',
           source = { 'nvim' },
           sections = { 'error', 'warn' },
-          diagnostics_color = { error = { bg = colors.red, fg = colors.white } },
+          diagnostics_color = {
+            error = { fg = colors.red },
+            warn = { fg = colors.yellow }
+          },
         },
       },
-      lualine_x = { 'fileformat' },
-      lualine_y = { 'progress' },
+      lualine_x = { { 'fileformat', color = { fg = colors.blue } } },
+      lualine_y = {},
       lualine_z = {
-        { 'location', separator = { left = '' }, left_padding = 0 },
+        { 'progress', color = { fg = colors.orange } },
       },
     },
     inactive_sections = {
@@ -58,6 +76,11 @@ return function(colors)
       lualine_z = { 'location' },
     },
     tabline = {},
-    extensions = {},
+    extensions = {
+      'toggleterm',
+      'nvim-tree',
+      'mason',
+      'fzf'
+    },
   }
 end

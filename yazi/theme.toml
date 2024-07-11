@@ -6,7 +6,7 @@
 
 
 [flavor]
-use = "oxocarbon"
+use = "andromeda_colorizer"
 
 # # : Manager {{{
 #

@@ -12,6 +12,8 @@ tree.setup({
     width = 30,
     side = "right",
     cursorline = false,
+    number = true,
+    relativenumber = true,
   },
   renderer = {
     root_folder_label = false,

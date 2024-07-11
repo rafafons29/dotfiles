@@ -1,4 +1,4 @@
-@import "colors/oxocarbon.rasi"
+@import "colors/andromeda_colorizer.rasi"
 
 * {
     font: "Jetbrains Mono 12";

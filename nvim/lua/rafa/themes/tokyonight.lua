@@ -5,7 +5,6 @@ vim.g.tokyonight_disable_italic_comment = 0
 vim.g.tokyonight_enable_italic = 1
 vim.g.tokyonight_cursor = 'auto'
 vim.g.tokyonight_current_word = 'bold' -- bold, underline, italic, grey background
---let g:lightline = {'colorscheme' : 'tokyonight'}
 vim.g.airline_theme = "tokyonight"
 vim.cmd("colorscheme tokyonight")
 

@@ -36,7 +36,7 @@ require("rafa.plugins.diffview")
 require("rafa.plugins.which_key")
 require("rafa.plugins.icon_picker")
 
-local colors = require("rafa.themes.oxocarbon")
+local colors = require("rafa.themes.andromeda_colorizer")
 require("rafa.plugins.ui.lualine")(colors)
 require("rafa.plugins.ui.bufferline")(colors)
 require("rafa.plugins.ui.incline")(colors)

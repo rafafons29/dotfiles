@@ -1,15 +1,42 @@
 local devicons = vim.get_plugin('nvim-web-devicons')
 local incline = vim.get_plugin('incline')
+local helpers = vim.get_plugin('incline.helpers')
 
 if not devicons then return end
 if not incline then return end
+if not helpers then return end
+
+
+local function toggle_incline()
+  local open_buffers = (function() return #vim.api.nvim_list_tabpages() end)()
+
+  if open_buffers > 1 then
+    incline.disable()
+  else
+    incline.enable()
+  end
+
+  return open_buffers
+end
+
+vim.api.nvim_create_autocmd("TabEnter", {
+  pattern = '*',
+  callback = toggle_incline,
+})
+
+vim.api.nvim_create_autocmd("TabClosed", {
+  pattern = '*',
+  callback = function()
+    vim.schedule(toggle_incline)
+  end,
+})
 
 return function(colors)
   return incline.setup {
     highlight = {
       groups = {
-        InclineNormal = { guibg = colors.bg_b_y, guifg = colors.normal },
-        InclineNormalNC = { guibg = colors.base, guifg = colors.fg_a_z }
+        InclineNormal = { guibg = colors.base, guifg = colors.normal },
+        InclineNormalNC = { guibg = colors.base, guifg = colors.fg_b_y }
       }
     },
     window = {
@@ -25,24 +52,7 @@ return function(colors)
       end
       local ft_icon, ft_color = devicons.get_icon_color(filename)
 
-      local function get_diagnostic_label()
-        local icons = { error = '', warn = '', info = '', hint = '' }
-        local label = {}
-
-        for severity, icon in pairs(icons) do
-          local n = #vim.diagnostic.get(props.buf, { severity = vim.diagnostic.severity[string.upper(severity)] })
-          if n > 0 then
-            table.insert(label, { icon .. n .. ' ', group = 'DiagnosticSign' .. severity })
-          end
-        end
-        if #label > 0 then
-          table.insert(label, { '| ' })
-        end
-        return label
-      end
-
       return {
-        { get_diagnostic_label() },
         { (ft_icon or '') .. ' ', guifg = ft_color,                                            guibg = 'none' },
         { filename .. ' ',        gui = vim.bo[props.buf].modified and 'bold,italic' or 'bold' },
       }
