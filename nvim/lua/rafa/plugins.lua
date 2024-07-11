@@ -35,8 +35,7 @@ packer.startup(function(use)
   use 'folke/zen-mode.nvim'
   use 'lewis6991/gitsigns.nvim'
   use 'dinhhuy258/git.nvim' -- For git blame & browse
-  use 'folke/todo-comments.nvim'
-  use 'lukas-reineke/indent-blankline.nvim'
+  use "Djancyp/better-comments.nvim"
   use 'RRethy/vim-illuminate'
   use 'nvim-treesitter/nvim-treesitter'
   use 'nvim-treesitter/nvim-treesitter-context'
