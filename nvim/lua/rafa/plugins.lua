@@ -129,6 +129,24 @@ packer.startup(function(use)
   -- Markdown
   use 'iamcco/markdown-preview.nvim'
   use 'arminveres/md-pdf.nvim'
+  use 'HakonHarnes/img-clip.nvim'
+  use({
+    "tadmccorkle/markdown.nvim",
+    config = function()
+      require("markdown").setup({
+        -- configuration here or empty for defaults
+      })
+    end,
+  })
+  use({
+    'MeanderingProgrammer/markdown.nvim',
+    as = 'render-markdown', -- Only needed if you have another plugin named markdown.nvim
+    after = { 'nvim-treesitter' },
+    requires = { 'echasnovski/mini.nvim', opt = true },
+    config = function()
+      require('render-markdown').setup({})
+    end,
+  })
 
   -- go
   use 'leoluz/nvim-dap-go'
