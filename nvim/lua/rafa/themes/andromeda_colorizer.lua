@@ -12,7 +12,7 @@ andromeda.setup({
     mono_3 = "#6F6F6F",
     mono_4 = "#ee5d43",
     mono_5 = "#B3ACA7",
-    mono_6 = "#E6DFEA",
+    mono_6 = "#918A95",
   },
 })
 
