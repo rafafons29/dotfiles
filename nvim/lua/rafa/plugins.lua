@@ -34,8 +34,8 @@ packer.startup(function(use)
   use 'norcalli/nvim-colorizer.lua'
   use 'folke/zen-mode.nvim'
   use 'lewis6991/gitsigns.nvim'
-  use 'dinhhuy258/git.nvim'          -- For git blame & browse
-  use 'Djancyp/better-comments.nvim' -- Better comments for nvim
+  use 'dinhhuy258/git.nvim' -- For git blame & browse
+  use 'folke/todo-comments.nvim'
   use 'lukas-reineke/indent-blankline.nvim'
   use 'RRethy/vim-illuminate'
   use 'nvim-treesitter/nvim-treesitter'
@@ -126,15 +126,6 @@ packer.startup(function(use)
     "jay-babu/mason-nvim-dap.nvim",
   }
   use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } }
-
-  -- Flutter
-  -- {
-  --   'akinsho/flutter-tools.nvim',
-  --   requires = {
-  --     'nvim-lua/plenary.nvim',
-  --     'stevearc/dressing.nvim', -- optional for vim.ui.select
-  --   },
-  -- };
 
   -- Markdown
   use 'iamcco/markdown-preview.nvim'

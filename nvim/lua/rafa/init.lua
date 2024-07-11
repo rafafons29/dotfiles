@@ -1,7 +1,7 @@
 require("rafa.basic")
 require("rafa.plugins")
 require("rafa.plugins.ui.notify")
-require("rafa.plugins.ui.better-comments")
+require("rafa.plugins.ui.todo_comments")
 require("rafa.plugins.ui.lsp-colors")
 require("rafa.plugins.ui.illuminate")
 require("rafa.plugins.ui.noice")

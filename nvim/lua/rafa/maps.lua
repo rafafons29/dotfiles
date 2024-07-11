@@ -148,3 +148,32 @@ keymap.set({ 'c' }, '<C-s>', function() flash.toggle() end, { desc = "Toggle Fla
 -- Using fzf to seahrch Files
 keymap.set('n', 'ff', '<cmd>FZF<cr>', { desc = "Search and open files using fzf" })
 keymap.set('n', 'fzf', '<cmd>FZF!<cr>', { desc = "Search and open files using fzf" })
+
+-- Open mason
+keymap.set('n', '<leader>cm', '<cmd>Mason<cr>')
+
+-- Noice Keymaps
+keymap.set({ "n", "i", "s" }, "<c-f>", function()
+  if not require("noice.lsp").scroll(4) then
+    return "<c-f>"
+  end
+end, { silent = true, expr = true })
+
+keymap.set({ "n", "i", "s" }, "<c-b>", function()
+  if not require("noice.lsp").scroll(-4) then
+    return "<c-b>"
+  end
+end, { silent = true, expr = true })
+
+-- Keymaps for todo comments
+vim.keymap.set("n", "]t", function()
+  require("todo-comments").jump_next()
+end, { desc = "Next todo comment" })
+
+vim.keymap.set("n", "[t", function()
+  require("todo-comments").jump_prev()
+end, { desc = "Previous todo comment" })
+
+vim.keymap.set("n", "]t", function()
+  require("todo-comments").jump_next({ keywords = { "ERROR", "WARNING" } })
+end, { desc = "Next error/warning todo comment" })
