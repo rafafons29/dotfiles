@@ -164,16 +164,3 @@ keymap.set({ "n", "i", "s" }, "<c-b>", function()
     return "<c-b>"
   end
 end, { silent = true, expr = true })
-
--- Keymaps for todo comments
-vim.keymap.set("n", "]t", function()
-  require("todo-comments").jump_next()
-end, { desc = "Next todo comment" })
-
-vim.keymap.set("n", "[t", function()
-  require("todo-comments").jump_prev()
-end, { desc = "Previous todo comment" })
-
-vim.keymap.set("n", "]t", function()
-  require("todo-comments").jump_next({ keywords = { "ERROR", "WARNING" } })
-end, { desc = "Next error/warning todo comment" })
