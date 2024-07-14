@@ -8,7 +8,6 @@ from settings.keys import keys
 from settings.screen import all_screen
 from settings.theme import colors
 
-
 keys = keys
 groups = groups
 layouts = layouts

@@ -1,4 +1,7 @@
-require('md-pdf').setup({
+local md_pdf = vim.get_plugin('md-pdf')
+if not md_pdf then return end
+
+md_pdf.setup({
   --- Set margins around document
   margins = "1.5cm",
   -- tango, pygments are quite nice for white on white
@@ -10,6 +13,9 @@ require('md-pdf').setup({
   -- if true, then the markdown file is continuously converted on each write, even if the
   -- file viewer closed, e.g., firefox is "closed" once the document is opened in it.
   ignore_viewer_state = false,
+
+  pdf_endgine = 'lualatex',
+
   -- or, where all or only some options can be specified. NOTE: those that are `nil` can be left
   -- out completely
   fonts = {
@@ -25,6 +31,6 @@ require('md-pdf').setup({
     -- short
     "-V KEY[:VALUE]",
     -- long options
-    "--standalone=[true|false]",
+    "--standalone=true",
   },
 })

@@ -61,10 +61,6 @@ keymap.set('n', '<C-w><right>', '<C-w>>')
 keymap.set('n', '<C-w><up>', '<C-w>+')
 keymap.set('n', '<C-w><down>', '<C-w>-')
 
--- Open terminal on different modes
-keymap.set('n', '<C-v>', '<cmd>ToggleTerm size=80 direction=vertical<CR>')
-keymap.set('n', '<C-n>', '<cmd>ToggleTerm size=70 direction=horizontal<CR>')
-
 -- Jump between markdown headers
 keymap.set("n", "gj", [[/^##\+ .*<CR>]], { buffer = true, silent = true })
 keymap.set("n", "gk", [[?^##\+ .*<CR>]], { buffer = true, silent = true })
@@ -83,10 +79,6 @@ keymap.set('i', '<M-e>', '<cmd>EmojiPicker<cr>')
 
 -- Open ZenMode Menu
 keymap.set('n', '<C-w>o', '<cmd>ZenMode<cr>', { silent = true })
-
--- Using multicursors like vscode
-keymap.set('n', '<Leader>D', '<cmd>MultipleCursorsAddDow<CR>', { noremap = true, silent = true })
-keymap.set('n', '<Leader>U', '<cmd>MultipleCursorsAddUp<CR>', { noremap = true, silent = true })
 
 keymap.set('n', '<leader>dr', function() dap.continue() end, { noremap = true, silent = true })
 keymap.set('n', '<leader>dq', function() dap.close() end, { noremap = true, silent = true })

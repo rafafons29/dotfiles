@@ -39,7 +39,6 @@ packer.startup(function(use)
   use 'RRethy/vim-illuminate'
   use 'nvim-treesitter/nvim-treesitter'
   use 'nvim-treesitter/nvim-treesitter-context'
-  use 'brenton-leighton/multiple-cursors.nvim'
   use 'rcarriga/nvim-notify'
   use 'MunifTanjim/nui.nvim'
   use 'folke/noice.nvim'

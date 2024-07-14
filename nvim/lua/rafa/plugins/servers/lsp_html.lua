@@ -5,4 +5,12 @@ return {
   init_options = {
     provideFormatter = "Prettier",
   },
+  settings = {
+    html = {
+      -- workspace = {
+      --   library = require("rafa.plugins.servers.lsp_functions").loadfolder(),
+      --   checkThirdParty = false,
+      -- },
+    }
+  }
 }

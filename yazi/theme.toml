@@ -6,7 +6,7 @@
 
 
 [flavor]
-use = "andromeda_colorizer"
+use = "tokyonight"
 
 # # : Manager {{{
 #
