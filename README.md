@@ -7,15 +7,6 @@
 <!-- To install, execute the following commands: -->
 <!-- asdjbas -->
 
-Para usar mis dotfiles, ejecuta el siguiente comando, este instalara todo el software necesario.
-
-```shell
-pacman -Sy git
-git clone https://github.com/rafafons29/dotfiles.git
-cd ~/dotfiles
-./install.sh
-```
-
 ## Styles
 
 <div class="themes">
