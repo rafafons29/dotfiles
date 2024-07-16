@@ -5,7 +5,6 @@ local lspf = require("rafa.plugins.servers.lsp_functions")
 
 local luasnip = vim.get_plugin("luasnip")
 if not luasnip then return end
-_G.luasnip = luasnip
 
 -- Icons
 local protocol = require('vim.lsp.protocol')
@@ -219,3 +218,6 @@ vim.diagnostic.config({
     source = "always", -- Or "if_many"
   },
 })
+
+keymap.set({ 's', 'i' }, "<Tab>", function() luasnip.jump(1) end, { silent = true })
+keymap.set({ 's', 'i' }, "<S-Tab>", function() luasnip.jump(-1) end, { silent = true })

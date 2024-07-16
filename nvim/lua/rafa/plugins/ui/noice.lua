@@ -86,17 +86,14 @@ noice.setup({
   },
 })
 
--- _G.noice_messages = _G.noice_messages or {}
--- vim.api.nvim_create_user_command('SaveMessages', function()
---   -- Concatenar todos los mensajes
---   local messages = table.concat(_G.noice_messages, '\n')
---   local filepath = vim.fn.input("Save messages to: ", vim.fn.expand("~/messages.log"), "file")
---   local file = io.open(filepath, "a")
---   if file then
---     file:write(messages)
---     file:close()
---     print("Messages saved to " .. filepath)
---   else
---     print("Failed to open file: " .. filepath)
---   end
--- end, {})
+keymap.set({ "n", "i", "s" }, "<c-f>", function()
+  if not require("noice.lsp").scroll(4) then
+    return "<c-f>"
+  end
+end, { silent = true, expr = true })
+
+keymap.set({ "n", "i", "s" }, "<c-b>", function()
+  if not require("noice.lsp").scroll(-4) then
+    return "<c-b>"
+  end
+end, { silent = true, expr = true })

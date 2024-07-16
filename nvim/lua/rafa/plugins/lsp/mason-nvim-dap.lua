@@ -3,12 +3,10 @@ local dapui = vim.get_plugin("dapui")
 if not dap then return end
 if not dapui then return end
 
-_G.dap = dap
-
--- Configuración de nvim-dap-ui
+-- configuración de nvim-dap-ui
 dapui.setup()
 
--- Configurar auto apertura/cierre de dap-ui
+-- configurar auto apertura/cierre de dap-ui
 dap.listeners.before.attach.dapui_config = function()
   dapui.open()
 end
@@ -22,26 +20,30 @@ dap.listeners.before.event_exited.dapui_config = function()
   dapui.close()
 end
 
--- Configuración de nvim-dap para C++
+-- configuración de nvim-dap para c++
 dap.adapters.lldb = {
   type = 'executable',
-  command = '/usr/bin/lldb-vscode', -- Ajusta esto según tu instalación de lldb-vscode
+  command = '/usr/bin/lldb-vscode', -- ajusta esto según tu instalación de lldb-vscode
   name = 'lldb'
 }
 
 dap.configurations.cpp = {
   {
-    name = "Launch",
+    name = "launch",
     type = "lldb",
     request = "launch",
     program = function()
-      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+      return vim.fn.input('path to executable: ', vim.fn.getcwd() .. '/', 'file')
     end,
-    cwd = '${workspaceFolder}',
-    stopOnEntry = false,
+    cwd = '${workspacefolder}',
+    stoponentry = false,
     args = {},
 
-    -- Si quieres soporte de visualización de memoria
-    runInTerminal = false,
+    -- si quieres soporte de visualización de memoria
+    runinterminal = false,
   },
 }
+
+keymap.set('n', '<leader>dr', function() dap.continue() end, { noremap = true, silent = true })
+keymap.set('n', '<leader>dq', function() dap.close() end, { noremap = true, silent = true })
+keymap.set('n', '<leader>db', function() dap.toggle_breakpoint() end, { noremap = true, silent = true })

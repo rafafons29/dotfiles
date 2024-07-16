@@ -45,23 +45,37 @@ return function(colors)
     sections = {
       lualine_a = {
         { 'mode', fmt = function(str)
+          local sfm = {
+            normal = "󰝆",
+            visual = "𝐕",
+            select = "𝙎",
+            insert = "",
+            terminal = "𝙏",
+            command = "𝐂"
+          }
           if str == "NORMAL" then
-            return "󰝆" --󰎖
+            return sfm.normal
           end
           if str == "V-LINE" then
-            return "" --   
+            return sfm.visual
+          end
+          if str == "SELECT" then
+            return sfm.select
           end
           if str == "INSERT" then
-            return "" -- 󰬐 
+            return sfm.insert
+          end
+          if str == "TERMINAL" then
+            return sfm.terminal
+          end
+          if str == "COMMAND" then
+            return sfm.command
           end
 
           return str:sub(1, 1)
         end }, -- right = ' '
       },
-      lualine_b = {
-        { 'branch', icon = { '', align = 'right' }, color = { fg = colors.fg_b_y } },
-        { 'filetype', icon_only = true },
-      },
+      lualine_b = {},
       lualine_c = {
         {
           'diagnostics',
@@ -73,10 +87,14 @@ return function(colors)
           },
         },
       },
-      lualine_x = { { 'fileformat', color = { fg = colors.blue } } },
-      lualine_y = {},
-      lualine_z = {
+      lualine_x = {},
+      lualine_y = {
+        { 'branch', icon = { '', align = 'right' }, color = { fg = colors.fg_b_y } },
         { 'progress', color = { fg = colors.orange } },
+      },
+      lualine_z = {
+        { 'filetype',   icon_only = true },
+        { 'fileformat', color = { fg = colors.blue } }
       },
     },
     inactive_sections = {

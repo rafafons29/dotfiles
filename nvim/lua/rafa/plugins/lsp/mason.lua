@@ -30,3 +30,5 @@ mason.setup({
 lspconfig.setup {
   automatic_installation = true
 }
+
+keymap.set('n', '<leader>cm', '<cmd>Mason<cr>')

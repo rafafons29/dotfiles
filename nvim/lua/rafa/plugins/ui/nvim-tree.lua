@@ -52,3 +52,5 @@ tree.setup({
     bufmap('a', api.fs.create, 'Create folder or file in the concurrent path.')
   end,
 })
+
+keymap.set('n', '<leader>e', '<cmd>NvimTreeToggle<cr>')

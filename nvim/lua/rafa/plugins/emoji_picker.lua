@@ -52,3 +52,5 @@ emoji.setup({
     "✅❗️❕❓❎☑️🔺🔻🔸🔹⚠️"
   },
 })
+
+keymap.set('i', '<M-e>', '<cmd>EmojiPicker<cr>')

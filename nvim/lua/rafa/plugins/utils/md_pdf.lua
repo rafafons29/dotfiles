@@ -34,3 +34,7 @@ md_pdf.setup({
     "--standalone=true",
   },
 })
+
+keymap.set("n", "<leader>mf", function()
+  md_pdf.convert_md_to_pdf()
+end)

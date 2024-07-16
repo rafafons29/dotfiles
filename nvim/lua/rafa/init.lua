@@ -1,5 +1,6 @@
 require("rafa.basic")
 require("rafa.plugins")
+require("rafa.maps")
 require("rafa.plugins.ui.notify")
 require("rafa.plugins.ui.better-comments")
 require("rafa.plugins.ui.lsp-colors")
@@ -41,5 +42,3 @@ local colors = require("rafa.themes.tokyonight")
 require("rafa.plugins.ui.lualine")(colors)
 require("rafa.plugins.ui.bufferline")(colors)
 require("rafa.plugins.ui.incline")(colors)
-
-require("rafa.maps")
