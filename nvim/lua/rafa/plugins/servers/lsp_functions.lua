@@ -57,7 +57,7 @@ return {
     local NVIMPATH = vim.fn.stdpath('config')
     local pathfolder = vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf())
 
-    if ignore then 
+    if ignore then
       return {
         vim.fn.expand('$VIMRUNTIME')
       }
