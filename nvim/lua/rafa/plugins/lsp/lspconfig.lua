@@ -10,6 +10,18 @@ if not luasnip then return end
 local protocol = require('vim.lsp.protocol')
 protocol.CompletionItemKind = lspf.protocolCompletionItemKind
 
+local function active_lsp(server_name)
+  local servers = vim.lsp.get_clients()
+  for _, server in pairs(servers) do
+    if server.name == server_name then
+      -- Cuando este activo no se volvera a activar
+      return
+    end
+  end
+  -- Se activa el servidor si este no lo esta.
+  vim.cmd("LspStart " .. server_name)
+end
+
 -- ----------------Conf to servers lsp---------------- --
 
 -- Lua
@@ -22,7 +34,7 @@ local function setup_lua()
     end,
     settings = lsp_lua.settings,
   }
-  vim.cmd('LspStart lua_ls')
+  active_lsp("lua_ls")
 end
 
 -- Goland config
@@ -36,7 +48,7 @@ local function setup_go()
     root_dir = lsp_go.root_dir,
     settings = lsp_go.settings
   }
-  vim.cmd('LspStart gopls')
+  active_lsp('gopls')
 end
 
 -- Python server lsp
@@ -47,7 +59,7 @@ local function setup_py()
     capabilities = lspf.capabilities,
     settings = lsp_py.settings,
   }
-  vim.cmd('LspStart pyright')
+  active_lsp('pyright')
 end
 
 -- C/C++ server lsp
@@ -58,7 +70,7 @@ local function setup_clangd()
     capabilities = lspf.capabilities,
     cmd = lsp_c.cmd,
   }
-  vim.cmd('LspStart clangd')
+  active_lsp('clangd')
 end
 
 -- Cmake Language Server
@@ -70,7 +82,7 @@ local function setup_cmake()
     cmd = lsp_cmk.cmd,
     filetypes = lsp_cmk.filetypes,
   }
-  vim.cmd('LspStart cmake')
+  active_lsp('cmake')
 end
 
 -- C# language server
@@ -81,7 +93,7 @@ local function setup_cssharp()
     capabilities = lspf.capabilities,
     cmd = lsp_cssharp.cmd
   }
-  vim.cmd('LspStart omnisharp')
+  active_lsp('omnisharp')
 end
 
 -- Asm-lsp
@@ -94,7 +106,7 @@ local function setup_asm()
     cmd = lsp_asm.cmd,
     root_dir = lsp_asm.root_dir
   }
-  vim.cmd('LspStart asm_lsp')
+  active_lsp('asm_lsp')
 end
 
 -- Typescript and javascript
@@ -107,7 +119,7 @@ local function setup_tss()
     cmd = lsp_tss.cmd,
     settings = lsp_tss.settings,
   }
-  vim.cmd('LspStart tss')
+  active_lsp('tss')
 end
 
 -- HTML
@@ -120,7 +132,7 @@ local function setup_html()
     cmd = lsp_html.cmd,
     init_options = lsp_html.init_options
   }
-  vim.cmd('LspStart html')
+  active_lsp('html')
 end
 
 -- CSS
@@ -132,7 +144,7 @@ local function setup_css()
     capabilities = lspf.capabilities,
     settings = lsp_css.settings
   }
-  vim.cmd('LspStart cssls')
+  active_lsp('cssls')
 end
 
 local lsp_esl = require("rafa.plugins.servers.lsp_eslint")
@@ -221,3 +233,28 @@ vim.diagnostic.config({
 
 keymap.set({ 's', 'i' }, "<Tab>", function() luasnip.jump(1) end, { silent = true })
 keymap.set({ 's', 'i' }, "<S-Tab>", function() luasnip.jump(-1) end, { silent = true })
+
+-- Cargar los modulos de vim, en donde lo requiramos
+keymap.set('n', '<leader>lv', function()
+  local lspf = require("rafa.plugins.servers.lsp_functions")
+  nvim_lsp.lua_ls.setup {
+    on_attach = function(client, bufnr)
+      lspf.on_attach(client, bufnr)
+      lspf.enable_format_on_save(client, bufnr)
+    end,
+    settings = {
+      Lua = {
+        diagnostics = {
+          globals = { "vim" },
+        },
+        workspace = {
+          library = lspf.loadfolder(true),
+          checkThirdParty = false,
+        },
+      },
+    },
+  }
+  vim.cmd('LspStop lua_ls')
+  vim.cmd('LspStart lua_ls')
+  vim.notify('Vim modules are avaible')
+end, { desc = "Load vim modules for work with them" })

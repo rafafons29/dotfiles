@@ -355,6 +355,13 @@ alias gaa="git add"
 alias gc="git commit"
 alias gp="git push"
 alias gl="git pull"
+alias gd="git diff"
+alias gsw="git show"
+alias glp="git log -p"
+alias gssp="git stash show -p"
+alias grp="git reflog -p"
+alias gap="git add -p"
+
 alias cat="bat"
 
 #pamac

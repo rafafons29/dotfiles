@@ -8,10 +8,10 @@ SIZE = 25
 MARGIN = [3, 3, 0, 3]
 OPACITY = 1
 
-group_names = ["1", "2", "3", "4", "5", "6", "7"]
-group_labels = [" ", "󰉋 ", "󰨞 ", " ", " ", "󰙯 ", " "]
+group_names = ["1", "2", "3", "4", "5"]
+group_labels = [" ", "󰉋 ", " ", " ", " "]
 group_layouts = ["monadtall", "monadtall", "monadtall",
-                 "monadtall", "monadtall", "monadtall", "monadtall"]
+                 "monadtall", "monadtall"]
 
 
 hig_color = colors[0][0][1:]

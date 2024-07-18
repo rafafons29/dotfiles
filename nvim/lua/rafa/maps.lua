@@ -76,3 +76,6 @@ keymap.set('n', '<leader>nd', '<cmd>NoiceDismiss<CR>', { desc = 'Dismiss Noice M
 
 keymap.set("i", "<Tab>", "luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'",
   { expr = true, silent = true })
+
+-- Anotations
+vim.keymap.set('n', 'gvv', '<cmd>ComAnnotation<Cr>', { noremap = true, silent = true })

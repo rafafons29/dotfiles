@@ -74,6 +74,7 @@ vim.cmd [[
   autocmd!
   autocmd FileType alpha setlocal nofoldenable
   au TextYankPost * silent! lua vim.highlight.on_yank({higroup="Visual", timeout=100})
+  autocmd BufWritePost * setlocal foldmethod=manual
   augroup END
 ]]
 

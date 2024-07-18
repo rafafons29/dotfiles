@@ -9,7 +9,8 @@ vim.cmd [[packadd packer.nvim]]
 packer.startup(function(use)
   use 'wbthomason/packer.nvim'
   -------------------- Themes --------------------
-  use 'ghifarit53/tokyonight-vim'
+  -- use 'ghifarit53/tokyonight-vim'
+  use 'folke/tokyonight.nvim'
   use 'alexmozaidze/palenight.nvim'
   use 'navarasu/onedark.nvim'
   use { "catppuccin/nvim", as = "catppuccin" }
@@ -48,29 +49,23 @@ packer.startup(function(use)
   use 'nvim-tree/nvim-tree.lua'
   use 'b0o/incline.nvim'
   use 'folke/flash.nvim'
+  use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' }
 
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
-  use {
-    "WilsonOh/emoji_picker-nvim",
-    config = function()
-      require("emoji_picker").setup()
-    end,
-  }
+  use { "danymat/neogen" }
+
+  use { "WilsonOh/emoji_picker-nvim" }
 
   use {
     'nvimdev/dashboard-nvim',
     event = 'VimEnter',
-    config = function() require('dashboard').setup {} end,
     requires = { 'nvim-tree/nvim-web-devicons' }
   }
 
   use {
     'goolord/alpha-nvim',
     requires = { 'nvim-tree/nvim-web-devicons' },
-    config = function()
-      require 'alpha'.setup(require 'alpha.themes.dashboard'.config)
-    end
   }
   use { 'akinsho/toggleterm.nvim', version = "*", config = true }
   use { 'numToStr/Comment.nvim',
@@ -94,20 +89,11 @@ packer.startup(function(use)
     config = function()
       vim.o.timeout = true
       vim.o.timeoutlen = 300
-      require("which-key").setup {
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-      }
+      require("which-key").setup {}
     end
   }
 
-  use {
-    "smjonas/inc-rename.nvim",
-    config = function()
-      require("inc_rename").setup()
-    end,
-  }
+  use { "smjonas/inc-rename.nvim" }
 
   -- Animations
   use { 'echasnovski/mini.nvim', version = '*' }

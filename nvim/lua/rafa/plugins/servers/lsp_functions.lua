@@ -53,10 +53,15 @@ return {
 
   capabilities = require('cmp_nvim_lsp').default_capabilities(),
 
-  loadfolder = function()
+  loadfolder = function(ignore)
     local NVIMPATH = vim.fn.stdpath('config')
     local pathfolder = vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf())
 
+    if ignore then 
+      return {
+        vim.fn.expand('$VIMRUNTIME')
+      }
+    end
     if NVIMPATH == pathfolder:sub(1, 23) then
       return {
         vim.api.nvim_get_runtime_file(NVIMPATH, true),

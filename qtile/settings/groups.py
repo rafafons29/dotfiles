@@ -1,6 +1,6 @@
 from libqtile.config import Group
 
-from settings.widgets.powerconf import group_names, group_layouts, group_labels
+from settings.widgets.style_qtl import group_names, group_layouts, group_labels
 
 groups = []
 

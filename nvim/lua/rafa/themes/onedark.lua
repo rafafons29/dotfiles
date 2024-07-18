@@ -1,6 +1,7 @@
 local onedark = vim.get_plugin("onedark")
 if not onedark then return end
 
+local colors = require("rafa.colors.colors_onedark")
 onedark.setup {
   style = 'warmer',             -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
   transparent = false,          -- Show/hide background
@@ -23,14 +24,24 @@ onedark.setup {
     variables = 'none'
   },
 
-  -- Lualine options --
-  lualine = {
-    transparent = true, -- lualine center bar transparency
-  },
-
   -- Custom Highlights --
-  colors = {},     -- Override default colors
-  highlights = {}, -- Override highlight groups
+  colors = { bg = colors.base, fg = colors.fg_dark },
+  highlights = {
+    CursorLineNr = { fg = colors.blue },
+
+    MiniIndentscopeSymbol = { fg = colors.fg_b_y },
+
+    TreesitterContext = { bg = colors.base },
+
+    TelescopeNormal = { bg = colors.bg_dark, fg = colors.fg_dark },
+    TelescopePromptBorder = { bg = "#32363a", fg = "#32363a" },
+    TelescopePromptNormal = { bg = "#32363a" },
+    TelescopePromptTitle = { bg = "#32363a" },
+    TelescopePreviewBorder = { bg = colors.bg_dark, fg = colors.bg_dark },
+    TelescopeBorder = { bg = colors.bg_dark, fg = colors.bg_dark },
+    TelescopeResultsNormal = { bg = colors.bg_dark, fg = colors.fg_dark },
+    TelescopeResultsBorder = { bg = colors.bg_dark, fg = colors.bg_dark }
+  },
 
   -- Plugins Config --
   diagnostics = {
@@ -40,7 +51,8 @@ onedark.setup {
   },
 }
 
+onedark.load()
+
 vim.cmd('colorscheme onedark')
 
-local colors = require("rafa.colors.colors_onedark")
 return colors
