@@ -38,7 +38,7 @@ vim.g.netrw_localcopydircmd = 'cp -r'
 -- vim.g.user_emmet_expandabbr_key = '<Tab><Tab>' -- Using double tabs to complete emmet code
 
 vim.opt.termguicolors = true
-vim.opt.signcolumn = 'yes'
+vim.opt.signcolumn = 'no'
 vim.opt.title = true
 vim.opt.autoindent = true
 vim.opt.smartindent = true
