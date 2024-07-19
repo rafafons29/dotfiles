@@ -29,7 +29,7 @@ tokyonight.setup({
   ---@param colors ColorScheme
   on_highlights = function(hl, c)
     local prompt = "#24283b"
-    hl.Comment = { fg = c.gray }
+    -- hl.Comment = { fg = c.gray }
     hl.Constant = { fg = c.orange }
     hl.String = { fg = c.yellow }
     hl.Function = { fg = c.green }
