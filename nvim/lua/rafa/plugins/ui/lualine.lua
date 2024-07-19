@@ -30,7 +30,7 @@ local function minimal_theme(colors)
   }
 end
 
-local linelua = vim.get_plugin("lualine")
+local linelua = noty.get_plugin("lualine")
 if not linelua then return end
 
 return function(colors)

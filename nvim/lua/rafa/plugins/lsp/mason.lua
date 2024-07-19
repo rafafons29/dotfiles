@@ -1,5 +1,5 @@
-local mason = vim.get_plugin("mason")
-local lspconfig = vim.get_plugin("mason-lspconfig")
+local mason = noty.get_plugin("mason")
+local lspconfig = noty.get_plugin("mason-lspconfig")
 
 if not mason then return end
 if not lspconfig then return end

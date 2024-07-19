@@ -1,4 +1,4 @@
-local andromeda = vim.get_plugin("andromeda")
+local andromeda = noty.get_plugin("andromeda")
 if not andromeda then return end
 
 andromeda.setup({

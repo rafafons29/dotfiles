@@ -55,11 +55,12 @@ vim.api.nvim_set_hl(0, "NotifyINFOBody", {})
 vim.api.nvim_set_hl(0, "NotifyDEBUGBody", {})
 vim.api.nvim_set_hl(0, "NotifyTRACEBody", {})
 
-vim.notify = notify
-vim.get_plugin = function(plugin_name)
+_G.noty = {}
+noty.notify = notify
+noty.get_plugin = function(plugin_name)
   local statuss, plugin = pcall(require, plugin_name)
   if not statuss then
-    vim.notify(plugin_name .. " is not working 😳", "warn")
+    notify(plugin_name .. " is not working 😳", "warn")
     return nil
   end
   return plugin

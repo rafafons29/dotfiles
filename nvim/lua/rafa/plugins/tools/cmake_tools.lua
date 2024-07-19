@@ -1,4 +1,4 @@
-local cmake_tools = vim.get_plugin("cmake-tools")
+local cmake_tools = noty.get_plugin("cmake-tools")
 if not cmake_tools then return end
 
 cmake_tools.setup {

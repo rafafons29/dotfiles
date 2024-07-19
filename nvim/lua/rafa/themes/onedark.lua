@@ -1,4 +1,4 @@
-local onedark = vim.get_plugin("onedark")
+local onedark = noty.get_plugin("onedark")
 if not onedark then return end
 
 local colors = require("rafa.colors.colors_onedark")

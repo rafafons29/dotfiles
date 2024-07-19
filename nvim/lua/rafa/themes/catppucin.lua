@@ -1,4 +1,4 @@
-local catppuccin = vim.get_plugin("catppuccin")
+local catppuccin = noty.get_plugin("catppuccin")
 if not catppuccin then return end
 
 catppuccin.setup({

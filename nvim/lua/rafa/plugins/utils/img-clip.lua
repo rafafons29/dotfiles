@@ -1,4 +1,4 @@
-local img_clip = vim.get_plugin('img-clip')
+local img_clip = noty.get_plugin('img-clip')
 if not img_clip then return end
 
 img_clip.setup({

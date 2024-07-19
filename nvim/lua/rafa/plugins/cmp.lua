@@ -1,7 +1,7 @@
-local cmp = vim.get_plugin("cmp")
+local cmp = noty.get_plugin("cmp")
 if not cmp then return end
 
-local lspkind = vim.get_plugin('lspkind')
+local lspkind = noty.get_plugin('lspkind')
 if not lspkind then return end
 
 local function formatForTailwindCSS(entry, vim_item)
@@ -22,7 +22,7 @@ local function formatForTailwindCSS(entry, vim_item)
   return vim_item
 end
 
-local luasnip = vim.get_plugin("luasnip")
+local luasnip = noty.get_plugin("luasnip")
 if not luasnip then return end
 
 cmp.setup({

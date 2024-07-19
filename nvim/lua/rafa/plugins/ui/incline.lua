@@ -1,6 +1,6 @@
-local devicons = vim.get_plugin('nvim-web-devicons')
-local incline = vim.get_plugin('incline')
-local helpers = vim.get_plugin('incline.helpers')
+local devicons = noty.get_plugin('nvim-web-devicons')
+local incline = noty.get_plugin('incline')
+local helpers = noty.get_plugin('incline.helpers')
 
 if not devicons then return end
 if not incline then return end

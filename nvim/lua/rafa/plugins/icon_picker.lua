@@ -1,4 +1,4 @@
-local ipk = vim.get_plugin('icon-picker')
+local ipk = noty.get_plugin('icon-picker')
 if not ipk then return end
 
 ipk.setup({

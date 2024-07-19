@@ -1,9 +1,9 @@
-local nvim_lsp = vim.get_plugin("lspconfig")
+local nvim_lsp = noty.get_plugin("lspconfig")
 if not nvim_lsp then return end
 
 local lspf = require("rafa.plugins.servers.lsp_functions")
 
-local luasnip = vim.get_plugin("luasnip")
+local luasnip = noty.get_plugin("luasnip")
 if not luasnip then return end
 
 -- Icons

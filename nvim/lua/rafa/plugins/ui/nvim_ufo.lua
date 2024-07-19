@@ -37,7 +37,7 @@ local ftMap = {
   git = ''
 }
 
-local ufo = vim.get_plugin('ufo')
+local ufo = noty.get_plugin('ufo')
 if not ufo then return end
 
 ufo.setup({

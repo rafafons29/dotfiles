@@ -1,4 +1,4 @@
-local md_pdf = vim.get_plugin('md-pdf')
+local md_pdf = noty.get_plugin('md-pdf')
 if not md_pdf then return end
 
 md_pdf.setup({

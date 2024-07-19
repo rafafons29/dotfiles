@@ -1,5 +1,5 @@
-local ts = vim.get_plugin("nvim-treesitter.configs")
-local ts_context = vim.get_plugin("treesitter-context")
+local ts = noty.get_plugin("nvim-treesitter.configs")
+local ts_context = noty.get_plugin("treesitter-context")
 
 if not ts then return end
 if not ts_context then return end

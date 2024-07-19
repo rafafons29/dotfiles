@@ -1,4 +1,4 @@
-local gopher = vim.get_plugin("gopher")
+local gopher = noty.get_plugin("gopher")
 if not gopher then return end
 
 gopher.setup {

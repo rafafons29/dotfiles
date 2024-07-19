@@ -1,4 +1,4 @@
-local bttc = vim.get_plugin("better-comment")
+local bttc = noty.get_plugin("better-comment")
 if not bttc then return end
 
 bttc.Setup({

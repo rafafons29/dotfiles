@@ -1,4 +1,4 @@
-local git = vim.get_plugin("git")
+local git = noty.get_plugin("git")
 if not git then return end
 
 git.setup({

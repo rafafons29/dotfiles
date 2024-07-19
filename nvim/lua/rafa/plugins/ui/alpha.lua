@@ -1,5 +1,5 @@
-local alpha = vim.get_plugin("alpha")
-local dashboard = vim.get_plugin("alpha.themes.dashboard")
+local alpha = noty.get_plugin("alpha")
+local dashboard = noty.get_plugin("alpha.themes.dashboard")
 
 if not alpha then return end
 if not dashboard then return end

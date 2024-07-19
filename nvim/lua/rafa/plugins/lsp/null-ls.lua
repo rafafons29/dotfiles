@@ -1,4 +1,4 @@
-local null_ls = vim.get_plugin("null-ls")
+local null_ls = noty.get_plugin("null-ls")
 if not null_ls then return end
 
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})

@@ -1,5 +1,5 @@
-local dap = vim.get_plugin("dap")
-local dapui = vim.get_plugin("dapui")
+local dap = noty.get_plugin("dap")
+local dapui = noty.get_plugin("dapui")
 if not dap then return end
 if not dapui then return end
 

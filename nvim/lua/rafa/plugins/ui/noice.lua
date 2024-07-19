@@ -1,4 +1,4 @@
-local noice = vim.get_plugin("noice")
+local noice = noty.get_plugin("noice")
 if not noice then return end
 
 noice.setup({

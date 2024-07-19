@@ -1,6 +1,6 @@
-local telescope = vim.get_plugin("telescope")
-local actions = vim.get_plugin("telescope.actions")
-local builtin = vim.get_plugin("telescope.builtin")
+local telescope = noty.get_plugin("telescope")
+local actions = noty.get_plugin("telescope.actions")
+local builtin = noty.get_plugin("telescope.builtin")
 
 if not telescope then return end
 if not actions then return end

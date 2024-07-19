@@ -1,4 +1,4 @@
-local markdown = vim.get_plugin('markdown')
+local markdown = noty.get_plugin('markdown')
 if not markdown then return end
 
 markdown.setup({

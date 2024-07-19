@@ -1,4 +1,4 @@
-local inc_rename = vim.get_plugin('inc_rename')
+local inc_rename = noty.get_plugin('inc_rename')
 if not inc_rename then return end
 
 inc_rename.setup {

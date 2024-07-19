@@ -1,5 +1,5 @@
-local animate = vim.get_plugin('mini.animate')
-local identscope = vim.get_plugin('mini.indentscope')
+local animate = noty.get_plugin('mini.animate')
+local identscope = noty.get_plugin('mini.indentscope')
 
 if not animate then return end
 if not identscope then return end

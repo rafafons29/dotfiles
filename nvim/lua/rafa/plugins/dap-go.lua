@@ -1,4 +1,4 @@
-local dap_go = vim.get_plugin('dap_go')
+local dap_go = noty.get_plugin('dap_go')
 if not dap_go then return end
 
 dap_go.setup {

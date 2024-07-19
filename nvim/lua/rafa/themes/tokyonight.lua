@@ -1,4 +1,4 @@
-local tokyonight = vim.get_plugin('tokyonight')
+local tokyonight = noty.get_plugin('tokyonight')
 if not tokyonight then return end
 
 tokyonight.setup({

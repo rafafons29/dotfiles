@@ -1,4 +1,4 @@
-local neogen = vim.get_plugin('neogen')
+local neogen = noty.get_plugin('neogen')
 if not neogen then return end
 
 neogen.setup {

@@ -1,4 +1,4 @@
-local util = vim.get_plugin('lspconfig.util')
+local util = noty.get_plugin('lspconfig.util')
 if not util then return end
 
 return {

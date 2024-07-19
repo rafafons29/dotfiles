@@ -1,4 +1,4 @@
-local saga = vim.get_plugin("lspsaga")
+local saga = noty.get_plugin("lspsaga")
 if not saga then return end
 
 saga.setup({
@@ -16,7 +16,7 @@ saga.setup({
   }
 })
 
-local diagnostic = vim.get_plugin("lspsaga.diagnostic")
+local diagnostic = noty.get_plugin("lspsaga.diagnostic")
 if not diagnostic then return end
 local opts = { noremap = true, silent = true }
 

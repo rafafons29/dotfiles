@@ -1,4 +1,4 @@
-local ill = vim.get_plugin("illuminate")
+local ill = noty.get_plugin("illuminate")
 if not ill then return end
 
 ill.configure {

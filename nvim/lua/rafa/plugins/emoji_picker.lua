@@ -1,4 +1,4 @@
-local emoji = vim.get_plugin("emoji_picker")
+local emoji = noty.get_plugin("emoji_picker")
 if not emoji then return end
 
 emoji.setup({

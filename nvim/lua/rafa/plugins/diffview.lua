@@ -1,5 +1,5 @@
-local actions = vim.get_plugin("diffview.actions")
-local diffview = vim.get_plugin("diffview")
+local actions = noty.get_plugin("diffview.actions")
+local diffview = noty.get_plugin("diffview")
 if not actions then return end
 if not diffview then return end
 

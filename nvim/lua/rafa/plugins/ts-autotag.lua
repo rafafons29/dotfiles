@@ -1,4 +1,4 @@
-local autotag = vim.get_plugin("nvim-ts-autotag")
+local autotag = noty.get_plugin("nvim-ts-autotag")
 if not autotag then return end
 
 autotag.setup({

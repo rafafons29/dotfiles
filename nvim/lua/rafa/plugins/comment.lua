@@ -1,4 +1,4 @@
-local comment = vim.get_plugin("Comment")
+local comment = noty.get_plugin("Comment")
 if not comment then return end
 
 comment.setup {

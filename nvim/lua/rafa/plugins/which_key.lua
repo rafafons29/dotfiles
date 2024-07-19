@@ -1,4 +1,6 @@
-local wk = require("which-key")
+local wk = noty.get_plugin("which-key")
+if not wk then return end
+
 wk.setup({
   plugins = {
     marks = true,     -- shows a list of your marks on ' and `

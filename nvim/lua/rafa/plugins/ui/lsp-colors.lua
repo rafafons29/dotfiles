@@ -1,4 +1,4 @@
-local colors = vim.get_plugin("lsp-colors")
+local colors = noty.get_plugin("lsp-colors")
 if not colors then return end
 
 colors.setup {

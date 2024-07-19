@@ -1,4 +1,4 @@
-local lspkind = vim.get_plugin("lspkind")
+local lspkind = noty.get_plugin("lspkind")
 if not lspkind then return end
 
 lspkind.init({

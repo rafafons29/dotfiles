@@ -1,4 +1,4 @@
-local bufferline = vim.get_plugin("bufferline")
+local bufferline = noty.get_plugin("bufferline")
 if not bufferline then return end
 
 return function(colors)

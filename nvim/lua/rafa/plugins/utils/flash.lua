@@ -1,4 +1,4 @@
-local flash = vim.get_plugin("flash")
+local flash = noty.get_plugin("flash")
 if not flash then return end
 
 keymap.set({ 'n', 'x', 'o' }, 's', function() flash.jump() end, { desc = "Flash" })
