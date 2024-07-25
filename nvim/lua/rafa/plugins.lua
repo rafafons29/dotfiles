@@ -49,7 +49,15 @@ packer.startup(function(use)
   use 'nvim-tree/nvim-tree.lua'
   use 'b0o/incline.nvim'
   use 'folke/flash.nvim'
+  use 'chentoast/marks.nvim'
   use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' }
+
+  use { "anuvyklack/windows.nvim",
+    requires = {
+      "anuvyklack/middleclass",
+      "anuvyklack/animation.nvim"
+    },
+  }
 
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
@@ -126,17 +134,16 @@ packer.startup(function(use)
   use({
     'MeanderingProgrammer/markdown.nvim',
     as = 'render-markdown', -- Only needed if you have another plugin named markdown.nvim
-    after = { 'nvim-treesitter' },
-    requires = { 'echasnovski/mini.nvim', opt = true },
-    config = function()
-      require('render-markdown').setup({})
-    end,
   })
 
   -- go
   use 'leoluz/nvim-dap-go'
   use 'olexsmir/gopher.nvim'
 
+  -- sql
+  use 'tpope/vim-dadbod'
+  use 'kristijanhusak/vim-dadbod-ui'
+  use 'kristijanhusak/vim-dadbod-completion'
   ---------------------------------------------------------------
 
   ---------------------- LSP ----------------------

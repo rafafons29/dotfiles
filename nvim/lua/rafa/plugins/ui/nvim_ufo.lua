@@ -46,7 +46,7 @@ ufo.setup({
   close_fold_kinds_for_ft = {
     default = { 'imports', 'comment' },
     json = { 'array' },
-    c = { 'comment', 'region' }
+    c = { 'comment' }
   },
   preview = {
     win_config = {
@@ -70,15 +70,7 @@ ufo.setup({
   end
 })
 
-keymap.set('n', 'zR', require('ufo').openAllFolds)
-keymap.set('n', 'zM', require('ufo').closeAllFolds)
-keymap.set('n', 'zr', require('ufo').openFoldsExceptKinds)
-keymap.set('n', 'zm', require('ufo').closeFoldsWith) -- closeAllFolds == closeFoldsWith(0)
-keymap.set('n', 'K', function()
-  local winid = require('ufo').peekFoldedLinesUnderCursor()
-  if not winid then
-    -- choose one of coc.nvim and nvim lsp
-    vim.fn.CocActionAsync('definitionHover') -- coc.nvim
-    vim.lsp.buf.hover()
-  end
-end)
+keymap.set('n', 'zR', ufo.openAllFolds)
+keymap.set('n', 'zM', ufo.closeAllFolds)
+keymap.set('n', 'zr', ufo.openFoldsExceptKinds)
+keymap.set('n', 'zm', ufo.closeFoldsWith) -- closeAllFolds == closeFoldsWith(0)

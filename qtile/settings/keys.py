@@ -3,7 +3,7 @@ from libqtile.config import Key
 from libqtile.lazy import lazy
 
 from .widgets.general import browser
-from .groups import groups
+from .screen import groups
 from .windows import window_to_next_screen, window_to_previous_screen
 
 mod = "mod4"

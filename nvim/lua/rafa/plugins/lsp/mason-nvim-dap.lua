@@ -23,7 +23,7 @@ end
 -- configuración de nvim-dap para c++
 dap.adapters.lldb = {
   type = 'executable',
-  command = '/usr/bin/lldb-vscode', -- ajusta esto según tu instalación de lldb-vscode
+  command = '/usr/bin/lldb-vscode', --! ajusta esto según tu instalación de lldb-vscode
   name = 'lldb'
 }
 

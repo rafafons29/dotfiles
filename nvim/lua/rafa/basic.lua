@@ -33,12 +33,8 @@ vim.g.netrw_winsize = 30
 vim.g.netrw_banner = 0
 vim.g.netrw_localcopydircmd = 'cp -r'
 
--- vim.g.user_emmet_install_global = 0
--- vim.cmd('autocmd FileType html EmmetInstall')
--- vim.g.user_emmet_expandabbr_key = '<Tab><Tab>' -- Using double tabs to complete emmet code
-
 vim.opt.termguicolors = true
-vim.opt.signcolumn = 'no'
+vim.opt.signcolumn = 'yes'
 vim.opt.title = true
 vim.opt.autoindent = true
 vim.opt.smartindent = true
@@ -49,18 +45,13 @@ vim.opt.cmdheight = 1
 vim.opt.laststatus = 2
 vim.opt.expandtab = true
 vim.opt.scrolloff = 10
-vim.opt.shell = 'fish'
-vim.opt.backupskip = { '/tmp/*', '/private/tmp/*' }
 vim.opt.inccommand = 'split'
 vim.opt.smarttab = true
 vim.opt.breakindent = true
-vim.opt.shiftwidth = 2       -- El espacio que Neovim usará para indentar una línea
-vim.opt.tabstop = 2          -- Establece el número de espacios que se usarán para un nivel de indentación
-vim.opt.softtabstop = 2      -- Establece la cantidad de espacios que se usarán para una "tabulación"
-vim.opt.wrap = true          -- Hace que el texto de las lineas largas siempre este visisble
-vim.opt.backspace = { 'start', 'eol', 'indent' }
-vim.opt.path:append { '**' } -- Finding files - Search down into subfolders
-vim.opt.wildignore:append { '*/node_modules/*' }
+vim.opt.shiftwidth = 2  -- El espacio que Neovim usará para indentar una línea
+vim.opt.tabstop = 2     -- Establece el número de espacios que se usarán para un nivel de indentación
+vim.opt.softtabstop = 2 -- Establece la cantidad de espacios que se usarán para una "tabulación"
+vim.opt.wrap = true     -- Hace que el texto de las lineas largas siempre este visisble
 vim.opt.relativenumber = true
 
 -- Undercurl
@@ -77,12 +68,3 @@ vim.cmd [[
   autocmd BufWritePost * setlocal foldmethod=manual
   augroup END
 ]]
-
--- Turn off paste mode when leaving insert
-vim.api.nvim_create_autocmd("InsertLeave", {
-  pattern = '*',
-  command = "set nopaste"
-})
-
--- Add asterisks in block comments
-vim.opt.formatoptions:append { 'r' }

@@ -73,7 +73,7 @@ widgets_list = [
         fontsize=12
     ),
 
-    icon(fg=5, fontsize=12, padding=0, icon='   '),
+    icon(fg=5, fontsize=12, padding=0, icon=' '),
     widget.Battery(
         **base(fg=5),
         format='{percent:2.0%}',

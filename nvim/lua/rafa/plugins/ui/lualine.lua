@@ -33,6 +33,10 @@ end
 local linelua = noty.get_plugin("lualine")
 if not linelua then return end
 
+local function center_diagnostic()
+  local diagnostics = require("lualine.components.diagnostics").get_diagnostics()
+end
+
 return function(colors)
   return linelua.setup {
     options = {
@@ -76,7 +80,8 @@ return function(colors)
         end }, -- right = ' '
       },
       lualine_b = {},
-      lualine_c = {
+      lualine_c = {},
+      lualine_x = {
         {
           'diagnostics',
           source = { 'nvim' },
@@ -87,7 +92,6 @@ return function(colors)
           },
         },
       },
-      lualine_x = {},
       lualine_y = {
         { 'branch', icon = { '', align = 'right' }, color = { fg = colors.fg_b_y } },
         { 'progress', color = { fg = colors.orange } },

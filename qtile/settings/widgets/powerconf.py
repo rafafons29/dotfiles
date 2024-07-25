@@ -1,7 +1,7 @@
 from libqtile import widget, bar
 from libqtile.config import Screen
 
-from .general import base, icon, font, GroupBox, padding, powerline, separator
+from .general import base, icon, font, GroupBox, padding
 from settings.theme import colors
 
 SIZE = 35

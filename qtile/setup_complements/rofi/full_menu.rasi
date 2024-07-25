@@ -7,7 +7,7 @@ configuration {
 }
 
 /*****----- Global Properties -----*****/
-@import                          "shared/andromeda_colorizer.rasi"
+@import                          "shared/tokyonight.rasi"
 @import                          "shared/fonts.rasi"
 
 /*****----- Main Window -----*****/

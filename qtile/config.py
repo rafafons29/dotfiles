@@ -3,9 +3,8 @@ import subprocess
 from libqtile import hook
 
 from settings.layouts import layouts, floating_layout
-from settings.groups import groups
 from settings.keys import keys
-from settings.screen import all_screen
+from settings.screen import all_screen, groups
 from settings.theme import colors
 
 keys = keys
@@ -19,6 +18,7 @@ screens = all_screen()
 
 dgroups_key_binder = None
 dgroups_app_rules = []
+terminal = "kitty"
 
 
 main = None
