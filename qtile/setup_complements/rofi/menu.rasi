@@ -92,8 +92,8 @@ configuration {
     text-color:       @active-foreground;
 }
 #element.selected.normal {
-    border:           0px 2px 2px 2px;
-    border-radius:    100%;
+    border:           0px 0px 0px 0px;
+    border-radius:    0%;
     border-color:     @active-background;
     background-color: @background-color;
     text-color:       @active-background;
@@ -172,7 +172,7 @@ configuration {
     spacing:                     0px;
     margin:                      0px;
     padding:                     0px;
-    border:                      0px 0px 2px 0px;
+    border:                      1px 1px 1px 0px;
     border-radius:               100%;
     border-color:                @active-background;
     background-color:            @background-color;
