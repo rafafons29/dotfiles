@@ -58,7 +58,8 @@ cmp.setup({
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'buffer' },
-    { name = 'emoji' }
+    { name = 'emoji' },
+    { name = 'vim-dadbod-completion' },
   }),
   ['<C-Space>'] = cmp.mapping.complete(),
   ['<C-e>'] = cmp.mapping.close(),

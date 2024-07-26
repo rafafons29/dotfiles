@@ -44,6 +44,7 @@ require("rafa.plugins.emoji_picker")
 require("rafa.plugins.diffview")
 require("rafa.plugins.which_key")
 require("rafa.plugins.icon_picker")
+require("rafa.plugins.dadbod")
 
 local colors = require("rafa.themes.tokyonight")
 require("rafa.plugins.ui.lualine")(colors)
