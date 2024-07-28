@@ -1,1 +1,1 @@
-require("rafa")
+require("config")
