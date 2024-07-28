@@ -1,0 +1,41 @@
+#!/bin/bash
+
+#wallpaper fetcher and wallpaper rotator
+#type "var" in a terminal to change settings - example
+#variety &
+
+SCRIPTSDIR=$HOME/.config/hypr/start_scripts/scripts
+
+# Kill already running process
+_ps=(waybar mako)
+for _prs in "${_ps[@]}"; do
+	if [[ $(pidof ${_prs}) ]]; then
+		killall -9 ${_prs}
+	fi
+done
+
+# Apply themes
+#${SCRIPTSDIR}/gtkthemes &
+
+# Lauch notification daemon (mako)
+#${SCRIPTSDIR}/notifications &
+
+# Lauch statusbar (waybar)
+${SCRIPTSDIR}/statusbar &
+
+# Xauthority
+#${SCRIPTSDIR}/xauthority &
+
+function run {
+	if ! pgrep -x $(basename $1 | head -c 15) 1>/dev/null; then
+		$@ &
+	fi
+}
+
+#run pamac-tray & # Store applications
+run xfce4-power-manager &
+run volumeicon &
+numlockx on &
+blueberry-tray &
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+/usr/lib/xfce4/notifyd/xfce4-notifyd &

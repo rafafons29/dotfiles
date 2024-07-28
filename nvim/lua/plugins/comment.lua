@@ -1,6 +1,6 @@
 return {
   'numToStr/Comment.nvim',
-  dependencies = {'JoosepAlviste/nvim-ts-context-commentstring'},
+  dependencies = { 'JoosepAlviste/nvim-ts-context-commentstring' },
   opts = function()
     local comment = require('Comment')
 

@@ -20,7 +20,7 @@ return {
       changedelete = { text = '~' },
       untracked    = { text = '┆' },
     },
-    signcolumn = false,
+    signcolumn = true,
     numhl = true,
     linehl = false,
     word_diff = false,
@@ -50,7 +50,4 @@ return {
       col = 1,
     },
   },
-  key = {
-    -- Define mappings if needed
-  }
 }

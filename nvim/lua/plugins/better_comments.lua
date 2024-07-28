@@ -1,5 +1,5 @@
 return {
-  'Djancyp/better-comments.nvim',  -- Reemplaza 'username' con el nombre correcto del repositorio
+  'Djancyp/better-comments.nvim', -- Reemplaza 'username' con el nombre correcto del repositorio
   config = function()
     local bttc = require('better-comment')
     if not bttc then return end

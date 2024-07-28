@@ -1,5 +1,5 @@
 return {
-  'WilsonOh/emoji_picker-nvim',  -- Reemplaza con el nombre correcto del plugin
+  'WilsonOh/emoji_picker-nvim', -- Reemplaza con el nombre correcto del plugin
   lazy = true,
   opts = {
     window = {
@@ -52,8 +52,7 @@ return {
       "✅❗️❕❓❎☑️🔺🔻🔸🔹⚠️"
     },
   },
-  key = {
-    { 'i', '<M-e>', '<cmd>EmojiPicker<cr>' }  -- Mapea Alt+e para abrir el EmojiPicker en modo inserción
+  keys = {
+    { '<M-e>', '<cmd>EmojiPicker<cr>', mode = 'i' } -- Mapea Alt+e para abrir el EmojiPicker en modo inserción
   }
 }
-

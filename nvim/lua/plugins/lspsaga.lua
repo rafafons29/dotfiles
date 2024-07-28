@@ -16,15 +16,15 @@ return {
     }
   },
   keys = {
-    { 'n',          '<C-j>',      '<Cmd>Lspsaga diagnostic_jump_next<CR>',     { noremap = true, silent = true } },
-    { 'n',          'gl',         '<Cmd>Lspsaga show_line_diagnostics<CR>',    { noremap = true, silent = true } },
-    { 'n',          'K',          '<Cmd>Lspsaga hover_doc<CR>',                { noremap = true, silent = true } },
-    { 'n',          'gd',         '<Cmd>Lspsaga finder<CR>',                   { noremap = true, silent = true } },
-    { 'n',          'gt',         '<Cmd>Lspsaga goto_type_definition<CR>',     { noremap = true, silent = true } },
-    { 'i',          '<C-k>',      '<Cmd>Lspsaga signature_help<CR>',           { noremap = true, silent = true } },
-    { 'i',          '<C-k>',      '<cmd>lua vim.lsp.buf.signature_help()<CR>', { noremap = true, silent = true } },
-    { 'n',          'gp',         '<Cmd>Lspsaga peek_definition<CR>',          { noremap = true, silent = true } },
-    { 'n',          'gr',         '<Cmd>Lspsaga rename<CR>',                   { noremap = true, silent = true } },
+    { '<C-j>', '<Cmd>Lspsaga diagnostic_jump_next<CR>',     mode = 'n' },
+    { 'gl',    '<Cmd>Lspsaga show_line_diagnostics<CR>',    mode = 'n' },
+    { 'K',     '<Cmd>Lspsaga hover_doc<CR>',                mode = 'n' },
+    { 'gd',    '<Cmd>Lspsaga finder<CR>',                   mode = 'n' },
+    { 'gt',    '<Cmd>Lspsaga goto_type_definition<CR>',     mode = 'n' },
+    { '<C-k>', '<Cmd>Lspsaga signature_help<CR>',           mode = 'i' },
+    { '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', mode = 'i' },
+    { 'gp',    '<Cmd>Lspsaga peek_definition<CR>',          mode = 'n' },
+    { 'gr',    '<Cmd>Lspsaga rename<CR>',                   mode = 'n' },
   },
   config = function(_, opts)
     require('lspsaga').setup(opts)

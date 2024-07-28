@@ -1,0 +1,100 @@
+{
+  "logo": {
+    "source": "$(find \"${XDG_CONFIG_HOME:-$HOME/.config}/fastfetch/pngs/\" -name \"*.png\" | sort -R | head -1)",
+    "height": 17,
+  },
+  "display": {
+    "separator": " : ",
+  },
+  "modules": [
+    {
+      "type": "title",
+      "key": "\t\t",
+    },
+    {
+      "type": "custom",
+      "format": "┌──────────────────────────────────────────────────────┐",
+    },
+    {
+      "type": "os",
+      "key": "   OS",
+      "keyColor": "red",
+    },
+    {
+      "type": "host",
+      "key": "   Host",
+      "keyColor": "red",
+    },
+    {
+      "type": "kernel",
+      "key": "   Kernel",
+      "keyColor": "cyan",
+    },
+    {
+      "type": "packages",
+      "key": "   Packages",
+      "keyColor": "cyan",
+    },
+    {
+      "type": "display",
+      "key": "   Display",
+      "keyColor": "green",
+    },
+    {
+      "type": "wm",
+      "key": "   WM",
+      "keyColor": "green",
+    },
+    {
+      "type": "terminal",
+      "key": "   Terminal",
+      "keyColor": "yellow",
+    },
+    {
+      "type": "shell",
+      "key": "  Shell",
+      "keyColor": "yellow",
+    },
+    // {
+    //   "type": "custom",
+    //   "format": "└──────────────────────────────────────────────────────┘",
+    // },
+    // {
+    //   "type": "custom",
+    //   "format": "┌──────────────────────────────────────────────────────┐",
+    // },
+    {
+      "type": "cpu",
+      "format": "{1}",
+      "key": "   CPU",
+      "keyColor": "blue",
+    },
+    {
+      "type": "gpu",
+      "key": "   GPU",
+      "keyColor": "blue",
+    },
+    {
+      "type": "gpu",
+      "format": "{3}",
+      "key": "   GPU Driver",
+      "keyColor": "magenta",
+    },
+    {
+      "type": "memory",
+      "key": "  ﬙ Memory",
+      "keyColor": "magenta",
+    },
+    {
+      "type": "custom",
+      "format": "└──────────────────────────────────────────────────────┘",
+    },
+    // "break",
+    // {
+    //   "type": "colors",
+    //   "paddingLeft": 20,
+    //   "symbol": "square",
+    // },
+    // "break",
+  ],
+}

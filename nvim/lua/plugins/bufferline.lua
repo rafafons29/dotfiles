@@ -22,7 +22,7 @@ return {
     }
   end,
   keys = {
-    { '<Tab>', '<Cmd>BufferLineCycleNext<CR>', mode = 'n' },
+    { '<Tab>',   '<Cmd>BufferLineCycleNext<CR>', mode = 'n' },
     { '<S-Tab>', '<Cmd>BufferLineCyclePrev<CR>', mode = 'n' },
   }
 }

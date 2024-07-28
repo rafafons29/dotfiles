@@ -3,13 +3,13 @@
   "active": ["#cdd6f4", "#cdd6f4"],
   "inactive": ["#313244", "#313244"],
   "focus": ["#cba6f7", "#cba6f7"],
-  "color1": ["#f38ba8", "#f38ba8"],
-  "color2": ["#cba6f7", "#cba6f7"],
-  "color3": ["#a6e3a1", "#a6e3a1"],
-  "color4": ["#fab387", "#fab387"],
-  "color5": ["#74c7ec", "#74c7ec"],
-  "color6": ["#f5c2e7", "#f5c2e7"],
-  "color7": ["#89b4fa", "#89b4fa"],
-  "color8": ["#f9e2af", "#f9e2af"],
-  "color9": ["#45475a", "#45475a"]
+  "blue1": ["#74c7ec", "#74c7ec"],
+  "blue2": ["#89b4fa", "#89b4fa"],
+  "green1": ["#a6e3a1", "#a6e3a1"],
+  "green2": ["#84c180", "#84c180"],
+  "red1": ["#f4b1d6", "#f4b1d6"],
+  "red2": ["#f38ba8", "#f38ba8"],
+  "yellow": ["#f9e2af", "#f9e2af"],
+  "orange": ["#fab387", "#fab387"],
+  "purple": ["#cba6f7", "#cba6f7"]
 }

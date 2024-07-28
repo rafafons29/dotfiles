@@ -1,6 +1,6 @@
 return {
   'leoluz/nvim-dap-go',
-  ft = 'go',  
+  ft = 'go',
   opts = function()
     local dap_go = require('dap-go')
     dap_go.setup {

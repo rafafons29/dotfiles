@@ -1,6 +1,5 @@
 from os import path
 
-# from themes.themes import color_theme
 from .path import qtile_path
 
 import json
@@ -23,20 +22,17 @@ def init_colors(colors):
         colors["active"],  # 1
         colors["inactive"],  # 2
         colors["focus"],  # 3
-        colors["color1"],  # 4
-        colors["color2"],  # 5
-        colors["color3"],  # 6
-        colors["color4"],  # 7
-        colors["color5"],  # 8
-        colors["color6"],  # 9
-        colors["color7"],  # 10
-        colors["color8"],  # 11
-        colors["color9"],  # 12
+        colors["blue1"],  # 4
+        colors["blue2"],  # 5
+        colors["green1"],  # 6
+        colors["green2"],  # 7
+        colors["red1"],  # 8
+        colors["red2"],  # 9
+        colors["yellow"],  # 10
+        colors["orange"],  # 11
+        colors["purple"],  # 12
     ]
 
 
 if __name__ == "settings.theme":
-    # try:
     colors = init_colors(load_theme())
-    # except Exception:
-    #     colors = color_theme["toyonight"]()

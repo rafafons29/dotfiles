@@ -1,0 +1,17 @@
+@define-color bar-op-bg rgba(37, 41, 58, 0.8);
+
+@define-color bar-bg #25293A;
+@define-color bg #25293A;
+@define-color active #bfc7d5;
+@define-color inactive #394067;
+@define-color focus #7e57c2;
+
+@define-color color1 #c792ea;
+@define-color color2 #82AAFF;
+@define-color color3 #FFCB6B;
+@define-color color4 #FFCD6D;
+@define-color color5 #ff5874;
+@define-color color6 #7986E7;
+@define-color color7 #82AAFF;
+@define-color color8 #89DDFF;
+@define-color color9 #EF5350;

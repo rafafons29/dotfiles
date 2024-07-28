@@ -17,16 +17,16 @@ hig_color = colors[2][0][1:]
 widgets_list = [
 
     # Memory used
-    icon(fg=8, bg=0, fontsize=15, padding=padding, icon=' 󰍛'),
+    icon(fg=11, bg=0, fontsize=15, padding=padding, icon=' 󰍛'),
     widget.Memory(
-        **base(fg=8, bg=0),
+        **base(fg=11, bg=0),
         format=' {MemUsed: .0f} {mm}    ',
         padding=0,
         fontsize=12
     ),
 
     widget.ThermalSensor(
-        **base(fg=12),
+        **base(fg=8),
         font=font,
         fontsize=13,
         foreground_alert=colors[9],

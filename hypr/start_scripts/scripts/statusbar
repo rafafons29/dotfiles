@@ -1,0 +1,6 @@
+#!/bin/bash
+
+CONFIG="$HOME/.config/hypr/waybar/minimal/config.jsonc"
+STYLE="$HOME/.config/hypr/waybar/minimal/style.css"
+
+waybar --bar main-bar --log-level error --config ${CONFIG} --style ${STYLE}

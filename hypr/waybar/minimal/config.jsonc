@@ -1,0 +1,36 @@
+{
+  "include": "~/.config/hypr/waybar/minimal/modules.jsonc",
+  "layer": "bottom",
+  "exclusive": true,
+  "passthrough": false,
+  "position": "bottom",
+  "height": 35,
+  "spacing": 3,
+  "fixed-center": true,
+  "ipc": true,
+  "margin-left": 0,
+  "margin-right": 0,
+  "margin-top": 0,
+  "modules-right": [
+    // "custom/padd",
+    // "custom/l_end",
+    // "custom/r_end",
+    // "custom/l_end",
+    // "backlight",
+    "pulseaudio",
+    "battery",
+    "clock"
+    // "custom/r_end",
+    // "custom/padd"
+  ],
+  "modules-center": ["hyprland/workspaces"],
+  "modules-left": [
+    // "custom/r_end",
+    // "custom/l_end",
+    "wlr/taskbar"
+    // "tray"
+    // "custom/r_end",
+    // "",
+    // "custom/padd"
+  ]
+}
