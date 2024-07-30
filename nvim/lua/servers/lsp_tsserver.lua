@@ -29,10 +29,6 @@ return {
       suggest = {
         includeCompletionsForModuleExports = true,
       },
-      -- workspace = {
-      --   library = require("rafa.plugins.servers.lsp_functions").loadfolder(),
-      --   checkThirdParty = false,
-      -- },
     },
   }
 }

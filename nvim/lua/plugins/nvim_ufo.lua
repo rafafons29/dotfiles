@@ -1,6 +1,6 @@
 return {
   'kevinhwang91/nvim-ufo',
-  dependencies = {'kevinhwang91/promise-async'},
+  dependencies = { 'kevinhwang91/promise-async' },
   lazy = true,
   opts = function()
     local handler = function(virtText, lnum, endLnum, width, truncate)
@@ -43,7 +43,7 @@ return {
       close_fold_kinds_for_ft = {
         default = { 'imports', 'comment' },
         json = { 'array' },
-        c = { 'comment', 'region' }
+        c = { 'comment' }
       },
       preview = {
         win_config = {
@@ -59,21 +59,33 @@ return {
         }
       },
       provider_selector = function(bufnr, filetype, buftype)
-        return ftMap[filetype] or {'treesitter', 'indent'}
+        return ftMap[filetype] or { 'treesitter', 'indent' }
       end
     }
   end,
+  config = function(_, opts)
+    vim.o.foldcolumn = '0' -- '0' is not bad
+    vim.o.foldlevel = 10   -- Using ufo provider need a large value, feel free to decrease the value
+    vim.o.foldlevelstart = 99
+    vim.o.foldenable = true
+
+    require('ufo').setup(opts)
+  end,
   keys = {
-    { 'zR', function() require('ufo').openAllFolds() end, desc = 'Open all folds' },
-    { 'zM', function() require('ufo').closeAllFolds() end, desc = 'Close all folds' },
+    { 'zR', function() require('ufo').openAllFolds() end,         desc = 'Open all folds' },
+    { 'zM', function() require('ufo').closeAllFolds() end,        desc = 'Close all folds' },
     { 'zr', function() require('ufo').openFoldsExceptKinds() end, desc = 'Open folds except kinds' },
-    { 'zm', function() require('ufo').closeFoldsWith() end, desc = 'Close folds with' },
-    { 'K', function()
-      local winid = require('ufo').peekFoldedLinesUnderCursor()
-      if not winid then
-        vim.fn.CocActionAsync('definitionHover') -- coc.nvim
-        vim.lsp.buf.hover()
-      end
-    end, desc = 'Peek folded lines under cursor or show hover' },
+    { 'zm', function() require('ufo').closeFoldsWith() end,       desc = 'Close folds with' },
+    {
+      'K',
+      function()
+        local winid = require('ufo').peekFoldedLinesUnderCursor()
+        if not winid then
+          vim.fn.CocActionAsync('definitionHover') -- coc.nvim
+          vim.lsp.buf.hover()
+        end
+      end,
+      desc = 'Peek folded lines under cursor or show hover'
+    },
   },
 }

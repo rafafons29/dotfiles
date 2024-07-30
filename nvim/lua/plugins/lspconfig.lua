@@ -21,7 +21,7 @@ return {
     setup_autocmd('cmake', servers.cmake)
     setup_autocmd({ 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' }, servers.tss)
     setup_autocmd({ 'html', 'markdown' }, servers.html)
-    setup_autocmd({ 'css', 'qss' }, servers.css)
+    setup_autocmd('css', servers.css)
     setup_autocmd({ 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' }, servers.eslint)
 
 

@@ -74,11 +74,12 @@ return {
       })
     end)
 
-    keymap.set('n', ';r', function() require('telescope.builtin').live_grep() end)
-    keymap.set('n', '\\\\', function() require('telescope.builtin').buffers() end)
-    keymap.set('n', ';t', function() require('telescope.builtin').help_tags() end)
+    keymap.set('n', ';r', function() require('telescope.builtin').live_grep() end,
+      { desc = "Search a wornd in all files in this project" })
+    keymap.set('n', '\\\\', function() require('telescope.builtin').buffers() end, { desc = 'Show all open buffers' })
+    keymap.set('n', ';t', function() require('telescope.builtin').help_tags() end, { desc = 'Show help tags' })
     keymap.set('n', ';;', function() require('telescope.builtin').resume() end)
-    keymap.set('n', ';e', function() require('telescope.builtin').diagnostics() end)
+    keymap.set('n', ';e', function() require('telescope.builtin').diagnostics() end, { desc = 'Show diagnostics' })
     keymap.set('n', ';s', function() require('telescope.builtin').current_buffer_fuzzy_find() end)
 
     keymap.set('n', 'sf', function()

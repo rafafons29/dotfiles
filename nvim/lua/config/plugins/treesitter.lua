@@ -16,6 +16,8 @@ function M.setup()
       -- "python",
       -- "go",
       -- "html",
+      -- "css",
+      -- "vimdoc",
       -- "markdown",
     },
 

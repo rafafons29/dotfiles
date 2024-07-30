@@ -7,8 +7,8 @@ return {
       width = 30,
       side = "right",
       cursorline = false,
-      number = true,
-      relativenumber = true,
+      number = false,
+      relativenumber = false,
     },
     renderer = {
       root_folder_label = false,
@@ -22,7 +22,7 @@ return {
         },
         glyphs = {
           folder = {
-            default = "",
+            default = "󰉋",
             open = "",
             empty = "",
             empty_open = "",
@@ -46,6 +46,6 @@ return {
     end,
   },
   keys = {
-    { "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "Toggle Nvim Tree" },
+    { "<leader>e", cmd "NvimTreeToggle", desc = "Toggle Nvim Tree" },
   },
 }

@@ -53,6 +53,6 @@ return {
     },
   },
   keys = {
-    { '<M-e>', '<cmd>EmojiPicker<cr>', mode = 'i' } -- Mapea Alt+e para abrir el EmojiPicker en modo inserción
+    { '<M-e>', cmd 'EmojiPicker', mode = 'i' } -- Mapea Alt+e para abrir el EmojiPicker en modo inserción
   }
 }

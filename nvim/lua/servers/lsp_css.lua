@@ -6,7 +6,6 @@ return {
         unknownAtRules = "ignore",
       },
       workspace = {
-        library = require("rafa.plugins.servers.lsp_functions").loadfolder(),
         checkThirdParty = false,
       },
     },

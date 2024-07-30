@@ -33,6 +33,9 @@ return {
       automatic_installation = true
     }
 
-    keymap.set('n', '<leader>cm', '<cmd>Mason<cr>')
-  end
+    -- keymap.set('n', '<leader>cm', cmd 'Mason')
+  end,
+  keys = {
+    { '<leader>cm', cmd 'Mason', mode = 'n' }
+  }
 }

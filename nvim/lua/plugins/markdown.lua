@@ -1,16 +1,10 @@
 return {
   {
     'MeanderingProgrammer/markdown.nvim',
-    main = "render-markdown",
+    VeryLazy = true,
     opts = {
-      -- Whether Markdown should be rendered by default or not
       enabled = true,
-      -- Whether to track performance metrics, should only be used for development
-      profile = false,
-      -- Maximum file size (in MB) that this plugin will attempt to render
-      -- Any file larger than this will effectively be ignored
       max_file_size = 1.5,
-      -- Capture groups that get pulled from markdown
       markdown_query = [[
         (atx_heading [
             (atx_h1_marker)
@@ -53,38 +47,25 @@ return {
 
         [(inline_link) (full_reference_link) (image)] @link
     ]],
-      -- Query to be able to identify links in nodes
       inline_link_query = '[(inline_link) (full_reference_link) (image)] @link',
-      -- The level of logs to write to file: vim.fn.stdpath('state') .. '/render-markdown.log'
-      -- Only intended to be used for plugin development / debugging
       log_level = 'error',
-      -- Filetypes this plugin will run on
-      file_types = { 'markdown' },
-      -- Vim modes that will show a rendered view of the markdown file
-      -- All other modes will be uneffected by this plugin
+      file_types = { 'markdown', 'vimwiki' },
       render_modes = { 'n', 'c' },
-      -- Set to avoid seeing warnings for conflicts in health check
-      acknowledge_conflicts = false,
       exclude = {
-        -- Buftypes ignored by this plugin, see :h 'buftype'
         buftypes = {},
       },
       anti_conceal = {
         -- This enables hiding any added text on the line the cursor is on
         -- This does have a performance penalty as we must listen to the 'CursorMoved' event
-        enabled = true,
+        enabled = false,
       },
       latex = {
         -- Whether LaTeX should be rendered, mainly used for health check
-        enabled = true,
+        enabled = false,
         -- Executable used to convert latex formula to rendered unicode
         converter = 'latex2text',
         -- Highlight for LaTeX blocks
         highlight = 'RenderMarkdownMath',
-        -- Amount of empty lines above LaTeX blocks
-        top_pad = 0,
-        -- Amount of empty lines below LaTeX blocks
-        bottom_pad = 0,
       },
       heading = {
         -- Turn on / off heading icon & background rendering
@@ -102,19 +83,15 @@ return {
         -- Width of the heading background:
         --  block: width of the heading text
         --  full: full width of the window
-        width = 'full',
-        -- The 'level' is used to index into the array using a clamp
-        -- Highlight for the heading icon and extends through the entire line
+        width = 'block',
         backgrounds = {
-          'RenderMarkdownH1Bg',
-          'RenderMarkdownH2Bg',
-          'RenderMarkdownH3Bg',
-          'RenderMarkdownH4Bg',
-          'RenderMarkdownH5Bg',
-          'RenderMarkdownH6Bg',
+          'RenderMarkdownH1bg',
+          'RenderMarkdownH2bg',
+          'RenderMarkdownH3bg',
+          'RenderMarkdownH4bg',
+          'RenderMarkdownH5bg',
+          'RenderMarkdownH6bg',
         },
-        -- The 'level' is used to index into the array using a clamp
-        -- Highlight for the heading and sign icons
         foregrounds = {
           'RenderMarkdownH1',
           'RenderMarkdownH2',
@@ -128,21 +105,15 @@ return {
         -- Turn on / off code block & inline code rendering
         enabled = true,
         -- Turn on / off any sign column related rendering
-        sign = true,
+        sign = false,
         -- Determines how code blocks & inline code are rendered:
         --  none: disables all rendering
         --  normal: adds highlight group to code blocks & inline code, adds padding to code blocks
         --  language: adds language icon to sign column if enabled and icon + name above code blocks
         --  full: normal + language
-        style = 'full',
+        style = 'language',
         -- Amount of padding to add to the left of code blocks
         left_pad = 0,
-        -- Amount of padding to add to the right of code blocks when width is 'block'
-        right_pad = 0,
-        -- Width of the code block background:
-        --  block: width of the code block
-        --  full: full width of the window
-        width = 'full',
         -- Determins how the top / bottom of code block are rendered:
         --  thick: use the same highlight as the code body
         --  thin: when lines are empty overlay the above & below icons
@@ -153,7 +124,6 @@ return {
         below = '▀',
         -- Highlight for code blocks & inline code
         highlight = 'RenderMarkdownCode',
-        highlight_inline = 'RenderMarkdownCodeInline',
       },
       dash = {
         -- Turn on / off thematic break rendering
@@ -161,10 +131,6 @@ return {
         -- Replaces '---'|'***'|'___'|'* * *' of 'thematic_break'
         -- The icon gets repeated across the window's width
         icon = '─',
-        -- Width of the generated line:
-        --  <integer>: a hard coded width value
-        --  full: full width of the window
-        width = 'full',
         -- Highlight for the whole line generated from the icon
         highlight = 'RenderMarkdownDash',
       },
@@ -176,8 +142,6 @@ return {
         -- The 'level' is used to index into the array using a cycle
         -- If the item is a 'checkbox' a conceal is used to hide the bullet instead
         icons = { '●', '○', '◆', '◇' },
-        -- Padding to add to the right of bullet point
-        right_pad = 0,
         -- Highlight for the bullet icon
         highlight = 'RenderMarkdownBullet',
       },

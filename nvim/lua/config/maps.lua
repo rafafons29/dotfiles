@@ -3,7 +3,7 @@ vim.g.mapleader = ' '
 
 _G.keymap = vim.keymap
 
-local function cmd(command)
+function _G.cmd(command)
   return table.concat({ '<Cmd>', command, '<CR>' })
 end
 
@@ -19,7 +19,6 @@ keymap.set('n', '<leader>j', '*``cgn', { desc = "Delete word, and search it" })
 keymap.set('n', '+', '<C-a>')
 keymap.set('n', '-', '<C-x>')
 keymap.set('n', 'dw', 'vb"_d')
-keymap.set('n', 'te', cmd 'tabedit', { desc = "Create new tab" })
 keymap.set('n', 'ss', cmd 'split<Return><C-w>w', { desc = "Split horizontal window" })
 keymap.set('n', 'sv', cmd 'vsplit<Return><C-w>w', { desc = "Split vertical window" })
 

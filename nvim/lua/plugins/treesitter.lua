@@ -13,8 +13,9 @@ return {
   },
   {
     'romgrk/nvim-treesitter-context',
-    event = 'BufRead',
-    main = "config.plugins.ts_context",
-    config = true
+    priority = 500,
+    event    = 'BufRead',
+    main     = "config.plugins.ts_context",
+    config   = true
   },
 }
