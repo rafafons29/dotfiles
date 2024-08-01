@@ -4,6 +4,11 @@
     <img width = "12%" src="./images/Arch-linux-logo.png">
 </div> <br>
 
+**Idioma**
+
+- 🇪🇸 Español
+- [🇬🇧 Inglés](./README.en.md)
+
 Esta es mi _configuración personal_ para qtile. Esta configuración está hecha en Arch Linux.
 Para instalar qtile con los complementos que uso y configurar el escritorio como el mío, ejecuta los siguientes comandos en Arch Linux o alguna distro basada en Arch Linux:
 

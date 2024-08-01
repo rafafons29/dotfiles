@@ -4,6 +4,11 @@
     <img width = "12%" src="./images/Arch-linux-logo.png">
 </div> <br>
 
+**Language**
+
+- [🇪🇸 Spanish](./README.md)
+- 🇬🇧 English
+
 This is my _personal setup_ for qtile. This setup is made on Arch Linux.
 To install qtile with the plugins I use and configure the desktop like mine, run the following commands on Arch Linux or any Arch-based distro:
 
