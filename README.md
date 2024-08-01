@@ -4,40 +4,88 @@
     <img width = "12%" src="./images/Arch-linux-logo.png">
 </div> <br>
 
-<!-- To install, execute the following commands: -->
-<!-- asdjbas -->
+Esta es mi _configuracion pesonal_ para mi window manajer favorito. Esta configuracion esta hecha en archlinux.
+Para instalar qtile con los complementos que uso y configurar el escritorio como el mio, ejecuta los siguientes comandos en archlinux o alguna distro basada en archlinux:
 
-## Styles
+```bash
+sudo pacman -Sy qtile, fish, kitty, picom, rofi, yazi, thunar, neovim, networkmanager, pamac, xfce4-power-manager, numlockx, blueberry, volumeicon, lxappearance, waypaper, feh, fastfetch
+git clone https://github.com/rafafons29/dotfiles.git
+cd dotfiles 
+cp -r * ~/.config/
+curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+fisher install IlanCosman/tide@v6
+tide configure
+```
+
+**Detalles de mi setup:**
+
+- **Window Manajer:** [qtile](https://qtile.org/)
+- **Shell:** [fish](https://fishshell.com/) con [tide](https://github.com/IlanCosman/tide)
+- **Terminal:**  [kitty](https://sw.kovidgoyal.net/kitty/)
+- **Compositor:** [picom](https://github.com/yshui/picom) 
+- **Lanzador de aplicaciones:** [rofi](https://github.com/davatorium/rofi)
+- **Gestor de archivos:** [yazi](https://yazi-rs.github.io/) gestor de archivos en la terminal, [thunar](https://docs.xfce.org/xfce/thunar/the-file-manager-window) getor de archivos grafico.
+- **Editor de texto:** [Neovim](https://neovim.io/), [Mi configuracion de neovim](https://github.com/rafafons29/nvim_config)
+
+## Stilos
 
 <div class="themes">
     <table>
-        <div align="center">
+        <div align="center"> Andromeda
             <tr>
-                <td>Andromeda<img src="./images/andromeda.jpg"/></td>
-                <td>Catppucin<img src="./images/catppucin.jpg"/></td>
+                <td><img src="./images/andromeda_t.jpg"/></td>
+                <td><img src="./images/andromeda_b.jpg"/></td>
             </tr>
         </div>
-        <div align="center">
+    </table>
+    <table>
+        <div align="center"> Onedark
             <tr>
-                <td>Onedark<img src="./images/onedark.jpg"/></td>
-                <td>Oxocarbon<img src="./images/oxocarbon.jpg"/></td>
+                <td><img src="./images/onedark_t.jpg"/></td>
+                <td><img src="./images/onedark_b.jpg"/></td>
             </tr>
         </div>
-        <div align="center">
+    </table>
+    <table>
+        <div align="center"> Palenight
             <tr>
-                <td>Palenight<img src="./images/palenight.jpg"/></td>
-                <td>Tokyonight<img src="./images/tokyonight.jpg"/></td>
+                <td><img src="./images/palenight_t.jpg"/></td>
+                <td><img src="./images/palenight_b.jpg"/></td>
+            </tr>
+        </div>
+    </table>
+    <table>
+        <div align="center"> Catppucin 
+            <tr>
+                <td><img src="./images/catppucin_t.jpg"/></td>
+                <td><img src="./images/catppucin_b.jpg"/></td>
+            </tr>
+        </div>
+    </table>
+    <table>
+        <div align="center"> Oxocarbon
+            <tr>
+                <td><img src="./images/oxocarbon_t.jpg"/></td>
+                <td><img src="./images/oxocarbon_b.jpg"/></td>
+            </tr>
+        </div>
+    </table>
+    <table>
+        <div align="center"> Tokyonight
+            <tr>
+                <td><img src="./images/tokyonight_t.jpg"/></td>
+                <td><img src="./images/tokyonight_b.jpg"/></td>
             </tr>
         </div>
     </table>
 </div>
 
-## Keybindings
+## Atajos de teclado
 
 <div align="center">
 
 | Keys                                                                        | Action                                      |
-| :-------------------------------------------------------------------------- | :------------------------------------------ |
+| --------------------------------------------------------------------------- | ------------------------------------------- |
 | <kbd>Super</kbd> + <kbd>q</kbd>                                             | Close focused window                        |
 | <kbd>Super</kbd> + <kbd>v</kbd>                                             | Toggle floating window                      |
 | <kbd>Super</kbd> + <kbd>g</kbd>                                             | Run Flameshot                               |

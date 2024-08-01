@@ -16,7 +16,7 @@ local rendered_callout = {
 }
 
 vim.api.nvim_create_user_command('ShowCalloutOptions', function()
-  for key, value in pairs(rendered_callout) do
+  for _, value in pairs(rendered_callout) do
     print(value)
   end
 end, { desc = "Mostrar los callout disponibles en render_markdown" })
