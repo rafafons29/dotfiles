@@ -101,7 +101,7 @@ function function_depends
 end
 
 #fix obvious typo's
-alias cd..="cd .."
+# alias cd..="cd .."
 alias pdw="pwd"
 
 #youtube download
@@ -161,6 +161,8 @@ alias code.="code ."
 alias icat="kitty +kitten icat"
 alias cls="clear"
 alias z..="z .."
+# alias cd="z"
+# alias cd..="z .."
 # alias ffile="fzf --preview='bat --style=numbers --color=always {}'"
 
 export FZF_DEFAULT_OPTS="--height=80% --layout=reverse --info=inline --preview 'bat --style=numbers --color=always {}' --border --margin=1 --padding=1"
