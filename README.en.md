@@ -6,7 +6,7 @@
 
 **Language**
 
-- [🇪🇸 Spanish](./README.md)
+- 🇪🇸 [Spanish](./README.md)
 - 🇬🇧 English
 
 This is my _personal setup_ for qtile. This setup is made on Arch Linux.
