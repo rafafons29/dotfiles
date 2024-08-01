@@ -27,7 +27,7 @@ tide configure
 - **Gestor de archivos:** [yazi](https://yazi-rs.github.io/) gestor de archivos en la terminal, [thunar](https://docs.xfce.org/xfce/thunar/the-file-manager-window) getor de archivos grafico.
 - **Editor de texto:** [Neovim](https://neovim.io/), [Mi configuracion de neovim](https://github.com/rafafons29/nvim_config)
 
-## Stilos
+## Estilos 
 
 <div class="themes">
     <table>
