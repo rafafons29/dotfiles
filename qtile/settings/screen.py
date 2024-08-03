@@ -1,7 +1,7 @@
 from libqtile.config import Group
 
-# from .widgets.top_style_bar import screen, group_names, group_layouts, group_labels
-from .widgets.buttom_minimal_bar import screen, group_names, group_layouts, group_labels
+from .widgets.top_style_bar import screen, group_names, group_layouts, group_labels
+# from .widgets.buttom_minimal_bar import screen, group_names, group_layouts, group_labels
 
 groups = []
 

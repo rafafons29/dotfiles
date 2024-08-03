@@ -13,11 +13,11 @@ if [ $keybLayout = "be" ]; then
   cp $HOME/.config/qtile/config-azerty.py $HOME/.config/qtile/config.py
 fi
 
+waypaper --backend feh --restore 
 
 run nm-applet &
 run pamac-tray &
 run xfce4-power-manager &
-waypaper --restore &
 numlockx on &
 blueberry-tray &
 picom --config $HOME/.config/qtile/setup_complements/picom/picom.conf &
