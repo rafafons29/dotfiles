@@ -37,7 +37,7 @@ widgets_list = [
     ),
 
     # Work space
-    GroupBox(),
+    GroupBox(fontsize=13),
 
     widget.Spacer(
         background=colors[0],

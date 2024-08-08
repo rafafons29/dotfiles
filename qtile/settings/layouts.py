@@ -3,7 +3,7 @@ from libqtile.config import Match
 
 from .theme import colors
 
-layout_theme = {"margin": 5,
+layout_theme = {"margin": 8,
                 "border_width": 0,
                 "border_focus": colors[9][0],
                 "border_normal": colors[1][0]
