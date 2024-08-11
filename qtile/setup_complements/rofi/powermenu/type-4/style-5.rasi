@@ -7,6 +7,8 @@
  * Rofi Version: 1.7.3
  **/
 
+@import                          "../color.rasi"
+
 /*****----- Configuration -----*****/
 configuration {
     show-icons:                 false;

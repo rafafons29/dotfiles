@@ -92,7 +92,8 @@ keys = [
 
     # Logout
     Key([mod], "x", lazy.spawn("archlinux-logout")),
-    Key([mod], "z", lazy.spawn("/home/rafa/.config/qtile/setup_complements/rofi/powermenu/type-2/powermenu.sh")),
+    Key([mod], "z", lazy.spawn(
+        "/home/rafa/.config/qtile/setup_complements/rofi/powermenu/type-4/powermenu.sh")),
 
     # Default terminal emulator
     Key([mod], "Return", lazy.spawn("kitty")),
@@ -131,7 +132,7 @@ keys = [
     #
     # # Bightness down
     # Key([], "XF86MonBrightnessDown", lazy.spawn("xbacklight -dec 10")),
-   # -------------------------------------------------------------------
+    # -------------------------------------------------------------------
 ]
 
 keys.extend([
