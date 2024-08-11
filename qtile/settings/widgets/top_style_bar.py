@@ -5,7 +5,7 @@ from .general import base, icon, font, GroupBox, padding
 from settings.theme import colors
 
 SIZE = 25
-MARGIN = [3, 3, 0, 3]
+MARGIN = [2, 2, 0, 2]
 OPACITY = 1
 
 group_names = ["1", "2", "3", "4", "5"]

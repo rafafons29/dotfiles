@@ -1,4 +1,4 @@
-@import "colors/tokyonight.rasi"
+@import "shared/tokyonight.rasi"
 
 * {
     font: "Jetbrains Mono 12";
@@ -7,7 +7,7 @@
 configuration {
     modi:            "drun";
     show-icons:      true;
-    display-drun:    "Applications";
+    display-drun:    "🔍";
     disable-history: false;
     drun-display-format: "{name}";
 }
@@ -16,13 +16,13 @@ configuration {
     transparency:                "real";
     location:                    center;
     anchor:                      center;
-    background-color:            @background-color;
+    background-color:            @background;
     border:                      0;
-    border-radius:               20px;
-    border-color:                @active-background;
+    border-radius:               10px;
+    border-color:                @active;
     padding:                     10;
-    width:                       500;
-    height:                      250;
+    width:                       600;
+    height:                      350;
 }
 #mainbox {
     border:  0;
@@ -35,7 +35,7 @@ configuration {
 }
 #message {
     border:       0px;
-    border-color: @background-color;
+    border-color: @background;
     padding:      1px;
 }
 #textbox {
@@ -62,9 +62,9 @@ configuration {
     padding:                     0px;
     border:                      0px solid;
     border-radius:               0px;
-    border-color:                @active-background;
+    border-color:                @selected;
     background-color:            transparent;
-    text-color:                  @foreground;
+    text-color:                  @active;
     cursor:                      "default";
 }
 #element {
@@ -74,49 +74,49 @@ configuration {
     padding:                     5px;
     border:                      0px solid;
     border-radius:               100%;
-    border-color:                @active-background;
+    border-color:                @active;
     background-color:            transparent;
     text-color:                  @foreground;
     cursor:                      pointer;
 }
 #element.normal.normal {
-    background-color: @background-color;
+    background-color: @background;
     text-color:       @foreground;
 }
 #element.normal.urgent {
-    background-color: @background-color;
+    background-color: @background;
     text-color:       @foreground;
 }
 #element.normal.active {
-    background-color: @active-background;
-    text-color:       @active-foreground;
+    background-color: @background-alt;
+    text-color:       @selected;
 }
 #element.selected.normal {
     border:           0px 0px 0px 0px;
     border-radius:    0%;
-    border-color:     @active-background;
-    background-color: @background-color;
-    text-color:       @active-background;
+    border-color:     @background-alt;
+    background-color: @background;
+    text-color:       @selected;
 }
 #element.selected.urgent {
-    background-color: @active-background;
+    background-color: @background-alt;
     text-color:       @foreground;
 }
 #element.selected.active {
-    background-color: @active-background;
-    text-color:       @active-foreground;
+    background-color: @background-alt;
+    text-color:       @selected;
 }
 #element.alternate.normal {
-    background-color: @background-color;
+    background-color: @background;
     text-color:       @foreground;
 }
 #element.alternate.urgent {
-    background-color: @background-color;
+    background-color: @background;
     text-color:       @foreground;
 }
 #element.alternate.active {
-    background-color: @background-color;
-    text-color:       @active-foreground;
+    background-color: @background;
+    text-color:       @selected;
 }
 #scrollbar {
     width:        2px ;
@@ -126,10 +126,10 @@ configuration {
 }
 #sidebar {
     border:       2px dash 0px 0px ;
-    border-color: @background-color;
+    border-color: @background;
 }
 #button.selected {
-    background-color: @active-background;
+    background-color: @background-alt;
     text-color:       @foreground;
 }
 #inputbar {
@@ -161,21 +161,21 @@ configuration {
 }
 #prompt {
     enabled:                     true;
-    padding:                     5px;
+    padding:                     8px;
     border-radius:               100%;
-    background-color:            @active-background;
-    spacing:                     0;
-    text-color:                  @active-foreground;
+    background-color:            @background;
+    spacing:                     20;
+    text-color:                  @background;
 }
 #inputbar {
     enabled:                     true;
     spacing:                     0px;
     margin:                      0px;
     padding:                     0px;
-    border:                      1px 1px 1px 0px;
+    border:                      0px 0px 1px 0px;
     border-radius:               100%;
-    border-color:                @active-background;
-    background-color:            @background-color;
+    border-color:                @background-alt;
+    background-color:            @background;
     text-color:                  @foreground;
     children:                    [ "prompt", "entry" ];
 }
@@ -183,7 +183,7 @@ configuration {
     enabled:                     true;
     expand:                      false;
     str:                         "::";
-    background-color:            @background-color;
+    background-color:            @background;
     text-color:                  @foreground;
 }
 element-text, element-icon {

@@ -1,6 +1,0 @@
-* {
-    foreground: #E9DfEf;
-		active-foreground: #292c35;
-    background-color: #292c35;
-    active-background: #00e8c6;
-}
