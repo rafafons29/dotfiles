@@ -77,10 +77,10 @@ keys = [
     # ---------------Using rofi for all---------------#
     Key([mod], "m", lazy.spawn(
         "rofi -show drun -config ~/.config/qtile/setup_complements/rofi/menu.rasi")),
-    Key([mod, "shift"], "m", lazy.spawn(
-        "rofi -config ~/.config/qtile/setup_complements/rofi/menu.rasi -show")),
+    Key([mod], "n", lazy.spawn(
+        "/home/rafa/.config/qtile/setup_complements/rofi/launchers/type-3/launcher.sh")),
     Key([mod], "d", lazy.spawn(
-        "rofi -config ~/.config/qtile/setup_complements/rofi/full_menu.rasi -show")),
+        "/home/rafa/.config/qtile/setup_complements/rofi/launchers/type-4/launcher.sh")),
 
     # ---------------Commands for apps---------------#
     # Browser

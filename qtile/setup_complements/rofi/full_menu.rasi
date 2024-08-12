@@ -7,7 +7,7 @@ configuration {
 }
 
 /*****----- Global Properties -----*****/
-@import                          "shared/tokyonight.rasi"
+@import                          "shared/onedark.rasi"
 @import                          "shared/fonts.rasi"
 
 /*****----- Main Window -----*****/

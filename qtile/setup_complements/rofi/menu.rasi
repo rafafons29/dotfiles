@@ -1,4 +1,4 @@
-@import "shared/tokyonight.rasi"
+@import "shared/onedark.rasi"
 
 * {
     font: "Jetbrains Mono 12";
