@@ -33,10 +33,6 @@ widgets_list = [
         background=colors[0],
     ),
 
-    widget.CheckUpdates(no_update_string=' ',
-                        colour_have_updates=colors[6], colour_no_updates=colors[1], font=font, fontsize=15),
-    separator(text=" "),
-
     # Memory used
     separator(text=" ", bg=7),
     icon(fg=0, bg=7, fontsize=15, padding=3, icon=' 󰍛'),
@@ -88,13 +84,13 @@ widgets_list = [
     ),
     separator(text=" ", bg=6),
 
-    separator(text=" "),
+    separator(text=""),
     widget.Systray(
         background=colors[0],
         icon_size=15,
         padding=10
     ),
-    separator(text=" "),
+    separator(text=""),
 ]
 
 

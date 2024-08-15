@@ -12,9 +12,6 @@ layout_theme = {"margin": 8,
 layouts = [
     layout.MonadTall(**layout_theme),
     layout.MonadWide(**layout_theme),
-    layout.Matrix(**layout_theme),
-    layout.Bsp(**layout_theme),
-    layout.Floating(**layout_theme),
     layout.Max(**layout_theme)
 ]
 

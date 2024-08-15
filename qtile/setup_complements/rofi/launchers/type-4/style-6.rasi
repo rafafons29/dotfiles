@@ -20,7 +20,7 @@ configuration {
 }
 
 /*****----- Global Properties -----*****/
-@import                          "../color.rasi"
+@import                          "../../color.rasi"
 
 * {
     border-colour:               var(selected);
