@@ -98,41 +98,8 @@ keys = [
     # Default terminal emulator
     Key([mod], "Return", lazy.spawn("kitty")),
 
-    # Using Flameshot
-    Key([mod], "g", lazy.spawn("flameshot gui")),
-
-    # ---------------Commands control hardware---------------#
-    # Screenshot
-    Key([], "Print", lazy.spawn(
-        "scrot 'ArcoLinux-%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f $$(xdg-user-dir PICTURES)'")),
-
-    # Raises volumen
-    # Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer set Master 10%+")),
-    #
-    # # Lowers volumen
-    # Key([], "XF86AudioLowerVolume", lazy.spawn("amixer set Master 10%-")),
-    #
-    # # Mute
-    # Key([], "XF86AudioMute", lazy.spawn("amixer -D pulse set Master 1+ toggle")),
-
-    # # Play
-    # Key([], "XF86AudioPlay", lazy.spawn("playerctl play-pause")),
-    #
-    # # Next
-    # Key([], "XF86AudioNext", lazy.spawn("playerctl next")),
-    #
-    # # Previous
-    # Key([], "XF86AudioPrev", lazy.spawn("playerctl previous")),
-    #
-    # # Stop
-    # Key([], "XF86AudioStop", lazy.spawn("playerctl stop")),
-    #
-    # # Bightness up
-    # Key([], "XF86MonBrightnessUp", lazy.spawn("xbacklight -inc 10")),
-    #
-    # # Bightness down
-    # Key([], "XF86MonBrightnessDown", lazy.spawn("xbacklight -dec 10")),
-    # -------------------------------------------------------------------
+    # Using Flameshot to take screenshots
+    Key([], "Print", lazy.spawn("flameshot gui")),
 ]
 
 keys.extend([

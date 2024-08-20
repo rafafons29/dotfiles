@@ -4,6 +4,8 @@ local function set_colorscheme(theme_name)
     onedark = true,
     andromeda = true,
     oxocarbon = true,
+    nightfox = true,
+    catppuccin = true,
   }
 
   lethm[theme_name] = false
@@ -11,7 +13,7 @@ local function set_colorscheme(theme_name)
   return lethm
 end
 
-_G.theme_name = 'tokyonight'
+_G.theme_name = 'catppuccin'
 local theme = set_colorscheme(theme_name)
 
 return {
@@ -45,14 +47,18 @@ return {
     config = true
   },
   {
-    'sainnhe/sonokai',
-    lazy = true,
+    "catppuccin/nvim",
+    name = "catppuccin",
     priority = 1000,
-    config = function()
-      -- Optionally configure and load the colorscheme
-      -- directly inside the plugin declaration.
-      vim.g.sonokai_enable_italic = true
-      -- vim.cmd.colorscheme('sonokai')
-    end
+    lazy = theme.catppuccin,
+    main = "config.plugins.catppuccin",
+    config = true,
+  },
+  {
+    "EdenEast/nightfox.nvim",
+    priority = 1000,
+    lazy = theme.nightfox,
+    main = 'config.plugins.nightfox',
+    config = true,
   }
 }

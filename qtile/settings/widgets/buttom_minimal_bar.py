@@ -6,7 +6,7 @@ from settings.theme import colors
 
 SIZE = 35
 MARGIN = [0, 0, 0, 0]
-OPACITY = 0.97
+OPACITY = 1.0
 
 group_names = ["1", "2", "3", "4"]
 group_labels = [" ", " ", " ", " "]
