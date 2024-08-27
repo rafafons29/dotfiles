@@ -16,6 +16,7 @@ keys = [
     Key([mod], "f", lazy.hide_show_bar()),
     Key([mod], "q", lazy.window.kill()),
     Key([mod, "shift"], "f", lazy.window.toggle_fullscreen()),
+    Key([mod, "shift"], "z", lazy.layout.maximize()),
 
     # SUPER + SHIFT KEYS
     Key([mod, "shift"], "r", lazy.restart()),
