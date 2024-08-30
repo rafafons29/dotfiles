@@ -100,7 +100,8 @@ keys = [
     Key([mod], "Return", lazy.spawn("kitty")),
 
     # Using Flameshot to take screenshots
-    Key([], "Print", lazy.spawn("flameshot gui")),
+    Key([], "Print", lazy.spawn("flameshot screen")),
+    Key([mod], "Print", lazy.spawn("flameshot gui")),
 ]
 
 keys.extend([
