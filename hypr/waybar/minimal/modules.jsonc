@@ -11,7 +11,7 @@
     "on-update": "",
     "on-scroll-up": "~/.config/hypr/scripts/brightness --inc",
     "on-scroll-down": "~/.config/hypr/scripts/brightness --dec",
-    "smooth-scrolling-threshold": 1,
+    "smooth-scrolling-threshold": 1
   },
   "wlr/taskbar": {
     "format": "{icon}",
@@ -22,8 +22,8 @@
     "on-click": "activate",
     "on-click-middle": "close",
     "app_ids-mapping": {
-      "firefoxdeveloperedition": "firefox-developer-edition",
-    },
+      "firefoxdeveloperedition": "firefox-developer-edition"
+    }
   },
   "battery": {
     "interval": 60,
@@ -34,7 +34,7 @@
     "states": {
       "good": 95,
       "warning": 30,
-      "critical": 15,
+      "critical": 15
     },
     "format": "{icon}",
     "format-charging": " ",
@@ -44,32 +44,35 @@
     "format-icons": ["󰁺", "󰁼", "󰁾", "󰂁", "󰁹"],
     "format-time": "{H}h {M}min",
     "tooltip": true,
-    "on-click-right": "~/.config/hypr/scripts/glassmorphismToggle",
+    "on-click-right": "~/.config/hypr/scripts/glassmorphismToggle"
   },
   "clock": {
     "interval": 60,
     "align": 0,
     "rotate": 0,
     "format": "{:%d/%m/%Y\n %I:%M:%S}",
-    "format-alt": "<span color='#ff9854'>󰃰 </span>{:%d-%m-%Y %a %I:%M:%S %p}",
+    "format-alt": "<span color='#ff9854'>󰃰 </span>{:%d-%m-%Y %a %I:%M:%S %p}"
   },
   "hyprland/workspaces": {
+    "active-only": false,
     "disable-scroll": true,
+    "format": "{icon}",
     "on-click": "activate",
     "all-outputs": true,
-    "activate-only": false,
-    "persistent-workspaces": {
-      "1": [],
-      "2": [],
-      "3": [],
-      "4": [],
-    },
-    "format": "{icon}",
     "format-icons": {
-      "active": "<span font='18'></span>",
-      "empty": "<span font='18'></span>",
-      "persistent": "<span font='15'></span>",
-    },
+      "1": "<span font='14'>󰲠</span>", 
+      "2": "<span font='14'>󰲢</span>", 
+      "3": "<span font='14'>󰲤</span>",
+      "4": "<span font='14'>󰲦</span>",
+      "5": "<span font='14'>󰲨</span>",
+      "6": "<span font='14'>󰲪</span>", 
+      "7": "<span font='14'>󰲬</span>", 
+      "8": "<span font='14'>󰲮</span>",
+      "9": "<span font='14'>󰲰</span>",
+      "10": "<span font='14'>󰿬</span>",
+      "urgent": "",
+      "sort-by-number": true
+    }
   },
   "pulseaudio": {
     "format": "{icon}",
@@ -85,19 +88,18 @@
       "phone": " ",
       "portable": " ",
       "car": " ",
-      "default": ["󰕾", "󰕾", "󰕾"],
+      "default": ["󰕾", "󰕾", "󰕾"]
     },
     "scroll-step": 5.0,
     "on-click": "pamixer -t",
     "on-click-right": "pavucontrol",
     "on-scroll-up": "~/.config/hypr/scripts/volume --inc",
     "on-scroll-down": "~/.config/hypr/scripts/volume --dec",
-    "smooth-scrolling-threshold": 1,
+    "smooth-scrolling-threshold": 1
   },
   "tray": {
-    "show-passive-items": true,
-    "icon-size": 18,
-    "spacing": 6,
+    "icon-size": 16,
+    "spacing": 10
   },
   "network": {
     "interval": 5,
@@ -108,5 +110,10 @@
     "format-disabled": "睊 Disabled",
     "format-alt": " {bandwidthUpBits} |  {bandwidthDownBits}",
     "tooltip-format": " {ifname} via {gwaddr}"
+  },
+  "custom/menu": {
+    "format": "<span font='25'></span>",
+    "tooltip": false,
+    "on-click": "~/.config/hypr/start_scripts/scripts/menu"
   }
 }

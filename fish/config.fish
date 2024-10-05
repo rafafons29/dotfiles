@@ -178,34 +178,27 @@ export FZF_DEFAULT_OPTS="--height=80% --layout=reverse --info=inline --preview '
 
 # fd - cd to selected directory
 
-# export PATH="/home/rafa/.scripts:$PATH"
-# export PATH="/home/rafa/.flutter/flutter/bin:$PATH"
-# export PATH="/home/rafa/.flutter/cmdline-tools/bin:$PATH"
-# export PATH="/home/rafa/.flutter/bin:$PATH"
-# export PATH="/home/rafa/.flutter/platform-tools:$PATH"
-# export PATH="/home/rafa/.flutter/gradle/bin:$PATH"
-# export CHROME_EXECUTABLE="/usr/bin/chromium"
-
+# Config to connect on school proxy
 fastfetch
 
-set fish_color_autosuggestion "#969896"
+set fish_color_autosuggestion "#6c7194"
 set fish_color_cancel -r
-set fish_color_command "#0782DE"
-set fish_color_comment "#f0c674"
-set fish_color_cwd "#008000"
+set fish_color_command "#0ca8e7"
+set fish_color_comment "#ffc777"
+set fish_color_cwd "#c3e88d"
 set fish_color_cwd_root red
-set fish_color_end "#b294bb"
-set fish_color_error "#fb4934"
-set fish_color_escape "#fe8019"
+set fish_color_end "#c099ff"
+set fish_color_error "#ff007c"
+set fish_color_escape "#ff966c"
 set fish_color_history_current --bold
-set fish_color_host "#85AD82"
+set fish_color_host "#4fd6be"
 set fish_color_host_remote yellow
 set fish_color_match --background=brblue
 set fish_color_normal normal
-set fish_color_operator "#fe8019"
-set fish_color_param "#81a2be"
-set fish_color_quote "#b8bb26"
-set fish_color_redirection "#d3869b"
+set fish_color_operator "#ff966c"
+set fish_color_param "#41a6b5"
+set fish_color_quote "#c3e88d"
+set fish_color_redirection "#ff757f"
 set fish_color_search_match bryellow background=brblack
 set fish_color_selection white --bold background=brblack
 set fish_color_status red

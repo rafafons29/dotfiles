@@ -4,7 +4,7 @@
   border-radius: 0px;
 }
 
-@import "../themes/oxocarbon.css";
+@import "../themes/onedark.css";
 
 window#waybar {
   background: @bar-op-bg;
@@ -38,7 +38,6 @@ window#waybar.hidden {
 #battery {
   margin: 1px 5px 1px 1px;
   border-radius: 10px;
-  padding-right: 10px;
   padding-left: 3px;
   color: @active;
   font-size: 20px;
@@ -83,6 +82,7 @@ window#waybar.hidden {
 
 #tray {
   background-color: rgba(26, 27, 38, 0);
+  padding: 8px;
 }
 
 #tray > .passive {
@@ -98,32 +98,50 @@ window#waybar.hidden {
   padding: 0px 3px;
   border: 0px;
   font-size: 25px;
-  background-color: @bar-bg;
+  /* background-color: @bar-bg; */
   color: @inactive;
 }
 
 #workspaces button {
-  border: 0px;
-  transition: all 0.2s ease-in-out;
+  box-shadow: none;
+  text-shadow: none;
+  padding: 0px;
+  border-radius: 9px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  margin-left: 0px;
+  padding-left: 3px;
+  padding-right: 3px;
+  margin-right: 0px;
   color: @inactive;
+  animation: ws_normal 20s ease-in-out 1;
 }
 
 #workspaces button.persistent {
-  font-size: 25px;
   transition: all 0.2s ease-in-out;
   color: @active;
 }
 
 #workspaces button.empty {
-  font-size: 25px;
   transition: all 0.2s ease-in-out;
   color: @inactive;
 }
 
+#workspaces button:hover {
+  background: @inactive;
+  color: @color8;
+  animation: ws_hover 20s ease-in-out 1;
+  transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
+}
+
 #workspaces button.active {
-  font-size: 25px;
-  transition: all 0.2s ease-in-out;
   color: @focus;
+  margin-left: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+  margin-right: 1px;
+  animation: ws_active 20s ease-in-out 1;
+  transition: all 0.4s cubic-bezier(0.55, -0.68, 0.48, 1.682);
 }
 
 #pulseaudio {
@@ -151,33 +169,30 @@ window#waybar.hidden {
   color: @active;
 }
 
+#workspaces,
+#taskbar {
+  padding: 0px;
+  margin: 5px 2px 5px 2px;
+}
+
 #taskbar button {
-  /* background: rgba(26, 27, 38, 0.85); */
-  margin: 3px 0px;
-  padding: 2px 10px;
-  border-radius: 2px;
-  border: 0px;
-  animation: gradient_f 20s ease-in infinite;
-  transition: all 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.682);
+  opacity: 1;
+
+  border-radius: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: @bg;
+  color: @active;
 }
 
 #taskbar button.active {
-  /* background: rgba(26, 27, 38, 0.85); */
-  margin: 3px 5px;
-  padding: 2px 15px;
-  border-radius: 15px;
-  border: 0px;
-  animation: gradient_f 20s ease-in infinite;
-  transition: all 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.682);
+  border-radius: 0px;
+  border-bottom: 1px solid @focus;
 }
 
 #taskbar button:hover {
-  /* background-color: rgba(26, 27, 38, 0.85); */
-  margin: 3px 0px;
-  padding: 2px 10px;
-  border: 0px;
-  animation: gradient_f 20s ease-in infinite;
-  transition: all 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.682);
+  border-radius: 5px;
+  color: @active;
 }
 
 #custom-r_end {
@@ -191,3 +206,16 @@ window#waybar.hidden {
   margin-left: 9px;
   padding-left: 3px;
 }
+
+#custom-menu {
+  border-radius: 5px;
+  padding: 0px 5px 0px 5px;
+  color: @focus;
+}
+
+#custom-menu:hover {
+  background-color: @inactive;
+}
+
+
+

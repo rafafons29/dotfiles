@@ -5,7 +5,7 @@ from .general import base, icon, font, GroupBox, padding
 from settings.theme import colors
 
 SIZE = 25
-MARGIN = [2, 2, 0, 2]
+MARGIN = [1, 1, 0, 1]
 OPACITY = 1
 
 group_names = ["1", "2", "3", "4", "5"]
@@ -73,7 +73,7 @@ widgets_list = [
         fontsize=12
     ),
 
-    icon(fg=12, fontsize=12, padding=0, icon=' '),
+    icon(fg=12, fontsize=12, padding=0, icon=' 󰁹'),
     widget.Battery(
         **base(fg=12),
         format='{percent:2.0%}',

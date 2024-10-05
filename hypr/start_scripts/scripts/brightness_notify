@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Obtener el brillo actual
+Brightness=$(brightnessctl get)
+
+# Enviar o actualizar la notificación
+notify-send -u low -r 12345 "Brillo" "Nivel: $Brightness%" -i display-brightness -p
+

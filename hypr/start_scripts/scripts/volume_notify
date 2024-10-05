@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Obtener el volumen actual
+VOLUME=$(pamixer --get-volume)
+
+# Enviar o actualizar la notificación
+notify-send -u low -r 12345 "Volumen" "Nivel: $VOLUME%" -i audio-volume-high -p
+

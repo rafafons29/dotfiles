@@ -77,11 +77,11 @@ keys = [
 
     # ---------------Using rofi for all---------------#
     Key([mod], "m", lazy.spawn(
-        "rofi -show drun -config ~/.config/qtile/setup_complements/rofi/menu.rasi")),
+        "rofi -show drun -config ~/.config/rofi/menu.rasi")),
     Key([mod], "n", lazy.spawn(
-        "/home/rafa/.config/qtile/setup_complements/rofi/launchers/type-3/launcher.sh")),
+        "/home/rafa/.config/rofi/launchers/type-2/launcher.sh")),
     Key([mod], "d", lazy.spawn(
-        "/home/rafa/.config/qtile/setup_complements/rofi/launchers/type-4/launcher.sh")),
+        "/home/rafa/.config/rofi/launchers/type-4/launcher.sh")),
 
     # ---------------Commands for apps---------------#
     # Browser
@@ -94,7 +94,7 @@ keys = [
     # Logout
     Key([mod], "x", lazy.spawn("archlinux-logout")),
     Key([mod], "z", lazy.spawn(
-        "/home/rafa/.config/qtile/setup_complements/rofi/powermenu/type-4/powermenu.sh")),
+        "/home/rafa/.config/rofi/powermenu/type-4/powermenu.sh")),
 
     # Default terminal emulator
     Key([mod], "Return", lazy.spawn("kitty")),
@@ -102,6 +102,9 @@ keys = [
     # Using Flameshot to take screenshots
     Key([], "Print", lazy.spawn("flameshot screen")),
     Key([mod], "Print", lazy.spawn("flameshot gui")),
+
+    # Using hpick to pick a color
+    Key([mod], "p", lazy.spawn("gpick -p")),
 ]
 
 keys.extend([

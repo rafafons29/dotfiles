@@ -17,18 +17,18 @@
     // "custom/r_end",
     // "custom/l_end",
     // "backlight",
+    "tray",
     "pulseaudio",
     "battery",
     "clock"
     // "custom/r_end",
     // "custom/padd"
   ],
-  "modules-center": ["hyprland/workspaces"],
+  "modules-center": ["custom/menu", "wlr/taskbar"],
   "modules-left": [
+    "hyprland/workspaces"
     // "custom/r_end",
     // "custom/l_end",
-    "wlr/taskbar"
-    // "tray"
     // "custom/r_end",
     // "",
     // "custom/padd"

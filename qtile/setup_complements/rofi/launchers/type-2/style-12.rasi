@@ -11,13 +11,12 @@
 configuration {
 	modi:                       "drun";
     show-icons:                 true;
-    display-drun:               " Applications";
+    display-drun:               "🔍 Applications";
 	drun-display-format:        "{name}";
 }
 
 /*****----- Global Properties -----*****/
-@import                          "shared/colors.rasi"
-@import                          "shared/fonts.rasi"
+@import                          "../../color.rasi"
 
 /*****----- Main Window -----*****/
 window {
@@ -45,7 +44,7 @@ mainbox {
     enabled:                     true;
     spacing:                     20px;
     margin:                      0px;
-    padding:                     200px;
+    padding:                     100px;
     border:                      0px solid;
     border-radius:               0px 0px 0px 0px;
     border-color:                @selected;
@@ -84,7 +83,7 @@ textbox-prompt-colon {
 entry {
     enabled:                     true;
     expand:                      false;
-    width:                       350px;
+    width:                       950px;
     padding:                     15px 20px;
     border-radius:               100%;
     background-color:            @background-alt;
