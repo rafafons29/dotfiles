@@ -1,0 +1,15 @@
+[font]
+familyes = "VictorMono NF"
+size = 12
+
+[[font.normal]]
+family = "VictorMono NF"
+style = "W400"
+
+[[font.bold]]
+family = "VictorMono NF"
+style = "W600"
+
+[[font.italic]]
+family = "VictorMono NF"
+style = "Italic"

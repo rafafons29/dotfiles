@@ -3,8 +3,8 @@ set -e fish_user_paths
 set -U fish_user_paths $HOME/.bin $HOME/.local/bin $HOME/Applications $fish_user_paths
 
 # sets tools
-set -x EDITOR nvim
-set -x VISUAL nvim
+set -x EDITOR neovide
+set -x VISUAL neovide
 set -x TERM kitty
 # Sets the terminal type for proper colors
 set TERM "xterm-256color"
@@ -165,6 +165,8 @@ alias pamac-unlock="sudo rm /var/tmp/pamac/dbs/db.lock"
 
 alias vim="nvim"
 alias vim.="nvim ."
+alias vid="neovide"
+alias vid.="neovide ."
 alias opvimfl="fzf --preview='bat --style=numbers --color=always {}'"
 alias code.="code ."
 alias icat="kitty +kitten icat"

@@ -1,8 +1,37 @@
 #!/bin/bash
 
-# Obtener el volumen actual
-VOLUME=$(pamixer --get-volume)
+set -euo pipefail
 
-# Enviar o actualizar la notificación
-notify-send -u low -r 12345 "Volumen" "Nivel: $VOLUME%" -i audio-volume-high -p
+iod="${1:2}" # Tomar un parametro para saber si vamos a aumentar o disminuir el volumen
 
+notify_volume() {
+  local volume="$1" 
+  notify-send --expire-time=1000 -u $2 -r 12345 "Volumen" "Nivel: ${volume}%"
+}
+
+set_print_vol() {
+  local action="$1"
+  local current_volume=$(pamixer --get-volume)
+
+  if [[ $action == "-t" ]]; then
+    pamixer $action  # Intercambiamos modos entre mute o unmute
+
+    is_mute=$(pamixer --get-mute) # Veirficamos si esta mute o no
+    if [[ $is_mute == true ]]; then
+      current_volume="0"
+    fi
+
+    notify_volume "$current_volume" $2
+    return
+  fi
+
+  current_volume=$(pamixer "$action" 5 --get-volume)
+  notify_volume "$current_volume" $2
+}
+
+case "$iod" in 
+  inc) set_print_vol -i low ;;
+  dec) set_print_vol -d low ;;
+  mute)set_print_vol -t low ;;
+  *) echo "Parametro no valido"; exit 1 ;;
+esac

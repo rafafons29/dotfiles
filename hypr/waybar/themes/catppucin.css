@@ -6,12 +6,15 @@
 @define-color inactive #313244;
 @define-color focus #cba6f7;
 
-@define-color color1 #f38ba8;
-@define-color color2 #cba6f7;
-@define-color color3 #a6e3a1;
-@define-color color4 #fab387;
-@define-color color5 #74c7ec;
-@define-color color6 #f5c2e7;
-@define-color color7 #89b4fa;
-@define-color color8 #f9e2af;
-@define-color color9 #45475a;
+@define-color blue #74c7ec;
+@define-color blue #89b4fa;
+
+@define-color green #a6e3a1;
+@define-color green #84c180;
+
+@define-color red #f4b1d6;
+@define-color red #f38ba8;
+
+@define-color yellow #f9e2af;
+@define-color orange #fab387;
+@define-color purple #cba6f7;

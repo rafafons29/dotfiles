@@ -1,5 +1,5 @@
 local nightfox = require("nightfox")
-local colors = require("colors.colors_oxocarbon")
+local colors = require("colors.colors")("oxocarbon")
 local M = {}
 
 function M.setup()
@@ -46,23 +46,23 @@ function M.setup()
     specs = {},
     groups = {
       carbonfox = (function(hl, c)
-        hl.CursorLineNr           = { fg = c.green }
+        hl.CursorLineNr           = { fg = c.green2 }
 
-        hl.MiniIndentscopeSymbol  = { fg = c.fg_b_y }
-        hl.LineNr                 = { fg = c.normal }
-        hl.LineNrAbove            = { fg = c.gray }
-        hl.LineNrBelow            = { fg = c.gray }
+        hl.MiniIndentscopeSymbol  = { fg = '#252525' }
+        hl.LineNr                 = { fg = c.focus }
+        hl.LineNrAbove            = { fg = '#363636' }
+        hl.LineNrBelow            = { fg = '#363636' }
         hl.TreesitterContext      = { bg = '#232326' }
 
-        hl.TelescopeNormal        = { bg = c.bg_dark }
+        hl.TelescopeNormal        = { bg = '#131313' }
         hl.TelescopePromptBorder  = { bg = '#292929', fg = '#292929' }
         hl.TelescopePromptNormal  = { bg = '#292929' }
-        hl.TelescopePromptTitle   = { bg = c.red, fg = c.base }
-        hl.TelescopePreviewBorder = { bg = c.bg_dark, fg = c.bg_dark }
-        hl.TelescopePreviewTitle  = { bg = c.green, fg = c.base }
-        hl.TelescopeBorder        = { bg = c.bg_dark, fg = c.bg_dark }
-        hl.TelescopeResultsNormal = { bg = c.bg_dark, fg = c.fg_dark }
-        hl.TelescopeResultsBorder = { bg = c.bg_dark, fg = c.bg_dark }
+        hl.TelescopePromptTitle   = { bg = c.red2, fg = c.bg }
+        hl.TelescopePreviewBorder = { bg = '#131313', fg = '#131313' }
+        hl.TelescopePreviewTitle  = { bg = c.green1, fg = c.bg }
+        hl.TelescopeBorder        = { bg = '#131313', fg = '#131313' }
+        hl.TelescopeResultsNormal = { bg = '#131313', fg = '#b2b8ca' }
+        hl.TelescopeResultsBorder = { bg = '#131313', fg = '#131313' }
 
         return hl
       end)({}, colors)

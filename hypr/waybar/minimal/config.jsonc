@@ -12,25 +12,11 @@
   "margin-right": 0,
   "margin-top": 0,
   "modules-right": [
-    // "custom/padd",
-    // "custom/l_end",
-    // "custom/r_end",
-    // "custom/l_end",
-    // "backlight",
     "tray",
     "pulseaudio",
     "battery",
     "clock"
-    // "custom/r_end",
-    // "custom/padd"
   ],
   "modules-center": ["custom/menu", "wlr/taskbar"],
-  "modules-left": [
-    "hyprland/workspaces"
-    // "custom/r_end",
-    // "custom/l_end",
-    // "custom/r_end",
-    // "",
-    // "custom/padd"
-  ]
+  "modules-left": ["hyprland/workspaces"]
 }

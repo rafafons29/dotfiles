@@ -1,5 +1,10 @@
 #!/bin/bash
 
+echo $1
+if [[ ${1:2} == "reload" ]]; then 
+  killall waybar 
+fi
+
 CONFIG="$HOME/.config/hypr/waybar/minimal/config.jsonc"
 STYLE="$HOME/.config/hypr/waybar/minimal/style.css"
 

@@ -32,13 +32,11 @@ function run {
 	fi
 }
 
-run pamac-tray & # Store applications
-run xfce4-power-manager &
-# run volumeicon &
-# picom --config $HOME/.config/qtile/setup_complements/picom/picom.conf &
-run nm-applet &
-numlockx on &
-blueberry-tray & # bluethod
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-/usr/lib/xfce4/notifyd/xfce4-notifyd &
+waypaper --backend swaybg --restore # Set last wallpaper
+dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+run nm-applet & # Network manager
+# numlockx on &
+# /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+# /usr/lib/xfce4/notifyd/xfce4-notifyd &
 

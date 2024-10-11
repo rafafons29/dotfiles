@@ -1,8 +1,31 @@
 #!/bin/bash
 
-# Obtener el brillo actual
-Brightness=$(brightnessctl get)
+set -euo pipefail
 
-# Enviar o actualizar la notificación
-notify-send -u low -r 12345 "Brillo" "Nivel: $Brightness%" -i display-brightness -p
+calc_poc_brightnes() {
+  # Calculamos el porcentaje del brillo dado el valor actual y el valor total
 
+  brightnessctl set $1 # Aumentamos o disminuimos en 5 el brillo
+  local brightness=$(brightnessctl get | tr -dc '0-9') # Obtener el brillo actual
+  local total_brightness=$(brightnessctl max | tr -dc '0-9') # Brillo total 
+  local porc_brightnes=0
+
+  # Calcular el porcentaje de brillo
+  if [ $brightness -ne 0 ]; then
+    porc_brightnes=$(echo "scale=2; $brightness/$total_brightness" | bc) # Calculando la razon entre el valore del brillo actual y el maximo valor
+    porc_brightnes=$(echo "scale=0; $porc_brightnes * 100 / 1" | bc) # Calculando el porcentaje
+  else
+    porc_brightnes=0
+  fi
+
+  # Enviar o actualizar la notificación
+  notify-send --expire-time=1000 -u low -r 12345 "Brillo" "Nivel: $porc_brightnes%" -i display-brightness
+}
+
+iod="${1:2}" # flag para saber si vamos a incrementar o decrementar
+
+case "$iod" in 
+  inc) calc_poc_brightnes +5% ;;
+  dec) calc_poc_brightnes 5%- ;;
+  *) echo "Parametro no valido"; exit 1 ;;
+esac
