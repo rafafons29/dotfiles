@@ -4,7 +4,7 @@
   border-radius: 0px;
 }
 
-@import "../themes/tokyonight.css";
+@import "../themes/onedark.css";
 
 window#waybar {
   transition-property: background-color;
@@ -112,7 +112,8 @@ window#waybar.hidden {
 /*----------------Workspaces-------------------*/
 #workspaces {
   border-radius: 15px;
-  padding: 0px 3px;
+  padding: 0px;
+  margin: 3px 2px 3px 2px;
   border: 0px;
   font-size: 25px;
   color: @inactive;
@@ -179,18 +180,14 @@ window#waybar.hidden {
 /*---------------------------------------------*/
 
 /*-----------------TaskBar---------------------*/
-#workspaces,
 #taskbar {
-  padding: 0px;
-  margin: 5px 2px 5px 2px;
+  padding: 3px 1px 3px 1px;
 }
 
 #taskbar button {
   opacity: 1;
 
   border-radius: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
   color: @bg;
   color: @active;
 }
@@ -202,6 +199,7 @@ window#waybar.hidden {
 }
 
 #taskbar button:hover {
+  padding: 3px 5px 3px 5px;
   border-radius: 5px;
   color: @active;
 }
@@ -209,8 +207,9 @@ window#waybar.hidden {
 
 /*--------------------Menu-------------------------*/
 #custom-menu {
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 0px 5px 0px 5px;
+  margin: 3px;
   color: @focus;
 }
 

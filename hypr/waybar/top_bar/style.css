@@ -6,7 +6,7 @@
   padding-left: 2px;
 }
 
-@import "../themes/tokyonight.css";
+@import "../themes/onedark.css";
 
 window#waybar {
   background: @bar-bg;
@@ -18,6 +18,12 @@ window#waybar.hidden {
   opacity: 0.3;
 }
 
+@keyframes blink {
+  to {
+    color: #000000;
+  }
+}
+
 #backlight,
 #battery,
 #clock,
@@ -25,7 +31,7 @@ window#waybar.hidden {
 #pulseaudio,
 #network {
   margin: 0px;
-  padding: 0px 2px;
+  padding: 0px 7px;
   background-color: @bg;
   color: #ff007c;
 }
@@ -37,29 +43,25 @@ window#waybar.hidden {
   /*color: #3A3B3C;*/
 }
 
+/*--------------------Backlight--------------------*/
 #backlight {
-  color: @color6;
-  background-color: @bg;
   border-radius: 5px;
   margin: 0px;
+  background-color: @bg;
+  color: @green1;
 }
+/*-------------------------------------------------*/
 
+/*---------------------Battery---------------------*/
 #battery {
-  color: @color2;
-  background-color: @bg;
   border-radius: 5px;
   margin: 0px;
-}
-
-@keyframes blink {
-  to {
-    color: #000000;
-  }
+  color: @purple;
+  background-color: @bg;
 }
 
 #battery.critical:not(.charging) {
-  background-color: @bg;
-  color: #f38ba8;
+  color: @red1;
   border-radius: 5px;
   margin: 0px;
   animation-name: blink;
@@ -67,25 +69,30 @@ window#waybar.hidden {
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-direction: alternate;
+  background-color: @bg;
 }
+/*-------------------------------------------------*/
 
 #clock {
-  color: @focus;
-  background-color: @bg;
   border-radius: 5px;
   margin: 0px;
-  /* margin-right: 2px; */
+  color: @focus;
+  background-color: @bg;
 }
 
+/*--------------------CPU--------------------*/
 #cpu {
   background-color: @bg;
-  color: @color9;
+  color: @yellow;
 }
+/*------------------------------------------*/
 
+/*-----------------Memory-------------------*/
 #memory {
-  color: @color4;
   background-color: @bg;
+  color: @orange;
 }
+/*------------------------------------------*/
 
 #workspaces button {
   background-color: @bg;
@@ -108,10 +115,10 @@ window#waybar.hidden {
 }
 
 #pulseaudio {
-  background-color: @bg;
-  color: @color5;
   border-radius: 5px;
   margin: 0px;
+  color: @blue1;
+  background-color: @bg;
 }
 
 #pulseaudio.bluetooth {
@@ -127,13 +134,15 @@ window#waybar.hidden {
   margin: 0px;
 }
 
+/*-------------------Network-------------------*/
 #network {
   background-color: @bg;
-  color: @color3;
+  color: @red1;
 }
 
 #network.disconnected,
 #network.disabled {
   background-color: @bg;
-  color: @color3;
+  color: @red2;
 }
+/*---------------------------------------------*/

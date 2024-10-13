@@ -37,9 +37,9 @@ function M.setup()
       hl.TelescopePromptNormal  = { bg = '#2b2c2e' }
       hl.TelescopePromptTitle   = { bg = c.red1, fg = '#232326' }
       hl.TelescopePreviewBorder = { bg = '#1b1c1e', fg = '#1b1c1e' }
-      hl.TelescopePreviewTitle  = { bg = c.green1, fg = c.focus }
+      hl.TelescopePreviewTitle  = { bg = c.green1, fg = '#1b1c1e' }
       hl.TelescopeBorder        = { bg = '#1b1c1e', fg = '#1b1c1e' }
-      hl.TelescopeResultsNormal = { bg = '#1b1c1e', fg = '#1b1c1e' }
+      hl.TelescopeResultsNormal = { bg = '#1b1c1e', fg = colors.active }
       hl.TelescopeResultsBorder = { bg = '#1b1c1e', fg = '#1b1c1e' }
 
       return hl

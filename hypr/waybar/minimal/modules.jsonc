@@ -11,8 +11,8 @@
     "on-click": "activate",
     "on-click-middle": "close",
     "app_ids-mapping": {
-      "kitty": "terminal-symbolic"
-    }
+      "kitty": "terminal-symbolic",
+    },
   },
   "battery": {
     "interval": 30,
@@ -23,7 +23,7 @@
     "states": {
       "good": 95,
       "warning": 30,
-      "critical": 15
+      "critical": 15,
     },
     "format": "{icon}",
     "format-charging": "󰂄<span font='8'>{capacity}%</span>",
@@ -32,14 +32,14 @@
     "format-alt": "{icon}",
     "format-icons": ["󰁺", "󰁼", "󰁾", "󰂁", "󰁹"],
     "format-time": "{H}h {M}min",
-    "tooltip": true
+    "tooltip": true,
     // "on-click-right": "~/.config/hypr/scripts/glassmorphismToggle"
   },
   "clock": {
     "interval": 60,
     "align": 0,
     "rotate": 0,
-    "format": "{:%d/%m/%Y\n %I:%M:%S}"
+    "format": "{:%d/%m/%Y\n %I:%M:%S}",
     // "format-alt": "<span color='#ff9854'>󰃰 </span>{:%d-%m-%Y %a %I:%M:%S %p}",
   },
   "hyprland/workspaces": {
@@ -60,8 +60,8 @@
       "9": "<span font='14'>󰲰</span>",
       "10": "<span font='14'>󰿬</span>",
       "urgent": "",
-      "sort-by-number": true
-    }
+      "sort-by-number": true,
+    },
   },
   "pulseaudio": {
     "format": "{icon}",
@@ -77,22 +77,22 @@
       "phone": " ",
       "portable": " ",
       "car": " ",
-      "default": ["󰕾", "󰕾", "󰕾"]
+      "default": ["󰕾", "󰕾", "󰕾"],
     },
     "scroll-step": 5.0,
     "on-click": "~/.config/hypr/start_scripts/scripts/volume_notify --mute",
     "on-click-right": "pavucontrol",
     "on-scroll-up": "~/.config/hypr/start_scripts/scripts/volume_notify --inc",
     "on-scroll-down": "~/.config/hypr/start_scripts/scripts/volume_notify --dec",
-    "smooth-scrolling-threshold": 1
+    "smooth-scrolling-threshold": 1,
   },
   "tray": {
     "icon-size": 16,
-    "spacing": 10
+    "spacing": 10,
   },
   "custom/menu": {
-    "format": "<span font='25'></span>",
+    "format": "<span font='22'></span>",
     "tooltip": false,
-    "on-click": "~/.config/hypr/start_scripts/scripts/menu"
-  }
+    "on-click": "~/.config/hypr/start_scripts/scripts/menu",
+  },
 }

@@ -35,6 +35,10 @@ function history
     builtin history --show-time='%F %T ' | sort
 end
 
+function fish_user_key_bindings
+  fish_default_key_bindings -M insert
+  fish_vi_key_bindings --no-erase insert
+end
 
 # recently installed packages
 function ripp --argument length -d "List the last n (100) packages installed"
@@ -212,5 +216,12 @@ set fish_pager_color_prefix normal --bold underline
 set fish_pager_color_prefix white --bold --underline
 set fish_pager_color_progress brwhite --background=cyan
 set fish_color_search_match --background="#60AEFF"
+
+set fish_cursor_default block
+set fish_cursor_isert line
+set fish_cursor_replace_one underscore
+set fish_cursor_replace underscore 
+set fish_cursor_external line 
+set fish_cursor_visual block
 
 zoxide init fish | source

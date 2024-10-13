@@ -1,11 +1,65 @@
 #!/bin/bash
 
-echo $1
-if [[ ${1:2} == "reload" ]]; then 
-  killall waybar 
-fi
+CONFIG_FILE="$HOME/.config/hypr/start_scripts/scripts/waybar_start_config_var/config_last_used.txt"
 
-CONFIG="$HOME/.config/hypr/waybar/minimal/config.jsonc"
-STYLE="$HOME/.config/hypr/waybar/minimal/style.css"
+set_paths() {
+  case "${1:2}" in 
+    top) 
+      CONFIG="$HOME/.config/hypr/waybar/top_bar/config.jsonc" 
+      STYLE="$HOME/.config/hypr/waybar/top_bar/style.css"
+      ;;
+    buttom) 
+      CONFIG="$HOME/.config/hypr/waybar/minimal/config.jsonc" 
+      STYLE="$HOME/.config/hypr/waybar/minimal/style.css"
+      ;;
+    *) 
+      echo "Parametro no valido"
+      exit 1 
+      ;;
+  esac
+}
+
+read_previous_config() {
+  # Comprobadndo que el archivo no esta vacio
+  if [[ -f "$CONFIG_FILE" ]]; then 
+    POSITION=$(cat "$CONFIG_FILE") # Leemos el contenido del archivo
+  else 
+     POSITION="No se han encontrado configuraciones anteriores. Por fabor especifique 'top' o 'bottom'."
+  fi
+}
+
+set_position_is_good() {
+  case ${POSITION:2} in
+    top | buttom) set_paths "$POSITION" ;;
+  *) 
+    notify-send -u critical $POSITION
+    exit 1 
+    ;;
+  esac
+}
+
+if [ "$#" -eq 0 ]; then 
+  # Caso en el que no se hayan pasado parametros
+  read_previous_config 
+  set_position_is_good
+else 
+  if [[ ${1:2} == "reload" ]]; then 
+    # Caso en el que haremos un reload de waybar
+    pkill waybar || true
+  fi
+
+  if [[ ${2:2} =~ ^(top|buttom)$ ]]; then 
+    set_paths $2
+    echo "$2" > $CONFIG_FILE # Guardamos la ultima configuracion
+  elif [[ ${2:2} =~ "" ]]; then
+    read_previous_config 
+    set_position_is_good
+    echo "$POSITION" > $CONFIG_FILE
+    return 
+  else 
+    echo "Parametro no valido para la posicion de la barra"
+    exit 1
+  fi
+fi
 
 waybar --bar main-bar --log-level error --config ${CONFIG} --style ${STYLE}
