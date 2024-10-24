@@ -11,7 +11,7 @@
     "on-update": "",
     "on-scroll-up": "~/.config/hypr/scripts/brightness --inc",
     "on-scroll-down": "~/.config/hypr/scripts/brightness --dec",
-    "smooth-scrolling-threshold": 1,
+    "smooth-scrolling-threshold": 1
   },
   "hyprland/workspaces": {
     "active-only": false,
@@ -27,7 +27,7 @@
       "5": "",
       "urgent": "",
       "default": "",
-      "sort-by-number": true,
+      "sort-by-number": true
     }
     // "persistent-workspaces": {
     //   "1": [""],
@@ -70,7 +70,7 @@
     "format": "<span color='#82aaff'>󰃰 </span>{:%d-%m-%Y %a %I:%M:%S %p}",
     "format-alt": "<span color='#ff9854'> </span>{:%a %b %d}",
     "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>",
-    "on-click-right": "~/.config/hypr/scripts/changeWallpaper",
+    "on-click-right": "~/.config/hypr/scripts/changeWallpaper"
   },
   "cpu": {
     "interval": 1,

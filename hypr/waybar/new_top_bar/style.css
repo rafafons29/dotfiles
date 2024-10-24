@@ -1,0 +1,166 @@
+* {
+  font-family: "JetBrains Mono NF", "Noto Sans", "Roboto Condensed", sans-serif;
+  font-size: 12px;
+  border-radius: 5px;
+}
+
+@import "../colors.css";
+
+#clock,
+#battery,
+#network,
+#backlight,
+#memory {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 3px;
+  margin-right: 3px;
+  padding-right: 8px;
+  padding-left: 8px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  border-radius: 3px;
+}
+
+#cpu,
+#custom-menu,
+#network {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-right: 4px;
+  padding-left: 4px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+#battery,
+#memory,
+#network,
+#backlight {
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+/*----------------------Workspaces----------------------*/
+#workspaces button {
+  animation: ws_normal 20s ease-in-out 1;
+  color: @active;
+}
+
+#workspaces button.empty {
+  color: @inactive;
+}
+
+#workspaces button.active {
+  border-radius: 0px;
+  transition: border-color 1s;
+  border-bottom: 1px solid @focus;
+  color: @focus;
+}
+
+#workspaces button:hover {
+  border-radius: 5px;
+  background-color: @blue1;
+  color: @bg;
+}
+/*------------------------------------------------------*/
+
+/*---------------------Battery---------------------*/
+#battery {
+  color: @blue1;
+}
+
+#battery.charging {
+  color: @green2;
+}
+
+#battery.charging.good {
+  background-color: transparent;
+  color: @focus;
+}
+
+#battery.charging.warning {
+  background-color: transparent;
+  color: @yellow;
+}
+
+#battery.charging.critical {
+  background-color: transparent;
+}
+
+#battery.warning:not(.charging) {
+  animation-name: blink;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  background-color: transparent;
+  border-color: transparent;
+  background-color: @orange;
+  color: @inactive;
+}
+
+#battery.critical {
+  background-color: transparent;
+}
+
+#battery.critical:not(.charging) {
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  margin: 1px 5px 1px 1px;
+  background-color: transparent;
+  border-color: transparent;
+  color: @red2;
+}
+
+#battery.warning {
+  background-color: transparent;
+}
+/*-------------------------------------------------*/
+
+#memory {
+  color: @focus;
+}
+
+#backlight {
+  color: @red1;
+}
+
+#cpu {
+  margin-right: 2px;
+  margin-left: 0px;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  background-color: @bar-bg;
+  color: @active;
+}
+
+#network {
+  color: @blue1;
+}
+
+#network.disconnected,
+#network.disabled {
+  color: @blue2;
+}
+
+#clock {
+  margin-right: 3px;
+  background-color: @focus;
+  color: @bg;
+}
+
+#custom-menu {
+  margin-right: 0px;
+  margin-left: 3px;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  background-color: @green1;
+  color: @bg;
+}

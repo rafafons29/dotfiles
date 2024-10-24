@@ -1,0 +1,21 @@
+{
+  "include": "~/.config/hypr/waybar/new_top_bar/modules.jsonc",
+  "layer": "top",
+  "position": "top",
+  "height": 20,
+  "spacing": 2,
+  "fixed-center": true,
+  "margin-left": 2,
+  "margin-right": 2,
+  "margin-top": 2,
+  "modules-left": ["hyprland/workspaces"],
+  "modules-right": [
+    "battery",
+    "backlight",
+    "custom/menu",
+    "cpu",
+    "memory",
+    "network",
+    "clock"
+  ]
+}

@@ -17,6 +17,6 @@
     "memory",
     "network",
     "battery",
-    "clock",
-  ],
+    "clock"
+  ]
 }

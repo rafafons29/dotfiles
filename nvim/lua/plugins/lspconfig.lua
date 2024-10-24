@@ -25,6 +25,7 @@ return {
     setup_autocmd('css', servers.css)
     setup_autocmd({ 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' }, servers.eslint)
     setup_autocmd({ 'sh' }, servers.bash)
+    setup_autocmd({ "css", "html", "javascript", "javascriptreact", "typescriptreact" }, servers.emmet)
 
 
     vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(

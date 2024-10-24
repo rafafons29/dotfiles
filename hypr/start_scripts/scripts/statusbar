@@ -1,6 +1,8 @@
 #!/bin/bash
 
-CONFIG_FILE="$HOME/.config/hypr/start_scripts/scripts/waybar_start_config_var/config_last_used.txt"
+CONFIG_FILE="$HOME/.config/hypr/start_scripts/scripts/waybar_start_config_var/config_last_used.json"
+
+declare -A json_content
 
 set_paths() {
   case "${1:2}" in 
@@ -9,8 +11,12 @@ set_paths() {
       STYLE="$HOME/.config/hypr/waybar/top_bar/style.css"
       ;;
     buttom) 
-      CONFIG="$HOME/.config/hypr/waybar/minimal/config.jsonc" 
-      STYLE="$HOME/.config/hypr/waybar/minimal/style.css"
+      CONFIG="$HOME/.config/hypr/waybar/w11/config.jsonc" 
+      STYLE="$HOME/.config/hypr/waybar/w11/style.css"
+      ;;
+    newtop) 
+      CONFIG="$HOME/.config/hypr/waybar/new_top_bar/config.jsonc"
+      STYLE="$HOME/.config/hypr/waybar/new_top_bar/style.css"
       ;;
     *) 
       echo "Parametro no valido"
@@ -19,18 +25,51 @@ set_paths() {
   esac
 }
 
+read_json() {
+  # Leer el arvhivo y extraer las claves y valores
+  while IFS=": " read -r clave valor; do
+    # Limpiar comillas y espacios
+    clave=$(echo "$clave" | tr -d '\" ' | sed 's/,$//')
+    valor=$(echo "$valor" | tr -d '\" ,')
+
+    if [[ $clave == "bg" ]]; then
+      json_content+=$(hex_to_rgba "$valor")
+    fi
+
+    json_content["$clave"]="$valor"
+
+  done < <(grep -o '"[^"]*": *"[^"]*"' "$1")
+}
+
+save_json() {
+  if [[ -n "${json_content["$1"]}" ]]; then # Comprobamos que el value existe
+    jq --arg key "$1" --arg value "$2" \
+      '(.[$key]) = $value' "$CONFIG_FILE" > tmp.$$.json 
+
+    if [[ $? -eq 0 ]]; then
+      mv tmp.$$.json "$CONFIG_FILE"
+    else 
+      rm tmp.$$.json
+    fi
+  else 
+    echo "La clave '$1' no existe."
+  fi
+}
+
 read_previous_config() {
   # Comprobadndo que el archivo no esta vacio
   if [[ -f "$CONFIG_FILE" ]]; then 
-    POSITION=$(cat "$CONFIG_FILE") # Leemos el contenido del archivo
-  else 
+    read_json "$CONFIG_FILE"
+    POSITION="${json_content["bar"]}"
+    COLOR="${json_content["color"]}"
+  else
      POSITION="No se han encontrado configuraciones anteriores. Por fabor especifique 'top' o 'bottom'."
   fi
 }
 
 set_position_is_good() {
   case ${POSITION:2} in
-    top | buttom) set_paths "$POSITION" ;;
+    top | buttom | newtop) set_paths "$POSITION" ;;
   *) 
     notify-send -u critical $POSITION
     exit 1 
@@ -38,9 +77,11 @@ set_position_is_good() {
   esac
 }
 
+read_previous_config 
+
 if [ "$#" -eq 0 ]; then 
   # Caso en el que no se hayan pasado parametros
-  read_previous_config 
+  "$HOME/.config/hypr/start_scripts/scripts/theme" $COLOR
   set_position_is_good
 else 
   if [[ ${1:2} == "reload" ]]; then 
@@ -48,14 +89,15 @@ else
     pkill waybar || true
   fi
 
-  if [[ ${2:2} =~ ^(top|buttom)$ ]]; then 
+  if [[ ${2:2} =~ ^(top|buttom|newtop)$ && $3 =~ ^(andromeda|andromeda_colorizer|carbonfox|catppucin|onedark|oxocarbon|palenight|tokyonight) ]]; then 
     set_paths $2
-    echo "$2" > $CONFIG_FILE # Guardamos la ultima configuracion
-  elif [[ ${2:2} =~ "" ]]; then
-    read_previous_config 
+    save_json bar $2
+    save_json color $3
+    "$HOME/.config/hypr/start_scripts/scripts/theme" $3
+  elif [[ ${2:2} =~ "" && $3 =~ "" ]]; then
     set_position_is_good
-    echo "$POSITION" > $CONFIG_FILE
-    return 
+    save_json bar $POSITION
+    save_json color $COLOR
   else 
     echo "Parametro no valido para la posicion de la barra"
     exit 1

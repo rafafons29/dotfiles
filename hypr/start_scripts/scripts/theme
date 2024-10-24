@@ -1,0 +1,45 @@
+#!/bin/bash
+
+THEMES="/home/rafa/.config/colors"
+MYFILE="/home/rafa/.config/hypr/waybar/colors.css"
+
+hex_to_rgba() {
+  hex=${1#"#"} # Eliminarl el simbolo #
+  if [ ${#hex} -eq 3 ]; then
+    hex="${hex:0:1}${hex:0:1}${hex:1:1}${hex:1:1}${hex:2:1}${hex:2:1}" # Expandir de 3 a 6 caracteres
+  fi
+
+  r=$((16#${hex:0:2}))
+  g=$((16#${hex:2:2}))
+  b=$((16#${hex:4:2}))
+
+  echo "bar-op-bg rgba($r, $g, $b, 0.8)"
+}
+
+read_json() {
+  # Leer el arvhivo y extraer las claves y valores
+  while IFS=": " read -r clave valor; do
+    # Limpiar comillas y espacios
+    clave=$(echo "$clave" | tr -d '\" ' | sed 's/,$//')
+    valor=$(echo "$valor" | tr -d '\" ,')
+
+    if [[ $clave == "bg" ]]; then
+      json_content+=$(hex_to_rgba "$valor")
+    fi
+
+    json_content+=("$clave $valor")
+
+  done < <(grep -o '"[^"]*": *"[^"]*"' "$1")
+}
+
+create_css_theme() {
+  > $1
+  
+  for elem in "${json_content[@]}"; do
+    echo "@define-color $elem;" >> $1
+  done
+}
+
+json_content=()
+read_json "$THEMES/$1.json"
+create_css_theme $MYFILE

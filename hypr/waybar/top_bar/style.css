@@ -6,10 +6,10 @@
   padding-left: 2px;
 }
 
-@import "../themes/onedark.css";
+@import "../colors.css";
 
 window#waybar {
-  background: @bar-bg;
+  background: @bg;
   transition-property: background-color;
   transition-duration: 0.5s;
 }

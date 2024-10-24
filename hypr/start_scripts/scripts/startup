@@ -20,8 +20,7 @@ done
 # Lauch notification daemon (mako)
 #${SCRIPTSDIR}/notifications &
 
-# Lauch statusbar (waybar)
-${SCRIPTSDIR}/statusbar &
+${SCRIPTSDIR}/statusbar &  # Lauch statusbar (waybar)
 
 # Xauthority
 #${SCRIPTSDIR}/xauthority &
@@ -37,6 +36,3 @@ dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 run nm-applet & # Network manager
 # numlockx on &
-# /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-# /usr/lib/xfce4/notifyd/xfce4-notifyd &
-

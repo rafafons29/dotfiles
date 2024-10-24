@@ -1,0 +1,219 @@
+* {
+  font-family: "JetBrainsMono", "Noto Sans", "Roboto Condensed", sans-serif;
+  font-size: 12px;
+  border-radius: 0px;
+}
+
+@import "../colors.css";
+
+window#waybar {
+  transition-property: background-color;
+  transition-duration: 0.5s;
+  background: @bar-op-bg;
+}
+
+window#waybar.hidden {
+  opacity: 0.3;
+}
+
+#battery,
+#clock,
+#pulseaudio {
+  color: @active;
+  border-radius: 5px;
+  margin: 0px;
+}
+
+/*---------------Battery------------------*/
+#battery {
+  margin: 1px 5px 1px 1px;
+  border-radius: 10px;
+  padding-left: 3px;
+  font-size: 20px;
+  color: @active;
+}
+
+#battery.charging {
+  font-family: JetBrainsMono;
+  font-size: 20px;
+  color: @green2;
+}
+
+#battery.charging.good {
+  background-color: transparent;
+  color: @focus;
+}
+
+#battery.charging.warning {
+  background-color: transparent;
+  color: @yellow;
+}
+
+#battery.charging.critical {
+  background-color: transparent;
+}
+
+#battery.warning:not(.charging) {
+  animation-name: blink;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  background-color: transparent;
+  border-color: transparent;
+  color: @orange;
+}
+
+#battery.critical {
+  background-color: transparent;
+}
+
+#battery.critical:not(.charging) {
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  margin: 1px 5px 1px 1px;
+  background-color: transparent;
+  border-color: transparent;
+  color: @red2;
+}
+
+#battery.warning {
+  background-color: transparent;
+}
+/*--------------------------------------------*/
+
+/*-----------------Clock-----------------------*/
+#clock {
+  margin: 0px 0px 0px 0px;
+  border-radius: 10px;
+  padding-right: 10px;
+  padding-left: 3px;
+  color: @active;
+}
+/*---------------------------------------------*/
+
+/*------------------Tray-----------------------*/
+#tray {
+  background-color: rgba(26, 27, 38, 0);
+  padding: 8px;
+}
+
+#tray > .passive {
+  -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
+}
+/*---------------------------------------------*/
+
+/*----------------Workspaces-------------------*/
+#workspaces {
+  border-radius: 15px;
+  padding: 0px;
+  margin: 3px 2px 3px 2px;
+  border: 0px;
+  font-size: 25px;
+  color: @inactive;
+}
+
+#workspaces button {
+  box-shadow: none;
+  text-shadow: none;
+  padding: 0px;
+  border-radius: 9px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  margin-left: 0px;
+  padding-left: 3px;
+  padding-right: 3px;
+  margin-right: 0px;
+  animation: ws_normal 20s ease-in-out 1;
+  color: @inactive;
+}
+
+#workspaces button.persistent {
+  transition: all 0.2s ease-in-out;
+  color: @active;
+}
+
+#workspaces button.empty {
+  transition: all 0.2s ease-in-out;
+  color: @inactive;
+}
+
+#workspaces button:hover {
+  animation: ws_hover 20s ease-in-out 1;
+  transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
+  background: @inactive;
+  color: @color8;
+}
+
+#workspaces button.active {
+  margin-left: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+  margin-right: 1px;
+  animation: ws_active 20s ease-in-out 1;
+  transition: all 0.4s cubic-bezier(0.55, -0.68, 0.48, 1.682);
+  color: @focus;
+}
+/*---------------------------------------------*/
+
+/*-----------------Pulseaudio------------------*/
+#pulseaudio {
+  margin: 1px 5px 1px 1px;
+  font-size: 25px;
+  color: @active;
+}
+
+#pulseaudio.bluetooth {
+  margin: 1px 5px 1px 1px;
+  font-size: 20px;
+}
+
+#pulseaudio.muted {
+  margin: 1px 5px 1px 1px;
+}
+/*---------------------------------------------*/
+
+/*-----------------TaskBar---------------------*/
+#taskbar {
+  padding: 3px 1px 3px 1px;
+}
+
+#taskbar button {
+  opacity: 1;
+
+  border-radius: 5px;
+  color: @bg;
+  color: @active;
+}
+
+#taskbar button.active {
+  transition: border-color 1s;
+  border-radius: 0px;
+  border-bottom: 1px solid @focus;
+}
+
+#taskbar button:hover {
+  padding: 3px 5px 3px 5px;
+  border-radius: 5px;
+  color: @active;
+}
+/*---------------------------------------------*/
+
+/*--------------------Menu-------------------------*/
+#custom-menu {
+  border-radius: 10px;
+  padding: 0px 5px 0px 5px;
+  margin: 3px;
+  color: @focus;
+}
+
+#custom-menu:hover {
+  background-color: @inactive;
+}
+/*-------------------------------------------------*/

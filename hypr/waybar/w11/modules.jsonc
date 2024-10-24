@@ -1,0 +1,100 @@
+{
+  "wlr/taskbar": {
+    "ignore-list": ["xfce4-notifyd"],
+    "format": "{icon}",
+    "tooltip": true,
+    "group": true,
+    "sort-by": "workspaces",
+    "icon-size": 22,
+    "spacing": 0,
+    "tooltip-format": "{title}",
+    "on-click": "activate",
+    "on-click-middle": "close",
+    "app_ids-mapping": {
+      "kitty": "terminal-symbolic"
+    }
+  },
+  "battery": {
+    "interval": 15,
+    "align": 0,
+    "rotate": 0,
+    "full-at": 100,
+    "design-capacity": false,
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon}",
+    "format-charging": "󰂄<span font='8'>{capacity}%</span>",
+    "format-plugged": " ",
+    "format-full": "{icon}",
+    "format-alt": "{icon}<span font='8'>{capacity}%</span>",
+    "format-icons": ["󰁺", "󰁼", "󰁾", "󰂁", "󰁹"],
+    "format-time": "{H}h {M}min",
+    "tooltip": true
+    // "on-click-right": "~/.config/hypr/scripts/glassmorphismToggle"
+  },
+  "clock": {
+    "interval": 60,
+    "align": 0,
+    "rotate": 0,
+    "format": "{:%d/%m/%Y\n %I:%M:%S}",
+    "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>"
+  },
+  "hyprland/workspaces": {
+    "active-only": false,
+    "disable-scroll": true,
+    "format": "{icon}",
+    "on-click": "activate",
+    "all-outputs": true,
+    "format-icons": {
+      "1": "<span font='14'>󰲠</span>",
+      "2": "<span font='14'>󰲢</span>",
+      "3": "<span font='14'>󰲤</span>",
+      "4": "<span font='14'>󰲦</span>",
+      "5": "<span font='14'>󰲨</span>",
+      "6": "<span font='14'>󰲪</span>",
+      "7": "<span font='14'>󰲬</span>",
+      "8": "<span font='14'>󰲮</span>",
+      "9": "<span font='14'>󰲰</span>",
+      "10": "<span font='14'>󰿬</span>",
+      "urgent": "",
+      "sort-by-number": true
+    }
+  },
+  "pulseaudio": {
+    "format": "{icon}",
+    "format-muted": "󰖁",
+    "format-bluetooth": "",
+    "format-bluetooth-muted": "",
+    "format-source": "",
+    "format-source-muted": "",
+    "format-icons": {
+      "headphone": " ",
+      "hands-free": " ",
+      "headset": " ",
+      "phone": " ",
+      "portable": " ",
+      "car": " ",
+      "default": ["󰕾", "󰕾", "󰕾"]
+    },
+    "scroll-step": 5.0,
+    "on-click": "~/.config/hypr/start_scripts/scripts/volume_notify --mute",
+    "on-click-right": "pavucontrol",
+    "on-scroll-up": "~/.config/hypr/start_scripts/scripts/volume_notify --inc",
+    "on-scroll-down": "~/.config/hypr/start_scripts/scripts/volume_notify --dec",
+    "smooth-scrolling-threshold": 1,
+    "menu": "pavucontrol",
+    "tooltip": true
+  },
+  "tray": {
+    "icon-size": 16,
+    "spacing": 10
+  },
+  "custom/menu": {
+    "format": "<span font='22'></span>",
+    "tooltip": false,
+    "on-click": "~/.config/hypr/start_scripts/scripts/menu"
+  }
+}
