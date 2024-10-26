@@ -109,10 +109,10 @@
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-direction: alternate;
-  margin: 1px 5px 1px 1px;
   background-color: transparent;
   border-color: transparent;
-  color: @red2;
+  background-color: @red2;
+  color: @inactive;
 }
 
 #battery.warning {
