@@ -1,0 +1,9 @@
+#!/bin/bash
+
+hyprpicker -a --format=hex
+
+sleep 0.5
+
+color=$(wl-paste)
+
+notify-send "Color: $color"
