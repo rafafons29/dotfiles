@@ -16,7 +16,7 @@ configuration {
     transparency:                "real";
     location:                    center;
     anchor:                      center;
-    background-color:            @background;
+    background-color:            @bg;
     border:                      0;
     border-radius:               10px;
     border-color:                @active;
@@ -35,11 +35,11 @@ configuration {
 }
 #message {
     border:       0px;
-    border-color: @background;
+    border-color: @bg;
     padding:      1px;
 }
 #textbox {
-    text-color: @foreground;
+    text-color: @active;
 }
 #listview {
     border:                      0px;
@@ -62,7 +62,7 @@ configuration {
     padding:                     0px;
     border:                      0px solid;
     border-radius:               0px;
-    border-color:                @selected;
+    border-color:                @focus;
     background-color:            transparent;
     text-color:                  @active;
     cursor:                      "default";
@@ -76,47 +76,47 @@ configuration {
     border-radius:               100%;
     border-color:                @active;
     background-color:            transparent;
-    text-color:                  @foreground;
+    text-color:                  @active;
     cursor:                      pointer;
 }
 #element.normal.normal {
     background-color: transparent;
-    text-color:       @foreground;
+    text-color:       @inactive;
 }
 #element.normal.urgent {
     background-color: transparent;
-    text-color:       @foreground;
+    text-color:       @active;
 }
 #element.normal.active {
     background-color: transparent;
-    text-color:       @selected;
+    text-color:       @focus;
 }
 #element.selected.normal {
     border:           0px 0px 0px 0px;
     border-radius:    0%;
     border-color:     transparent;
     background-color: transparent;
-    text-color:       @selected;
+    text-color:       @focus;
 }
 #element.selected.urgent {
     background-color: transparent;
-    text-color:       @foreground;
+    text-color:       @active;
 }
 #element.selected.active {
     background-color: transparent;
-    text-color:       @selected;
+    text-color:       @focus;
 }
 #element.alternate.normal {
     background-color: transparent;
-    text-color:       @foreground;
+    text-color:       @inactive;
 }
 #element.alternate.urgent {
     background-color: transparent;
-    text-color:       @foreground;
+    text-color:       @red1;
 }
 #element.alternate.active {
     background-color: transparent;
-    text-color:       @selected;
+    text-color:       @focus;
 }
 #scrollbar {
     width:        2px ;
@@ -130,11 +130,11 @@ configuration {
 }
 #button.selected {
     background-color: transparent;
-    text-color:       @foreground;
+    text-color:       @active;
 }
 #inputbar {
     spacing:                     0;
-    text-color:                  @foreground;
+    text-color:                  @active;
     padding:                     1px ;
     enabled:                     true;
     margin:                      0px;
@@ -143,11 +143,11 @@ configuration {
 }
 #case-indicator {
     spacing:    0;
-    text-color: @foreground;
+    text-color: @active;
 }
 #entry {
     spacing:    0;
-    text-color: @foreground;
+    text-color: @active;
 
     enabled:                     true;
     padding:                     5px;
@@ -165,7 +165,7 @@ configuration {
     border-radius:               100%;
     background-color:            transparent;
     spacing:                     20;
-    text-color:                  @background;
+    text-color:                  @bg;
 }
 #inputbar {
     enabled:                     true;
@@ -176,15 +176,15 @@ configuration {
     border-radius:               100%;
     border-color:                transparent;
     background-color:            transparent;
-    text-color:                  @foreground;
+    text-color:                  @active;
     children:                    [ "prompt", "entry" ];
 }
 #textbox-prompt-colon {
     enabled:                     true;
     expand:                      false;
     str:                         "::";
-    background-color:            @background;
-    text-color:                  @foreground;
+    background-color:            @bg;
+    text-color:                  @active;
 }
 element-text, element-icon {
     background-color: inherit;

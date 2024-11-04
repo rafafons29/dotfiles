@@ -1,1 +1,16 @@
-@import                          "./shared/tokyonight.rasi"
+* {
+bg: #1a1b26BF;
+bar-bg: #1a1b2FFF;
+active: #c8d3f5FF;
+inactive: #3b4261FF;
+focus: #82aaffFF;
+blue1: #86e1fcFF;
+blue2: #41a6b5FF;
+green1: #c3e88dFF;
+green2: #4fd6beFF;
+red1: #ff757fFF;
+red2: #ff007cFF;
+yellow: #ffc777FF;
+orange: #ff966cFF;
+purple: #c099ffFF;
+}

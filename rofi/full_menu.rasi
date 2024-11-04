@@ -41,7 +41,7 @@ window {
     border:                      0px solid;
     border-radius:               0px;
     cursor:                      "default";
-    background-color:            @background;
+    background-color:            @bg;
 }
 
 /*****----- Main Box -----*****/
@@ -65,7 +65,7 @@ inputbar {
     border:                      0px;
     border-radius:               0px;
     background-color:            transparent;
-    text-color:                  @foreground;
+    text-color:                  @active;
     children:                    [ "prompt", "entry" ];
 }
 
@@ -109,7 +109,7 @@ listview {
     border:                      0px solid;
     border-radius:               0px;
     background-color:            transparent;
-    text-color:                  @foreground;
+    text-color:                  @inactive;
     cursor:                      "default";
 }
 scrollbar {
@@ -127,12 +127,12 @@ element {
     border:                      0px solid;
     border-radius:               0px;
     background-color:            transparent;
-    text-color:                  @foreground;
+    text-color:                  @inactive;
     cursor:                      pointer;
 }
 element normal.normal {
     background-color:            transparent;
-    text-color:                  @foreground;
+    text-color:                  @inactive;
 }
 element normal.urgent {
     background-color:            transparent;
@@ -140,32 +140,32 @@ element normal.urgent {
 }
 element normal.active {
     background-color:            transparent;
-    text-color:                  @active;
+    text-color:                  @green1;
 }
 element selected.normal {
     background-color:            transparent;
-    text-color:                  @selected;
+    text-color:                  @focus;
     border-radius:               4px;
 }
 element selected.urgent {
     background-color:            transparent;
-    text-color:                  @urgent;
+    text-color:                  @red1;
 }
 element selected.active {
     background-color:            transparent;
-    text-color:                  @active;
+    text-color:                  @green1;
 }
 element alternate.normal {
     background-color:            transparent;
-    text-color:                  @foreground;
+    text-color:                  @inactive;
 }
 element alternate.urgent {
     background-color:            transparent;
-    text-color:                  @urgent;
+    text-color:                  @red1;
 }
 element alternate.active {
     background-color:            transparent;
-    text-color:                  @selected;
+    text-color:                  @focus;
 }
 element-icon {
     background-color:            transparent;
@@ -191,19 +191,19 @@ mode-switcher{
     border:                      0px solid;
     border-radius:               0px;
     background-color:            transparent;
-    text-color:                  @foreground;
+    text-color:                  @active;
 }
 button {
     padding:                     10px;
     border:                      0px solid;
     border-radius:               0px;
-    background-color:            @background;
-    text-color:                  @background-alt;
+    background-color:            @bg;
+    text-color:                  @inactive;
     cursor:                      pointer;
 }
 button selected {
     background-color:            transparent;
-    text-color:                  @active;
+    text-color:                  @green1;
 }
 
 /*****----- Message -----*****/
@@ -214,18 +214,18 @@ message {
     border:                      0px solid;
     border-radius:               0px 0px 0px 0px;
     background-color:            transparent;
-    text-color:                  @foreground;
+    text-color:                  @active;
 }
 textbox {
     padding:                     100px;
     border:                      0px solid;
     border-radius:               0px;
-    background-color:            @background;
-    text-color:                  @foreground;
+    background-color:            @bg;
+    text-color:                  @active;
     vertical-align:              0.5;
     horizontal-align:            0.0;
     highlight:                   none;
-    placeholder-color:           @foreground;
+    placeholder-color:           @active;
     blink:                       true;
     markup:                      true;
 }
@@ -233,6 +233,6 @@ error-message {
     padding:                     0px;
     border:                      0px solid;
     border-radius:               0px;
-    background-color:            @background;
-    text-color:                  @urgent;
+    background-color:            @bg;
+    text-color:                  @red1;
 }

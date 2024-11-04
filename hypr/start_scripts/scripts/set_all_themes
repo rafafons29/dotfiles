@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# Nombres de los temas de colores
+name_themes=("andromeda" "andromeda_colorizer" "onedark" "palenight" "tokyonight" "catppucin" "oxocarbon")
+
+theme="$1"
+find_theme=0
+
+# Comprobar que el parametro pasado existe
+for thm in ${name_themes[@]}; do
+  if [ "$thm" = "$theme" ]; then
+    find_theme=1
+  fi
+done
+
+# Ruta a los archivos de configuracion
+QTILE_THEME_CONFIG_PATH="$HOME/.config/qtile/settings/theme.py"
+ROFI_CONFIG_PATH="$HOME/.config/rofi/color.rasi"
+KITTY_CONFIG_PATH="$HOME/.config/kitty/kitty.conf"
+FILE_EXPLORER="$HOME/.config/yazi/theme.toml"
+
+# Establecer el nuevo color que se va a utilizar.
+for n_theme in "${name_themes[@]}"; do
+  if grep -qw $n_theme $QTILE_THEME_CONFIG_PATH && grep -qw $n_theme $ROFI_CONFIG_PATH && grep -qw $n_theme $KITTY_CONFIG_PATH && grep -qw $n_theme $FILE_EXPLORER; then
+    if [ "$find_theme" = "1" ]; then
+      sed -i "s/$n_theme/$theme/" $QTILE_THEME_CONFIG_PATH 
+      sed -i "s/$n_theme/$theme/" $ROFI_CONFIG_PATH
+      sed -i "s/$n_theme/$theme/" $KITTY_CONFIG_PATH
+      sed -i "s/$n_theme/$theme/" $FILE_EXPLORER
+    else 
+      exit 1
+    fi
+    kitty @ load-config  
+    break
+  fi
+done

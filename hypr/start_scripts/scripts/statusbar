@@ -105,7 +105,9 @@ main() {
       set_paths $2
       save_json bar $2
       save_json color $3
-      "$HOME/.config/hypr/start_scripts/scripts/theme" $3
+      $HOME/.config/hypr/start_scripts/scripts/theme $3
+      $HOME/.config/hypr/start_scripts/scripts/set_all_themes $3
+      notify-send "Theme" "Theme $3 theme successfully set"
     elif [[ ${2:2} =~ "" && $3 =~ "" ]]; then
       set_position_is_good
       save_json bar $POSITION

@@ -21,7 +21,7 @@
 # environments, consider adding more input validation.
 
 # Rofi configuration file path
-config="$HOME/.config/rofi/wifi/wifi.rasi"
+config="$HOME/.config/rofi/wifi.rasi"
 
 # Default border and font size
 border_width=2
