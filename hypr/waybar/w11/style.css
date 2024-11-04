@@ -97,7 +97,7 @@ window#waybar.hidden {
 /*------------------Tray-----------------------*/
 #tray {
   background-color: rgba(26, 27, 38, 0);
-  padding: 8px;
+  padding: 1px 5px 1px 5px;
 }
 
 #tray > .passive {
@@ -181,7 +181,7 @@ window#waybar.hidden {
 
 /*-----------------TaskBar---------------------*/
 #taskbar {
-  padding: 3px 1px 3px 1px;
+  padding: 1px 5px 1px 5px;
 }
 
 #taskbar button {
@@ -199,7 +199,7 @@ window#waybar.hidden {
 }
 
 #taskbar button:hover {
-  padding: 3px 5px 3px 5px;
+  padding: 1px 5px 1px 5px;
   border-radius: 5px;
   color: @active;
 }
@@ -208,7 +208,7 @@ window#waybar.hidden {
 /*--------------------Menu-------------------------*/
 #custom-menu {
   border-radius: 10px;
-  padding: 0px 5px 0px 5px;
+  padding: 1px 5px 1px 5px;
   margin: 3px;
   color: @focus;
 }

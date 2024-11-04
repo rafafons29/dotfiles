@@ -2,7 +2,7 @@
   "include": "~/.config/hypr/waybar/new_top_bar/modules.jsonc",
   "layer": "top",
   "position": "top",
-  "height": 20,
+  "height": 35,
   "spacing": 2,
   "fixed-center": true,
   "margin-left": 2,

@@ -30,8 +30,8 @@
     "format": "{icon} <span font='9'>{capacity}%</span>",
     "format-charging": " <span font='9'>{capacity}%</span>",
     "format-plugged": " ",
-    "format-full": "{icon} <span font='8'>{capacity}%</span>",
-    "format-alt": "{icon} <span font='8'>{capacity}%</span>",
+    "format-full": "{icon} <span font='9'>{capacity}%</span>",
+    "format-alt": "{icon} <span font='9'>{capacity}%</span>",
     "format-icons": ["󰁺", "󰁼", "󰁾", "󰂁", "󰁹"],
     "format-time": "{H}h {M}min",
     "tooltip": true
@@ -61,8 +61,8 @@
   "network": {
     "interval": 5,
     "format-wifi": "<span background='#86e1fc' color='#1a1b26'> 󰤨  </span> {essid}",
-    "format-ethernet": "<span background='#86e1fc' color='#1a1b26'> </span> {ipaddr}/{cidr}",
-    "format-linked": "<span background='#86e1fc' color='#1a1b26'> </span> {ifname} (No IP)",
+    "format-ethernet": "<span background='#86e1fc' color='#1a1b26'> 󰈀 </span> {ipaddr}/{cidr}",
+    "format-linked": "<span background='#86e1fc' color='#1a1b26'> 󰈀 </span> {ifname} (No IP)",
     "format-disconnected": "<span background='#86e1fc' color='#1a1b26'> 󰤭  </span> Disconnected",
     "format-disabled": "<span background='#86e1fc' color='#1a1b26'>󰤪 </span> Disabled",
     "format-alt": " {bandwidthUpBits} |  {bandwidthDownBits}",

@@ -77,31 +77,47 @@ set_position_is_good() {
   esac
 }
 
-read_previous_config 
+show_waybar() {
+  waybar --bar main-bar --log-level error --config ${CONFIG} --style ${STYLE}
+}
 
-if [ "$#" -eq 0 ]; then 
-  # Caso en el que no se hayan pasado parametros
-  "$HOME/.config/hypr/start_scripts/scripts/theme" $COLOR
-  set_position_is_good
-else 
-  if [[ ${1:2} == "reload" ]]; then 
-    # Caso en el que haremos un reload de waybar
-    pkill waybar || true
-  fi
-
-  if [[ ${2:2} =~ ^(top|buttom|newtop)$ && $3 =~ ^(andromeda|andromeda_colorizer|carbonfox|catppucin|onedark|oxocarbon|palenight|tokyonight) ]]; then 
-    set_paths $2
-    save_json bar $2
-    save_json color $3
-    "$HOME/.config/hypr/start_scripts/scripts/theme" $3
-  elif [[ ${2:2} =~ "" && $3 =~ "" ]]; then
+main() {
+  if [ "$#" -eq 0 ]; then 
+    # Caso en el que no se hayan pasado parametros
+    "$HOME/.config/hypr/start_scripts/scripts/theme" $COLOR
     set_position_is_good
-    save_json bar $POSITION
-    save_json color $COLOR
+    show_waybar
+  elif [ "${1:2}" == "hs" ]; then 
+    if pgrep -x "waybar"; then 
+      killall waybar
+      return
+    fi
+    
+    set_position_is_good
+    show_waybar
   else 
-    echo "Parametro no valido para la posicion de la barra"
-    exit 1
-  fi
-fi
+    if [[ ${1:2} == "reload" ]]; then 
+      # Caso en el que haremos un reload de waybar
+      pkill waybar || true
+    fi
 
-waybar --bar main-bar --log-level error --config ${CONFIG} --style ${STYLE}
+    if [[ ${2:2} =~ ^(top|buttom|newtop)$ && $3 =~ ^(andromeda|andromeda_colorizer|carbonfox|catppucin|onedark|oxocarbon|palenight|tokyonight) ]]; then 
+      set_paths $2
+      save_json bar $2
+      save_json color $3
+      "$HOME/.config/hypr/start_scripts/scripts/theme" $3
+    elif [[ ${2:2} =~ "" && $3 =~ "" ]]; then
+      set_position_is_good
+      save_json bar $POSITION
+      save_json color $COLOR
+    else 
+      echo "Parametro no valido para la posicion de la barra"
+      exit 1
+    fi
+    
+    show_waybar
+  fi
+}
+
+read_previous_config 
+main "$@"
