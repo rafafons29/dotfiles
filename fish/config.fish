@@ -187,6 +187,15 @@ export FZF_DEFAULT_OPTS="--height=80% --layout=reverse --info=inline --preview '
 # Config to connect on school proxy
 fastfetch
 
+zoxide init fish | source
+
+set fish_cursor_default block
+set fish_cursor_isert line
+set fish_cursor_replace_one underscore
+set fish_cursor_replace underscore 
+set fish_cursor_external line 
+set fish_cursor_visual block
+
 set fish_color_autosuggestion "#6c7194"
 set fish_color_cancel -r
 set fish_color_command "#0ca8e7"
@@ -216,12 +225,3 @@ set fish_pager_color_prefix normal --bold underline
 set fish_pager_color_prefix white --bold --underline
 set fish_pager_color_progress brwhite --background=cyan
 set fish_color_search_match --background="#60AEFF"
-
-set fish_cursor_default block
-set fish_cursor_isert line
-set fish_cursor_replace_one underscore
-set fish_cursor_replace underscore 
-set fish_cursor_external line 
-set fish_cursor_visual block
-
-zoxide init fish | source

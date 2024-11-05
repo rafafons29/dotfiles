@@ -3,10 +3,11 @@
 set -euo pipefail
 
 iod="${1:2}" # Tomar un parametro para saber si vamos a aumentar o disminuir el volumen
+volume_icon=~/.local/share/icons/Steve-Zondicons-Volume-Up.svg
 
 notify_volume() {
   local volume="$1" 
-  notify-send --expire-time=1000 -u $2 -r 12345 "Volumen" "Nivel: ${volume}%"
+  notify-send --expire-time=1000 -u $2 -r 12345 "Volumen" "Nivel: ${volume}%" -i $volume_icon
 }
 
 set_print_vol() {
@@ -19,9 +20,12 @@ set_print_vol() {
     is_mute=$(pamixer --get-mute) # Veirficamos si esta mute o no
     if [[ $is_mute == true ]]; then
       current_volume="0"
+      volume_icon=~/.local/share/icons/Steve-Zondicons-Volume-Off.svg
+    else 
+      volume_icon=~/.local/share/icons/Steve-Zondicons-Volume-Up.svg
     fi
 
-    notify_volume "$current_volume" $2
+    notify_volume "$current_volume" $2 
     return
   fi
 

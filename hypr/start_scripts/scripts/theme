@@ -33,6 +33,17 @@ map_properties_theme["ring-clear-color"]="red1"
 map_properties_theme["ring-wrong-color"]="red2"
 #-------------------------------------------------------------------------------------------------------------------------------------------#
 
+#----------------------------------------------------------------#Mapeos para mako----------------------------------------------------------#
+mako_file="$HOME/.config/mako/config"
+mako_keys=("background-color" "border-color" "[urgency=low]" "[urgency=normal]" "[urgency=high]")
+declare -A mako_map
+mako_map["background-color"]="bg"
+mako_map["border-color"]="focus"
+mako_map["[urgency=low]"]="bg"
+mako_map["[urgency=normal]"]="focus"
+mako_map["[urgency=high]"]="red2"
+#-------------------------------------------------------------------------------------------------------------------------------------------#
+
 #-----------------------------------------------Construimos el mapa de los temas con key value---------------------------------------------#
 # Hacemos un calculo de la conversion de exadecimal a rgba
 hex_to_rgba() {
@@ -128,6 +139,50 @@ set_sway_content() {
 
 #----------------------------------------------------------------------------------------------------------------#
 
+#--------------------------------------------Configuramos Mako------------------------------------------------------------#
+clear_mako_theme() {
+  # Creamos un archivo temporal
+  temp_file=$(mktemp)
+
+  # Leer el archivo de configuracion
+  while IFS= read -r line; do
+    echo "$line" >> "$temp_file"
+
+    if [[ "$line" == *"font=VictorMono NF Italic 12"* ]]; then
+      break
+    fi
+  done < "$mako_file"
+
+  mv "$temp_file" "$mako_file"
+}
+
+create_mako_content() {
+  # Lo primero borrar el contenido anterior para actualizarlo
+  clear_mako_theme
+
+  for m_proper in ${mako_keys[@]}; do
+    local line="" # Contruimos cada una de las lineas que usamremos
+
+    if [[ $m_proper == "[urgency=low]" || $m_proper == "[urgency=normal]" || $m_proper == "[urgency=high]" ]]; then
+      line+="$m_proper"$'\n'
+      line+="border-color=${json_content["${mako_map["$m_proper"]}"]}"
+      printf "%s\n" "$line" >> $mako_file
+      continue
+    elif [[ $m_proper == "background-color" ]]; then
+      # Darle una transparencia a las notificaciones
+      line+="$m_proper=${json_content["${mako_map["$m_proper"]}"]}EF"
+      printf "%s\n" "$line" >> $mako_file
+      continue
+    fi
+
+    line+="$m_proper=${json_content["${mako_map["$m_proper"]}"]}"
+    printf "%s\n" "$line" >> $mako_file
+  done
+
+  makoctl reload  # Hacemos que mako se reinicie y se actualicen los cambios
+}
+#-------------------------------------------------------------------------------------------------------------------------#
+
 create_file_theme() {
   > "$CSS_THEME" # Limpiar el archivo css para llenarlo todo de nuevo
   echo "* {" > $ROFI_THEME
@@ -142,5 +197,6 @@ create_file_theme() {
 
 json_content=()
 read_json "$THEMES/$1.json"
-create_file_theme
-set_sway_content
+create_file_theme # Creamos tanto el archivo css como el de rofi
+set_sway_content  # Modificamos el archivo para swaylock
+create_mako_content # Modificamos el archivo de mako para establecer el nuevo tema
