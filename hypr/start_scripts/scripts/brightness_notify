@@ -2,6 +2,19 @@
 
 set -euo pipefail
 
+notify-brightness() {
+  local brightness="$1" 
+  
+  if [[ $((brightness)) -gt 50 ]]; then
+    brightness_icon=~/.local/share/icons/Icons/brightness-4_117071.png
+  elif [[ $((brightness)) -eq 50 ]]; then
+    brightness_icon=~/.local/share/icons/Icons/brightness-medium_117265.ico
+  elif [[ $((brightness)) -lt 50 ]]; then
+    brightness_icon=~/.local/share/icons/Icons/brightness-5_117070.png
+  fi
+  notify-send --expire-time=1000 -u low -r 12345 "Brillo" "Nivel: ${brightness}%" -i $brightness_icon
+}
+
 calc_poc_brightnes() {
   # Calculamos el porcentaje del brillo dado el valor actual y el valor total
 
@@ -19,7 +32,8 @@ calc_poc_brightnes() {
   fi
 
   # Enviar o actualizar la notificación
-  notify-send --expire-time=1000 -u low -r 12345 "Brillo" "Nivel: $porc_brightnes%" -i display-brightness
+  # notify-send --expire-time=1000 -u low -r 12345 "Brillo" "Nivel: $porc_brightnes%" -i ~/.local/share/icons/Icons/brightness-5_117070.png
+  notify-brightness $porc_brightnes
 }
 
 iod="${1:2}" # flag para saber si vamos a incrementar o decrementar

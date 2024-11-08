@@ -1,0 +1,24 @@
+#!/bin/bash
+
+themes_dir="$HOME/.config/colors"
+
+listThemes=()
+num_thmes=0
+
+for theme_file in "$themes_dir"/*.json; do
+  if [ -f "$theme_file" ]; then
+    theme_name=$(basename "$theme_file" .json)
+    listThemes+=("$theme_name")
+    num_thmes=$((num_thmes + 1))
+  fi
+done
+
+listThemesString=$(printf "%s\n" "${listThemes[@]}")
+width=$((num_thmes / 4))
+
+choice=$(echo -e "$listThemesString" | rofi -dmenu -i -replace -width "$width" -config $HOME/.config/rofi/colors_themes.rasi "Seleccione un tema:")
+
+if [ "$choice" ]; then
+  notify-send "Tema" "Estableciendo tema $choice"
+  $HOME/.config/hypr/start_scripts/scripts/statusbar --reload --newtop "$choice"
+fi
