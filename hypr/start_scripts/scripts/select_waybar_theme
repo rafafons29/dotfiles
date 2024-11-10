@@ -1,0 +1,41 @@
+#!/bin/bash
+
+source $HOME/.config/hypr/start_scripts/scripts/functions
+read_previous_config
+
+# ----------------------------------------------------- 
+# Carpeta de Temas
+# ----------------------------------------------------- 
+themes_path="$HOME/.config/hypr/waybar"
+
+# ----------------------------------------------------- 
+# Inicializar Arreglos
+# ----------------------------------------------------- 
+listThemes=()
+listNames=""
+
+# ----------------------------------------------------- 
+# Leer carpeta de temas
+# ----------------------------------------------------- 
+for theme in "$themes_path"/*; do
+  if [[ ! $theme == "$themes_path"  && $(find $theme -maxdepth 1 -type d | wc -l) = 1 ]]; then
+    theme_name=$(basename "$theme")
+    listThemes+=("$theme_name")
+  fi
+done
+
+# ----------------------------------------------------- 
+# Mostrar ventana de Rofi
+# ----------------------------------------------------- 
+listNames=$(printf "%s\n" "${listThemes[@]}")
+choice=$(echo -e "$listNames" | rofi -dmenu -i -replace -config $HOME/.config/rofi/colors_themes.rasi "Seleccione un tema:")
+
+# ----------------------------------------------------- 
+# Elegir nuevo tema escribiendo la selección en ~/.cache/.themestyle.sh
+# ----------------------------------------------------- 
+if [ "$choice" ]; then
+  echo "Cargando tema de Waybar..."
+  echo "$choice"
+  $HOME/.config/hypr/start_scripts/scripts/statusbar --reload "--$choice" "$COLOR"
+fi
+

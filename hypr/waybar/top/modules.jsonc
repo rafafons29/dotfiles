@@ -29,14 +29,6 @@
       "default": "",
       "sort-by-number": true
     }
-    // "persistent-workspaces": {
-    //   "1": [""],
-    //   "2": ["󰉋"],
-    //   "3": ["󰨞"],
-    //   "4": [""],
-    //   "5": [""],
-    //   "6": [""]
-    // }
   },
   "battery": {
     "interval": 60,
@@ -50,14 +42,13 @@
       "critical": 15
     },
     "format": "{icon} <span font='8'>{capacity}%</span>",
-    "format-charging": " ",
+    "format-charging": "󰂄 {capacity}%",
     "format-plugged": " ",
     "format-full": "{icon} <span font='8'>{capacity}%</span>",
     "format-alt": "{icon} <span font='8'>{capacity}%</span>",
     "format-icons": ["󰁺", "󰁼", "󰁾", "󰂁", "󰁹"],
     "format-time": "{H}h {M}min",
-    "tooltip": true,
-    "on-click-right": "~/.config/hypr/scripts/glassmorphismToggle"
+    "tooltip": true
   },
   "tray": {
     "icon-size": 16,
@@ -67,10 +58,9 @@
     "interval": 60,
     "align": 0,
     "rotate": 0,
-    "format": "<span color='#82aaff'>󰃰 </span>{:%d-%m-%Y %a %I:%M:%S %p}",
-    "format-alt": "<span color='#ff9854'> </span>{:%a %b %d}",
-    "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>",
-    "on-click-right": "~/.config/hypr/scripts/changeWallpaper"
+    "format": "󰥔 {:%d-%m-%Y %a %I:%M:%S %p}",
+    "format-alt": " {:%a %b %d}",
+    "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>"
   },
   "cpu": {
     "interval": 1,
@@ -82,11 +72,11 @@
   },
   "network": {
     "interval": 5,
-    "format-wifi": " {essid}",
+    "format-wifi": "󰤨 {essid}",
     "format-ethernet": " {ipaddr}/{cidr}",
     "format-linked": " {ifname} (No IP)",
-    "format-disconnected": "睊 Disconnected",
-    "format-disabled": "睊 Disabled",
+    "format-disconnected": "󰤭 Disconnected",
+    "format-disabled": "󰤯 Disabled",
     "format-alt": " {bandwidthUpBits} |  {bandwidthDownBits}",
     "tooltip-format": " {ifname} via {gwaddr}"
   },
@@ -122,5 +112,5 @@
     "format": " ",
     "interval": "once",
     "tooltip": false
-  }
+  },
 }

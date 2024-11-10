@@ -1,5 +1,5 @@
 {
-  "include": "~/.config/hypr/waybar/top_bar/modules.jsonc",
+  "include": "~/.config/hypr/waybar/top/modules.jsonc",
   "layer": "top",
   "position": "top",
   "height": 20,
@@ -9,7 +9,7 @@
   "margin-right": 3,
   "margin-top": 3,
   "modules-left": ["hyprland/workspaces"],
-  "modules-center": ["custom/l_end", "tray", "custom/r_end"],
+  "modules-center": ["custom/l_end", "custom/r_end"],
   "modules-right": [
     "cpu",
     "backlight",

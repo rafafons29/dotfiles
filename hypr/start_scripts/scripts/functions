@@ -1,0 +1,34 @@
+#!/bin/bash
+
+CONFIG_FILE="$HOME/.config/hypr/start_scripts/scripts/waybar_start_config_var/config_last_used.json"
+POSITION=""
+COLOR=""
+
+declare -A json_content
+
+read_json() {
+  # Leer el arvhivo y extraer las claves y valores
+  while IFS=": " read -r clave valor; do
+    # Limpiar comillas y espacios
+    clave=$(echo "$clave" | tr -d '\" ' | sed 's/,$//')
+    valor=$(echo "$valor" | tr -d '\" ,')
+
+    if [[ $clave == "bg" ]]; then
+      json_content+=$(hex_to_rgba "$valor")
+    fi
+
+    json_content["$clave"]="$valor"
+
+  done < <(grep -o '"[^"]*": *"[^"]*"' "$1")
+}
+
+read_previous_config() {
+  # Comprobadndo que el archivo no esta vacio
+  if [[ -f "$CONFIG_FILE" ]]; then 
+    read_json "$CONFIG_FILE"
+    POSITION="${json_content["bar"]}"
+    COLOR="${json_content["color"]}"
+  else
+     POSITION="No se han encontrado configuraciones anteriores. Por fabor especifique 'top' o 'bottom'."
+  fi
+}

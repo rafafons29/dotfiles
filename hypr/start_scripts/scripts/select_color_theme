@@ -1,5 +1,8 @@
 #!/bin/bash
 
+source $HOME/.config/hypr/start_scripts/scripts/functions
+read_previous_config
+
 themes_dir="$HOME/.config/colors"
 
 listThemes=()
@@ -16,9 +19,10 @@ done
 listThemesString=$(printf "%s\n" "${listThemes[@]}")
 width=$((num_thmes / 4))
 
-choice=$(echo -e "$listThemesString" | rofi -dmenu -i -replace -width "$width" -config $HOME/.config/rofi/colors_themes.rasi "Seleccione un tema:")
+choice=$(echo -e "$listThemesString" | rofi -dmenu -i -replace -config $HOME/.config/rofi/colors_themes.rasi "Seleccione un tema:")
 
 if [ "$choice" ]; then
-  notify-send "Tema" "Estableciendo tema $choice"
-  $HOME/.config/hypr/start_scripts/scripts/statusbar --reload --newtop "$choice"
+  # notify-send "Tema" "Estableciendo tema $choice"
+  echo "$choice"
+  $HOME/.config/hypr/start_scripts/scripts/statusbar --reload "$POSITION" "$choice"
 fi

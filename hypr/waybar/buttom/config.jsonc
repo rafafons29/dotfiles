@@ -1,5 +1,5 @@
 {
-  "include": "~/.config/hypr/waybar/w11/modules.jsonc",
+  "include": "~/.config/hypr/waybar/buttom/modules.jsonc",
   "layer": "bottom",
   "exclusive": true,
   "passthrough": false,

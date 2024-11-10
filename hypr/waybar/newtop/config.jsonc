@@ -1,5 +1,5 @@
 {
-  "include": "~/.config/hypr/waybar/new_top_bar/modules.jsonc",
+  "include": "~/.config/hypr/waybar/newtop/modules.jsonc",
   "layer": "top",
   "position": "top",
   "height": 35,
@@ -16,6 +16,6 @@
     "cpu",
     "memory",
     "network",
-    "clock"
-  ]
+    "clock",
+  ],
 }

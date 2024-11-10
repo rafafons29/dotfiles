@@ -7,16 +7,16 @@ declare -A json_content
 set_paths() {
   case "${1:2}" in 
     top) 
-      CONFIG="$HOME/.config/hypr/waybar/top_bar/config.jsonc" 
-      STYLE="$HOME/.config/hypr/waybar/top_bar/style.css"
+      CONFIG="$HOME/.config/hypr/waybar/top/config.jsonc" 
+      STYLE="$HOME/.config/hypr/waybar/top/style.css"
       ;;
     buttom) 
-      CONFIG="$HOME/.config/hypr/waybar/w11/config.jsonc" 
-      STYLE="$HOME/.config/hypr/waybar/w11/style.css"
+      CONFIG="$HOME/.config/hypr/waybar/buttom/config.jsonc" 
+      STYLE="$HOME/.config/hypr/waybar/buttom/style.css"
       ;;
     newtop) 
-      CONFIG="$HOME/.config/hypr/waybar/new_top_bar/config.jsonc"
-      STYLE="$HOME/.config/hypr/waybar/new_top_bar/style.css"
+      CONFIG="$HOME/.config/hypr/waybar/newtop/config.jsonc"
+      STYLE="$HOME/.config/hypr/waybar/newtop/style.css"
       ;;
     *) 
       echo "Parametro no valido"
