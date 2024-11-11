@@ -46,6 +46,10 @@ mako_map["[urgency=high]"]="red2"
 
 #-----------------------------------------------Construimos el mapa de los temas con key value---------------------------------------------#
 # Hacemos un calculo de la conversion de exadecimal a rgba
+transparencia="0.8"
+if [[ ! "$2" == "" ]]; then
+  transparencia="$2"
+fi
 hex_to_rgba() {
   local hex=${1#"#"} # Eliminarl el simbolo #
   
@@ -55,7 +59,7 @@ hex_to_rgba() {
   local g=$((16#${hex:2:2}))
   local b=$((16#${hex:4:2}))
 
-  echo "rgba($r, $g, $b, 0.8)"
+  echo "rgba($r, $g, $b, $transparencia)"
 }
 
 read_json() {

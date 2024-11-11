@@ -1,5 +1,6 @@
 #!/bin/bash
 
+source $HOME/.config/hypr/start_scripts/scripts/functions
 set -euo pipefail
 
 iod="${1:2}" # Tomar un parametro para saber si vamos a aumentar o disminuir el volumen
@@ -13,7 +14,8 @@ notify_volume() {
   elif [[ $((volume)) -lt 50 ]]; then
     volume_icon=~/.local/share/icons/Icons/speaker-volume-medium_icon-icons.com_48439.ico
   fi
-  notify-send --expire-time=1000 -u $2 -r 12345 "Volumen" "Nivel: ${volume}%" -i $volume_icon
+  # notify-send -u $2 "Volumen" "Nivel: ${volume}%" -i $volume_icon
+  send_notification "Volumen" "Nivel: ${volume}%" "$volume_icon"
 }
 
 set_print_vol() {

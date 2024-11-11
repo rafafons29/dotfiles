@@ -12,9 +12,12 @@ reload_all_kitty_instance() {
   for socket in "$socket_dir"/mykitty-*; do
     if [ -S "$socket" ]; then
       socket_number=$(basename "$socket" | sed 's/mykitty-//')
-      if [[ "$socket_number" =~ ^[0-9]{5,}$ ]]; then
-        kitty @ --to unix:"$socket" load-config
+      if ! kitty @ --to unix:"$socket" load-config; then
+        continue
       fi
+      # if [[ "$socket_number" =~ ^[0-9]{5,}$ ]]; then
+      #   kitty @ --to unix:"$socket" load-config
+      # fi
     fi
   done
 }

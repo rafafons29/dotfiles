@@ -12,10 +12,10 @@
   "modules-right": [
     "battery",
     "backlight",
-    "custom/menu",
+    "custom/cpuname",
     "cpu",
     "memory",
     "network",
-    "clock",
-  ],
+    "clock"
+  ]
 }

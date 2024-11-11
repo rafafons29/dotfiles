@@ -4,6 +4,8 @@ CONFIG_FILE="$HOME/.config/hypr/start_scripts/scripts/waybar_start_config_var/co
 
 declare -A json_content
 
+transparent_value="0.5"
+
 set_paths() {
   case "${1:2}" in 
     top) 
@@ -17,6 +19,10 @@ set_paths() {
     newtop) 
       CONFIG="$HOME/.config/hypr/waybar/newtop/config.jsonc"
       STYLE="$HOME/.config/hypr/waybar/newtop/style.css"
+      ;;
+    transparenttop)
+      CONFIG="$HOME/.config/hypr/waybar/transparenttop/config.jsonc"
+      STYLE="$HOME/.config/hypr/waybar/transparenttop/style.css"
       ;;
     *) 
       echo "Parametro no valido"
@@ -69,7 +75,7 @@ read_previous_config() {
 
 set_position_is_good() {
   case ${POSITION:2} in
-    top | buttom | newtop) set_paths "$POSITION" ;;
+    top | buttom | newtop | transparenttop) set_paths "$POSITION" ;;
   *) 
     notify-send -u critical $POSITION
     exit 1 
@@ -84,7 +90,12 @@ show_waybar() {
 main() {
   if [ "$#" -eq 0 ]; then 
     # Caso en el que no se hayan pasado parametros
-    "$HOME/.config/hypr/start_scripts/scripts/theme" $COLOR
+    # "$HOME/.config/hypr/start_scripts/scripts/theme" $COLOR
+    if [[ "${POSITION:2}" == "transparenttop" ]]; then
+      $HOME/.config/hypr/start_scripts/scripts/theme $COLOR "$transparent_value"
+    else 
+      $HOME/.config/hypr/start_scripts/scripts/theme $COLOR
+    fi
     set_position_is_good
     show_waybar
   elif [ "${1:2}" == "hs" ]; then 
@@ -101,11 +112,15 @@ main() {
       pkill waybar || true
     fi
 
-    if [[ ${2:2} =~ ^(top|buttom|newtop)$ && $3 =~ ^(andromeda|andromeda_colorizer|carbonfox|catppucin|onedark|oxocarbon|palenight|tokyonight) ]]; then 
+    if [[ ${2:2} =~ ^(top|buttom|newtop|transparenttop)$ && $3 =~ ^(andromeda|andromeda_colorizer|carbonfox|catppucin|onedark|oxocarbon|palenight|tokyonight) ]]; then 
       set_paths $2
       save_json bar $2
       save_json color $3
-      $HOME/.config/hypr/start_scripts/scripts/theme $3
+      if [[ "${2:2}" == "transparenttop" ]]; then
+        $HOME/.config/hypr/start_scripts/scripts/theme $3 "$transparent_value"
+      else 
+        $HOME/.config/hypr/start_scripts/scripts/theme $3
+      fi
       $HOME/.config/hypr/start_scripts/scripts/set_all_themes $3
       notify-send "Theme" "Theme $3 theme successfully set"
     elif [[ ${2:2} =~ "" && $3 =~ "" ]]; then

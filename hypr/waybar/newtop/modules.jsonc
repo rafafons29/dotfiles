@@ -78,11 +78,7 @@
     "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>"
     // "on-click-right": "~/.config/hypr/scripts/changeWallpaper"
   },
-  "custom/menu": {
-    "format": "CPU",
-    "tooltip": false
-  },
-  "custom/menu": {
+  "custom/cpuname": {
     "format": "CPU",
     "tooltip": false
   }

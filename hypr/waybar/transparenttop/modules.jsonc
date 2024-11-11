@@ -1,0 +1,101 @@
+{
+  "custom/menu": {
+    "format": "<span font='18'></span>",
+    "tooltip": false,
+    "on-click": "~/.config/hypr/start_scripts/scripts/menu"
+  },
+  "hyprland/workspaces": {
+    "active-only": false,
+    "disable-scroll": true,
+    "format": "{icon}",
+    "on-click": "activate",
+    "all-outputs": true,
+    "persistent-workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": []
+    }
+  },
+  "pulseaudio": {
+    "format": "{icon}",
+    "format-muted": "󰖁",
+    "format-bluetooth": "",
+    "format-bluetooth-muted": "",
+    "format-source": "",
+    "format-source-muted": "",
+    "format-icons": {
+      "headphone": " ",
+      "hands-free": " ",
+      "headset": " ",
+      "phone": " ",
+      "portable": " ",
+      "car": " ",
+      "default": ["󰕾", "󰕾", "󰕾"]
+    },
+    "scroll-step": 5.0,
+    "on-click": "~/.config/hypr/start_scripts/scripts/volume_notify --mute",
+    "on-click-right": "pavucontrol",
+    "on-scroll-up": "~/.config/hypr/start_scripts/scripts/volume_notify --inc",
+    "on-scroll-down": "~/.config/hypr/start_scripts/scripts/volume_notify --dec",
+    "smooth-scrolling-threshold": 1,
+    "menu": "pavucontrol",
+    "tooltip": true
+  },
+  "battery": {
+    "interval": 15,
+    "align": 0,
+    "rotate": 0,
+    "full-at": 100,
+    "design-capacity": false,
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon}",
+    "format-charging": "󰂄<span font='8'>{capacity}%</span>",
+    "format-plugged": " ",
+    "format-full": "{icon}",
+    "format-alt": "{icon}<span font='8'>{capacity}%</span>",
+    "format-icons": ["󰁺", "󰁼", "󰁾", "󰂁", "󰁹"],
+    "format-time": "{H}h {M}min",
+    "tooltip": true
+    // "on-click-right": "~/.config/hypr/scripts/glassmorphismToggle"
+  },
+  "clock": {
+    "interval": 60,
+    "align": 0,
+    "rotate": 0,
+    "format": "{:%I:%M:%S}",
+    "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>"
+  },
+  "tray": {
+    "icon-size": 16,
+    "spacing": 10
+  },
+  "custom/l_end": {
+    "format": " ",
+    "interval": "once",
+    "tooltip": false
+  },
+  "custom/r_end": {
+    "format": " ",
+    "interval": "once",
+    "tooltip": false
+  },
+  "hyprland/window": {
+  	"format": "{}",
+  	"rewrite": {
+  		"(.*) - Mozilla Firefox": "🌎 $1",
+  		"(.*) - zsh": "> [$1]"
+  	}
+  },
+  "custom/power": {
+    "format": "<span font='16'>⏻</span>",
+    "on-click": "/home/rafa/.config/hypr/start_scripts/scripts/logoutlaunch 1",
+    "on-click-right": "/home/rafa/.config/hypr/start_scripts/scripts/logoutlaunch 2",
+    "interval" : "once",
+    "tooltip": false
+  }
+}

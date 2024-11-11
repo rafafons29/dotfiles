@@ -32,3 +32,36 @@ read_previous_config() {
      POSITION="No se han encontrado configuraciones anteriores. Por fabor especifique 'top' o 'bottom'."
   fi
 }
+
+save_json() {
+  if [[ -n "${json_content["$1"]}" ]]; then # Comprobamos que el value existe
+    jq --arg key "$1" --arg value "$2" \
+      '(.[$key]) = $value' "$CONFIG_FILE" > tmp.$$.json 
+
+    if [[ $? -eq 0 ]]; then
+      mv tmp.$$.json "$CONFIG_FILE"
+    else 
+      rm tmp.$$.json
+    fi
+  else 
+    echo "La clave '$1' no existe."
+  fi
+}
+
+send_notification() {
+  read_json "$CONFIG_FILE"
+
+  local message="$1"
+  local body="$2"
+  local icon="$3"
+  local urgency="${4:-low}"
+  local notify_id="${json_content["notify_id"]}"
+
+  if [[ -n $notify_id ]]; then
+    notify_id=$(notify-send -u $urgency -r $notify_id -p "$message" "$body" -i $icon)
+  else 
+    notify_id=$(notify-send -u $urgency -i $icon -p "$message" "$body")
+  fi
+
+  save_json notify_id $notify_id
+}

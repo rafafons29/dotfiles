@@ -1,0 +1,17 @@
+{
+  "include": "~/.config/hypr/waybar/transparenttop/modules.jsonc",
+  "layer": "top",
+  "exclusive": true,
+  "passthrough": false,
+  "position": "top",
+  "height": 18,
+  "spacing": 3,
+  "fixed-center": true,
+  "ipc": true,
+  "margin-left": 0,
+  "margin-right": 0,
+  "margin-top": 0,
+  "modules-right": ["tray", "pulseaudio", "battery", "clock", "custom/power"],
+  "modules-center": ["custom/l_end", "hyprland/window", "custom/r_end"],
+  "modules-left": ["custom/menu", "hyprland/workspaces"]
+}

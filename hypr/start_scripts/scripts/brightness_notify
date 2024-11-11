@@ -1,5 +1,6 @@
 #!/bin/bash
 
+source $HOME/.config/hypr/start_scripts/scripts/functions
 set -euo pipefail
 
 notify-brightness() {
@@ -12,7 +13,8 @@ notify-brightness() {
   elif [[ $((brightness)) -lt 50 ]]; then
     brightness_icon=~/.local/share/icons/Icons/brightness-5_117070.png
   fi
-  notify-send --expire-time=1000 -u low -r 12345 "Brillo" "Nivel: ${brightness}%" -i $brightness_icon
+  # notify-send -u low "Brillo" "Nivel: ${brightness}%" -i $brightness_icon
+  send_notification "Brillo" "Nivel: ${brightness}%" $brightness_icon
 }
 
 calc_poc_brightnes() {

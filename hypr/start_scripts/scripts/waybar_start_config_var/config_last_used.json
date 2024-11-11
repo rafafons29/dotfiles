@@ -1,4 +1,5 @@
 {
-  "bar": "--top",
-  "color": "catppucin"
+  "bar": "--transparenttop",
+  "color": "catppucin",
+  "notify_id": "18"
 }
