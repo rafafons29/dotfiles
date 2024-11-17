@@ -85,11 +85,14 @@
     "tooltip": false
   },
   "hyprland/window": {
-  	"format": "{}",
+  	"format": "{class}",
   	"rewrite": {
   		"(.*) - Mozilla Firefox": "🌎 $1",
   		"(.*) - zsh": "> [$1]"
-  	}
+  	},
+    "icon": true,
+    "icon-size": 20,
+    "separate-outputs": true 
   },
   "custom/power": {
     "format": "<span font='16'>⏻</span>",

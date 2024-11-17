@@ -130,18 +130,20 @@ window#waybar.hidden {
   transition: all 0.2s ease-in-out;
   margin: 8px 0px 8px 0px;
   padding: 0px 5px 0px 5px;
+  border-bottom-width: 1px;
+  border-bottom-color: @focus;
   color: @focus;
 }
 
 #workspaces button.empty {
   transition: all 0.2s ease-in-out;
+  border-bottom-color: transparent;
   color: @active;
 }
 
 #workspaces button:hover {
   animation: ws_hover 20s ease-in-out 1;
   transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
-  border-radius: 2px;
   margin: 8px 5px 8px 5px;
   padding: 0px 9px 0px 9px;
   background: @bar-bg;
@@ -149,7 +151,7 @@ window#waybar.hidden {
 }
 
 #workspaces button.active {
-  margin: 8px 0px 8px 0px;
+  margin: 8px 8px 8px 8px;
   padding: 0px 6px 0px 6px;
   border-radius: 2px;
   animation: ws_active 20s ease-in-out 1;
@@ -199,4 +201,26 @@ window#waybar.hidden {
   color: @focus;
   background-color: @bar-bg;
 }
+
+#custom-power:hover {
+  padding: 0px 15px 0px 15px;
+  border-bottom-left-radius: 20px;
+  transition-property: background-color;
+  transition-duration: 2.5s;
+  color: @red1;
+}
 /*--------------------------------------------------*/
+
+#window {
+  margin: 6px 0px 6px 0px;
+  padding: 0px 8px 0px 8px;
+  animation: ws_active 20s ease-in-out 1;
+  transition: all 0.4s cubic-bezier(0.55, -0.68, 0.48, 1.682);
+  border-radius: 5px;
+  color: @focus;
+  background-color: @bar-bg;
+}
+
+window#waybar.empty #window {
+  background-color: transparent;
+}

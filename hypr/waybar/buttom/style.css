@@ -195,7 +195,7 @@ window#waybar.hidden {
 #taskbar button.active {
   transition: border-color 1s;
   border-radius: 0px;
-  border-bottom: 1px solid @focus;
+  border-bottom: 2px solid @focus;
 }
 
 #taskbar button:hover {

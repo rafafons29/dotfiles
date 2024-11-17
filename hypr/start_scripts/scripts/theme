@@ -172,11 +172,6 @@ create_mako_content() {
       line+="border-color=${json_content["${mako_map["$m_proper"]}"]}"
       printf "%s\n" "$line" >> $mako_file
       continue
-    elif [[ $m_proper == "background-color" ]]; then
-      # Darle una transparencia a las notificaciones
-      line+="$m_proper=${json_content["${mako_map["$m_proper"]}"]}EF"
-      printf "%s\n" "$line" >> $mako_file
-      continue
     fi
 
     line+="$m_proper=${json_content["${mako_map["$m_proper"]}"]}"

@@ -54,7 +54,7 @@ send_notification() {
   local message="$1"
   local body="$2"
   local icon="$3"
-  local urgency="${4:-low}"
+  local urgency="${4:-normal}"
   local notify_id="${json_content["notify_id"]}"
 
   if [[ -n $notify_id ]]; then
