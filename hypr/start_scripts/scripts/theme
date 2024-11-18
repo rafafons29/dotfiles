@@ -171,6 +171,89 @@ create_mako_content() {
 }
 
 # ----------------------------------------------------- 
+# Configuración para kitty
+# ----------------------------------------------------- 
+reload_all_kitty_instance() {
+  local socket_dir="/tmp"
+
+  for socket in "$socket_dir"/mykitty-*; do
+    if [ -S "$socket" ]; then
+      socket_number=$(basename "$socket" | sed 's/mykitty-//')
+      if ! kitty @ --to unix:"$socket" load-config; then
+        continue
+      fi
+    fi
+  done
+}
+
+create_kitty_theme() {
+  # Ruta al archivo JSON de colores
+  local COLOR_JSON="$THEMES/$1.json"
+
+  # Ruta al archivo de configuración de Kitty
+  KITTY_CONFI_THEME="$HOME/.config/kitty/theme.conf"
+
+  # Limpiar el archivo de configuración existente
+  > "$KITTY_CONFI_THEME"
+
+  # Leer colores del archivo JSON y escribir en el archivo de configuración de Kitty
+  {
+    # Configuración básica
+    echo "cursor ${json_content["focus"]}"
+    echo "foreground ${json_content["active"]}"
+    echo "background ${json_content["kitty-bg"]}"
+
+    echo "active_tab_foreground ${json_content["bg"]}"
+    echo "active_tab_background ${json_content["focus"]}"
+    echo "active_tab_font_style italic"
+    echo "active_border_color ${json_content["focus"]}"
+
+    echo "inactive_tab_foreground ${json_content["inactive-tab-fg"]}"
+    echo "inactive_tab_background ${json_content["inactive-tab-bg"]}"
+    echo "inactive_tab_font_style normal"
+    echo "inactive_border_color ${json_content["inactive-tab-bg"]}"
+
+    echo "tab_bar_background ${json_content["bar-bg"]}"
+
+    # Colores adicionales
+    echo "#: black"
+    echo "color0 ${json_content["black1"]}"
+    echo "color8 ${json_content["black2"]}"
+
+    echo "#: red"
+    echo "color1 ${json_content["red3"]}"
+    echo "color9 ${json_content["red4"]}"
+
+    echo "#: green"
+    echo "color2 ${json_content["green3"]}"
+    echo "color10 ${json_content["green4"]}"
+
+    echo "#: yellow"
+    echo "color3 ${json_content["yellow"]}"
+    echo "color11 ${json_content["yellow1"]}"
+
+    echo "#: blue"
+    echo "color4 ${json_content["blue3"]}"
+    echo "color12 ${json_content["blue4"]}"
+
+    echo "#: magenta"
+    echo "color5 ${json_content["magneta1"]}"
+    echo "color13 ${json_content["magneta2"]}"
+
+    echo "#: cyan"
+    echo "color6 ${json_content["cyan1"]}"
+    echo "color14 ${json_content["cyan2"]}"
+
+    echo "#: white"
+    echo "color7 ${json_content["white1"]}"
+    echo "color15 ${json_content["white2"]}"
+
+  } >> "$KITTY_CONFI_THEME"
+
+  reload_all_kitty_instance
+  echo "Archivo de configuración para Kitty generado en $KITTY_CONFI_THEME."
+}
+# ----------------------------------------------------- 
 # Crear archivos de tema
 # ----------------------------------------------------- 
 create_file_theme() {
@@ -191,3 +274,4 @@ read_json "$THEMES/$1.json"
 create_file_theme # Creamos tanto el archivo css como el de rofi
 set_sway_content  # Modificamos el archivo para swaylock
 create_mako_content # Modificamos el archivo de mako para establecer el nuevo tema
+create_kitty_theme # Modificamos el archivo de colores de kitty para establecer el nuevo tema

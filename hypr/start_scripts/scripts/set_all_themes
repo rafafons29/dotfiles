@@ -6,22 +6,6 @@ name_themes=("andromeda" "andromeda_colorizer" "onedark" "palenight" "tokyonight
 theme="$1"
 find_theme=0
 
-reload_all_kitty_instance() {
-  local socket_dir="/tmp"
-
-  for socket in "$socket_dir"/mykitty-*; do
-    if [ -S "$socket" ]; then
-      socket_number=$(basename "$socket" | sed 's/mykitty-//')
-      if ! kitty @ --to unix:"$socket" load-config; then
-        continue
-      fi
-      # if [[ "$socket_number" =~ ^[0-9]{5,}$ ]]; then
-      #   kitty @ --to unix:"$socket" load-config
-      # fi
-    fi
-  done
-}
-
 # Comprobar que el parametro pasado existe
 for thm in ${name_themes[@]}; do
   if [ "$thm" = "$theme" ]; then
@@ -30,19 +14,17 @@ for thm in ${name_themes[@]}; do
 done
 
 # Ruta a los archivos de configuracion
-KITTY_CONFIG_PATH="$HOME/.config/kitty/kitty.conf"
+# KITTY_CONFIG_PATH="$HOME/.config/kitty/kitty.conf"
 FILE_EXPLORER="$HOME/.config/yazi/theme.toml"
 
 # Establecer el nuevo color que se va a utilizar.
 for n_theme in "${name_themes[@]}"; do
-  if grep -qw $n_theme $KITTY_CONFIG_PATH && grep -qw $n_theme $FILE_EXPLORER; then
+  if grep -qw $n_theme $FILE_EXPLORER; then
     if [ "$find_theme" = "1" ]; then
-      sed -i "s/$n_theme/$theme/" $KITTY_CONFIG_PATH
       sed -i "s/$n_theme/$theme/" $FILE_EXPLORER
     else 
       exit 1
     fi
-    reload_all_kitty_instance
     break
   fi
 done
