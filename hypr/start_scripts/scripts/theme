@@ -199,6 +199,7 @@ create_kitty_theme() {
   # Leer colores del archivo JSON y escribir en el archivo de configuración de Kitty
   {
     # Configuración básica
+    echo "background_opacity $transparencia"
     echo "cursor ${json_content["focus"]}"
     echo "foreground ${json_content["active"]}"
     echo "background ${json_content["kitty-bg"]}"
