@@ -1,57 +1,97 @@
 #!/bin/bash
 
+source "$HOME/.config/hypr/start_scripts/scripts/functions"
+
 # Rutas a los archivos de color que se crearan
 THEMES="/home/rafa/.config/colors"
 CSS_THEME="/home/rafa/.config/hypr/waybar/colors.css"
 ROFI_THEME="/home/rafa/.config/rofi/color.rasi"
 
 # Creamos un mapa para manajar la informacion del json como key, value y las key las almacenasmos en el orden leido
-declare -A json_content
 keys=()
 
-#----------------------------------------------------------#Mapeos para swaylock----------------------------------------------------------#
-sway_file="/home/rafa/.config/swaylock/config"
-properties=("color" "inside-color" "inside-clear-color" "inside-ver-color" "inside-wrong-color" "key-hl-color" "bs-hl-color" "separator-color" "line-color" "text-color" "text-clear-color" "text-caps-lock-color" "text-ver-color" "text-wrong-color" "ring-color" "ring-ver-color" "ring-clear-color" "ring-wrong-color")
-declare -A map_properties_theme
-map_properties_theme["color"]="bg"
-map_properties_theme["inside-color"]="bg"
-map_properties_theme["inside-clear-color"]="bg"
-map_properties_theme["inside-ver-color"]="bg"
-map_properties_theme["inside-wrong-color"]="bg"
-map_properties_theme["line-color"]="bg"
-map_properties_theme["key-hl-color"]="focus"
-map_properties_theme["bs-hl-color"]="focus"
-map_properties_theme["separator-color"]="inactive"
-map_properties_theme["text-color"]="active"
-map_properties_theme["text-clear-color"]="red1"
-map_properties_theme["text-caps-lock-color"]="yellow"
-map_properties_theme["text-ver-color"]="focus"
-map_properties_theme["text-wrong-color"]="red2"
-map_properties_theme["ring-color"]="bg"
-map_properties_theme["ring-ver-color"]="green1"
-map_properties_theme["ring-clear-color"]="red1"
-map_properties_theme["ring-wrong-color"]="red2"
-#-------------------------------------------------------------------------------------------------------------------------------------------#
+# ----------------------------------------------------- 
+# Mapeos para swaylock
+# -----------------------------------------------------
+sway_file="$HOME/.config/swaylock/config"
+properties=("color" "inside-color" "inside-clear-color" "inside-ver-color" "inside-wrong-color" 
+            "key-hl-color" "bs-hl-color" "separator-color" "line-color" "text-color" 
+            "text-clear-color" "text-caps-lock-color" "text-ver-color" "text-wrong-color" 
+            "ring-color" "ring-ver-color" "ring-clear-color" "ring-wrong-color")
 
-#----------------------------------------------------------------#Mapeos para mako----------------------------------------------------------#
+declare -A map_properties_theme=(
+  ["color"]="bg"
+  ["inside-color"]="bg"
+  ["inside-clear-color"]="bg"
+  ["inside-ver-color"]="bg"
+  ["inside-wrong-color"]="bg"
+  ["line-color"]="bg"
+  ["key-hl-color"]="focus"
+  ["bs-hl-color"]="focus"
+  ["separator-color"]="inactive"
+  ["text-color"]="active"
+  ["text-clear-color"]="red1"
+  ["text-caps-lock-color"]="yellow"
+  ["text-ver-color"]="focus"
+  ["text-wrong-color"]="red2"
+  ["ring-color"]="bg"
+  ["ring-ver-color"]="green1"
+  ["ring-clear-color"]="red1"
+  ["ring-wrong-color"]="red2"
+)
+
+# ----------------------------------------------------- 
+# Mapeos para mako
+# -----------------------------------------------------
 mako_file="$HOME/.config/mako/config"
 mako_keys=("background-color" "border-color" "[urgency=low]" "[urgency=normal]" "[urgency=high]")
-declare -A mako_map
-mako_map["background-color"]="bg"
-mako_map["border-color"]="focus"
-mako_map["[urgency=low]"]="bg"
-mako_map["[urgency=normal]"]="focus"
-mako_map["[urgency=high]"]="red2"
-#-------------------------------------------------------------------------------------------------------------------------------------------#
+declare -A mako_map=(
+  ["background-color"]="bg"
+  ["border-color"]="focus"
+  ["[urgency=low]"]="bg"
+  ["[urgency=normal]"]="focus"
+  ["[urgency=high]"]="red2"
+)
 
-#-----------------------------------------------Construimos el mapa de los temas con key value---------------------------------------------#
-# Hacemos un calculo de la conversion de exadecimal a rgba
+# ----------------------------------------------------- 
+# Función para borrar temas en un archivo determinado
+# ----------------------------------------------------- 
+clear_file_theme() {
+  # Verifica que se hayan pasado los parámetros necesarios
+  if [[ $# -ne 2 ]]; then
+    handle_error "Uso: clear_file_theme <archivo> <palabra_clave>"
+  fi
+
+  local temp_file=$(mktemp) || { handle_error "Error al crear archivo temporal"; }
+  local file="$1"
+  local word_break="$2"
+
+  # Verifica si el archivo existe
+  if [[ ! -f "$file" ]]; then
+    handle_error "El archivo '$file' no existe."
+  fi
+
+  while IFS= read -r line; do
+    echo "$line" >> "$temp_file"
+
+    if [[ "$line" == *"$word_break"* ]]; then
+      break
+    fi
+  done < $file
+
+  mv "$temp_file" "$file"
+}
+
+# ----------------------------------------------------- 
+# Función para convertir hex a rgba
+# ----------------------------------------------------- 
 transparencia="0.8"
-if [[ ! "$2" == "" ]]; then
+if [[ -n "$2" ]]; then
   transparencia="$2"
 fi
+
 hex_to_rgba() {
-  local hex=${1#"#"} # Eliminarl el simbolo #
+  local hex=${1#"#"} # Eliminar el símbolo #
   
   [[ ${#hex} -eq 3 ]] && hex="${hex:0:1}${hex:0:1}${hex:1:1}${hex:1:1}${hex:2:1}${hex:2:1}" # Expandir de 3 a 6 caracteres
 
@@ -62,30 +102,9 @@ hex_to_rgba() {
   echo "rgba($r, $g, $b, $transparencia)"
 }
 
-read_json() {
-  # Leer el arvhivo y extraer las claves y valores
-  while IFS=": " read -r clave valor; do
-    # Limpiar comillas y espacios
-    clave=$(echo "$clave" | tr -d '\" ' | sed 's/,$//')
-    valor=$(echo "$valor" | tr -d '\" ,')
-
-    # Cuando la clave sea bg ese valor se lleva y se almacena en rgba 
-    if [[ $clave == "bg" ]]; then
-      keys+=("bar-op-bg")
-      json_content["bar-op-bg"]=$(hex_to_rgba "$valor")
-    fi
-
-    # Se almacenan los valores en exadecimal
-    keys+=("$clave")
-    json_content["$clave"]="$valor"
-
-  done < <(grep -o '"[^"]*": *"[^"]*"' "$1")
-}
-#------------------------------------------------------------------------------------------------------------------------------------------#
-
-#-------------------Estas funciones las usaremos para definir los formatos de cada archivo-----------------------#
-# Estas solo deben de contener el string formateado para escribir en el archivo indicado
-
+# ----------------------------------------------------- 
+# Funciones para formatear archivos
+# ----------------------------------------------------- 
 css_format() {
 
   echo "@define-color $1 ${json_content["$1"]};" >> "$CSS_THEME"
@@ -104,65 +123,35 @@ rofi_format() {
   echo "$1: ${json_content["$1"]}FF;" >> $ROFI_THEME
 }
 
-#---------------------------------------------------------------------------------------------------------------#
-
-#----------------------------------------Configuracion para swaylock---------------------------------------------#
-clear_sway_theme() {
-  # Creamos un archivo temporal
-  local temp_file=$(mktemp)
-
-  # Leer el archivo de configuracion
-  while IFS= read -r line; do
-    echo "$line" >> "$temp_file"
-
-    if [[ "$line" == *"clock"* ]]; then
-      break
-    fi
-  done < "$sway_file"
-
-  mv "$temp_file" "$sway_file"
-}
-
+# ----------------------------------------------------- 
+# Configuración para swaylock
+# ----------------------------------------------------- 
 set_sway_content() {
   local content=""
+
   for propertie in ${properties[@]}; do
     local c="${json_content["${map_properties_theme["$propertie"]}"]}"
-    if [[ "$propertie" == "key-hl-color" || "$propertie" == "bs-hl-color" ]]; then
-      c+="aa"
-    elif [[ "$propertie" == "separator-color" || "$propertie" == "ring-color" ]]; then
-      c+="55"
-    elif [[ "$propertie" == "ring-clear-color" ]]; then
-      c+="11"
-    fi
+
+    case "$propertie" in
+      key-hl-color|bs-hl-color) c+="aa";;
+      separator-color|ring-color) c+="55";;
+      ring-clear-color) c+="11";;
+    esac
+
     content+="$propertie=$c"$'\n'
   done
 
-  clear_sway_theme 
+  # clear_sway_theme 
+  clear_file_theme "$sway_file" "clock"
   echo -e "$content" >> "$sway_file"
 }
 
-#----------------------------------------------------------------------------------------------------------------#
-
-#--------------------------------------------Configuramos Mako------------------------------------------------------------#
-clear_mako_theme() {
-  # Creamos un archivo temporal
-  temp_file=$(mktemp)
-
-  # Leer el archivo de configuracion
-  while IFS= read -r line; do
-    echo "$line" >> "$temp_file"
-
-    if [[ "$line" == *"font=VictorMono NF Italic 12"* ]]; then
-      break
-    fi
-  done < "$mako_file"
-
-  mv "$temp_file" "$mako_file"
-}
-
+# ----------------------------------------------------- 
+# Configuración para mako
+# ----------------------------------------------------- 
 create_mako_content() {
   # Lo primero borrar el contenido anterior para actualizarlo
-  clear_mako_theme
+  clear_file_theme "$mako_file" "font=VictorMono NF Italic 12"
 
   for m_proper in ${mako_keys[@]}; do
     local line="" # Contruimos cada una de las lineas que usamremos
@@ -180,8 +169,10 @@ create_mako_content() {
 
   makoctl reload  # Hacemos que mako se reinicie y se actualicen los cambios
 }
-#-------------------------------------------------------------------------------------------------------------------------#
 
+# ----------------------------------------------------- 
+# Crear archivos de tema
+# ----------------------------------------------------- 
 create_file_theme() {
   > "$CSS_THEME" # Limpiar el archivo css para llenarlo todo de nuevo
   echo "* {" > $ROFI_THEME
@@ -196,6 +187,7 @@ create_file_theme() {
 
 json_content=()
 read_json "$THEMES/$1.json"
+
 create_file_theme # Creamos tanto el archivo css como el de rofi
 set_sway_content  # Modificamos el archivo para swaylock
 create_mako_content # Modificamos el archivo de mako para establecer el nuevo tema

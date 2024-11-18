@@ -18,9 +18,8 @@ listNames=""
 # Leer carpeta de temas
 # ----------------------------------------------------- 
 for theme in "$themes_path"/*; do
-  if [[ ! $theme == "$themes_path"  && $(find $theme -maxdepth 1 -type d | wc -l) = 1 ]]; then
-    theme_name=$(basename "$theme")
-    listThemes+=("$theme_name")
+  if [[ -d "$theme" ]]; then  # Verifica si es un directorio
+    listThemes+=("$(basename "$theme")")
   fi
 done
 
@@ -34,8 +33,7 @@ choice=$(echo -e "$listNames" | rofi -dmenu -i -replace -config $HOME/.config/ro
 # Elegir nuevo tema escribiendo la selección en ~/.cache/.themestyle.sh
 # ----------------------------------------------------- 
 if [ "$choice" ]; then
-  echo "Cargando tema de Waybar..."
   echo "$choice"
-  $HOME/.config/hypr/start_scripts/scripts/statusbar --reload "--$choice" "$COLOR"
+  $HOME/.config/hypr/start_scripts/scripts/statusbar --reload "--$choice" "$COLOR" "$POSITION"
 fi
 

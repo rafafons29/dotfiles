@@ -3,7 +3,7 @@
   "layer": "bottom",
   "exclusive": true,
   "passthrough": false,
-  "position": "bottom",
+  "position": "top",
   "height": 35,
   "spacing": 3,
   "fixed-center": true,
@@ -17,6 +17,11 @@
     "battery",
     "clock"
   ],
-  "modules-center": ["custom/menu", "wlr/taskbar"],
-  "modules-left": ["hyprland/workspaces"]
+  "modules-center": [
+    "custom/menu",
+    "wlr/taskbar"
+  ],
+  "modules-left": [
+    "hyprland/workspaces"
+  ]
 }

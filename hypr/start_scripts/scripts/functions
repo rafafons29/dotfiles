@@ -1,8 +1,9 @@
 #!/bin/bash
 
 CONFIG_FILE="$HOME/.config/hypr/start_scripts/scripts/waybar_start_config_var/config_last_used.json"
-POSITION=""
+THEME_BAR=""
 COLOR=""
+POSITION=""
 
 declare -A json_content
 
@@ -13,10 +14,14 @@ read_json() {
     clave=$(echo "$clave" | tr -d '\" ' | sed 's/,$//')
     valor=$(echo "$valor" | tr -d '\" ,')
 
+    # Cuando la clave sea bg ese valor se lleva y se almacena en rgba 
     if [[ $clave == "bg" ]]; then
-      json_content+=$(hex_to_rgba "$valor")
+      keys+=("bar-op-bg")
+      json_content["bar-op-bg"]=$(hex_to_rgba "$valor")
     fi
 
+    # Se almacenan los valores en exadecimal
+    keys+=("$clave")
     json_content["$clave"]="$valor"
 
   done < <(grep -o '"[^"]*": *"[^"]*"' "$1")
@@ -26,10 +31,11 @@ read_previous_config() {
   # Comprobadndo que el archivo no esta vacio
   if [[ -f "$CONFIG_FILE" ]]; then 
     read_json "$CONFIG_FILE"
-    POSITION="${json_content["bar"]}"
+    THEME_BAR="${json_content["bar"]}"
     COLOR="${json_content["color"]}"
+    POSITION="${json_content["position"]}"
   else
-     POSITION="No se han encontrado configuraciones anteriores. Por fabor especifique 'top' o 'bottom'."
+     THEME_BAR="No se han encontrado configuraciones anteriores. Por fabor especifique 'top' o 'bottom'."
   fi
 }
 
@@ -64,4 +70,9 @@ send_notification() {
   fi
 
   save_json notify_id $notify_id
+}
+
+handle_error() {
+  echo "$1" >&2
+  exit 1
 }

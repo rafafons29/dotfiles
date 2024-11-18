@@ -8,8 +8,13 @@
   "margin-left": 3,
   "margin-right": 3,
   "margin-top": 3,
-  "modules-left": ["hyprland/workspaces"],
-  "modules-center": ["custom/l_end", "custom/r_end"],
+  "modules-left": [
+    "hyprland/workspaces"
+  ],
+  "modules-center": [
+    "custom/l_end",
+    "custom/r_end"
+  ],
   "modules-right": [
     "cpu",
     "backlight",

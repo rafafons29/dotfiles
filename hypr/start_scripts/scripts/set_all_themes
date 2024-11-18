@@ -43,7 +43,6 @@ for n_theme in "${name_themes[@]}"; do
       exit 1
     fi
     reload_all_kitty_instance
-    # kitty @ reload 
     break
   fi
 done

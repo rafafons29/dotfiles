@@ -1,5 +1,6 @@
 {
   "bar": "--transparenttop",
-  "color": "tokyonight",
-  "notify_id": "68"
+  "color": "oxocarbon",
+  "position": "top",
+  "notify_id": "76"
 }

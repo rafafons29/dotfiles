@@ -1,86 +1,50 @@
 #!/bin/bash
 
+source $HOME/.config/hypr/start_scripts/scripts/functions
+
 CONFIG_FILE="$HOME/.config/hypr/start_scripts/scripts/waybar_start_config_var/config_last_used.json"
 
 declare -A json_content
+declare -A paths=(
+  ["top"]="$HOME/.config/hypr/waybar/top"
+  ["buttom"]="$HOME/.config/hypr/waybar/buttom"
+  ["newtop"]="$HOME/.config/hypr/waybar/newtop"
+  ["transparenttop"]="$HOME/.config/hypr/waybar/transparenttop"
+)
 
 transparent_value="0.5"
 
 set_paths() {
-  case "${1:2}" in 
-    top) 
-      CONFIG="$HOME/.config/hypr/waybar/top/config.jsonc" 
-      STYLE="$HOME/.config/hypr/waybar/top/style.css"
-      ;;
-    buttom) 
-      CONFIG="$HOME/.config/hypr/waybar/buttom/config.jsonc" 
-      STYLE="$HOME/.config/hypr/waybar/buttom/style.css"
-      ;;
-    newtop) 
-      CONFIG="$HOME/.config/hypr/waybar/newtop/config.jsonc"
-      STYLE="$HOME/.config/hypr/waybar/newtop/style.css"
-      ;;
-    transparenttop)
-      CONFIG="$HOME/.config/hypr/waybar/transparenttop/config.jsonc"
-      STYLE="$HOME/.config/hypr/waybar/transparenttop/style.css"
-      ;;
-    *) 
-      echo "Parametro no valido"
-      exit 1 
-      ;;
-  esac
-}
+  local theme_bar="${1:2}"
 
-read_json() {
-  # Leer el arvhivo y extraer las claves y valores
-  while IFS=": " read -r clave valor; do
-    # Limpiar comillas y espacios
-    clave=$(echo "$clave" | tr -d '\" ' | sed 's/,$//')
-    valor=$(echo "$valor" | tr -d '\" ,')
-
-    if [[ $clave == "bg" ]]; then
-      json_content+=$(hex_to_rgba "$valor")
-    fi
-
-    json_content["$clave"]="$valor"
-
-  done < <(grep -o '"[^"]*": *"[^"]*"' "$1")
-}
-
-save_json() {
-  if [[ -n "${json_content["$1"]}" ]]; then # Comprobamos que el value existe
-    jq --arg key "$1" --arg value "$2" \
-      '(.[$key]) = $value' "$CONFIG_FILE" > tmp.$$.json 
-
-    if [[ $? -eq 0 ]]; then
-      mv tmp.$$.json "$CONFIG_FILE"
-    else 
-      rm tmp.$$.json
-    fi
+  if [[ -n "${paths[$theme_bar]}" ]]; then
+    CONFIG="${paths[$theme_bar]}/config.jsonc"
+    STYLE="${paths[$theme_bar]}/style.css"
   else 
-    echo "La clave '$1' no existe."
+    handle_error "Parámetro no válido: $theme_bar"
   fi
 }
 
-read_previous_config() {
-  # Comprobadndo que el archivo no esta vacio
-  if [[ -f "$CONFIG_FILE" ]]; then 
-    read_json "$CONFIG_FILE"
-    POSITION="${json_content["bar"]}"
-    COLOR="${json_content["color"]}"
-  else
-     POSITION="No se han encontrado configuraciones anteriores. Por fabor especifique 'top' o 'bottom'."
-  fi
-}
-
-set_position_is_good() {
-  case ${POSITION:2} in
-    top | buttom | newtop | transparenttop) set_paths "$POSITION" ;;
-  *) 
-    notify-send -u critical $POSITION
-    exit 1 
-    ;;
+set_themebar_is_good() {
+  case ${THEME_BAR:2} in
+    top | buttom | newtop | transparenttop) set_paths "$THEME_BAR" ;;
+  *) handle_error "Tema no válido: $THEME_BAR";;
   esac
+}
+
+set_waybar_position() {
+  read_json "$CONFIG"
+
+  local key="$1"
+  local value="$2"
+
+  if [[ -n "${json_content["$key"]}" ]]; then # Comprobamos que el value existe
+    jq --arg key "$key" --arg value "$value" \
+      '(.[$key]) = $value' "$CONFIG" | sponge "$CONFIG" # El comando sponge se encuentra en el paquete moreutils
+    save_json "$key" "$value"
+  else 
+    echo "La clave '$key' no existe."
+  fi
 }
 
 show_waybar() {
@@ -91,45 +55,52 @@ main() {
   if [ "$#" -eq 0 ]; then 
     # Caso en el que no se hayan pasado parametros
     # "$HOME/.config/hypr/start_scripts/scripts/theme" $COLOR
-    if [[ "${POSITION:2}" == "transparenttop" ]]; then
+    if [[ "${THEME_BAR:2}" == "transparenttop" ]]; then
       $HOME/.config/hypr/start_scripts/scripts/theme $COLOR "$transparent_value"
     else 
       $HOME/.config/hypr/start_scripts/scripts/theme $COLOR
     fi
-    set_position_is_good
+    set_themebar_is_good
     show_waybar
+    return
   elif [ "${1:2}" == "hs" ]; then 
     if pgrep -x "waybar"; then 
       killall waybar
       return
     fi
     
-    set_position_is_good
+    set_themebar_is_good
     show_waybar
   else 
-    if [[ ${1:2} == "reload" ]]; then 
+    local reload="${1:2}"
+    local theme_bar="${2:2}"
+    local theme_color="$3"
+    local position="$4"
+
+    if [[ $reload == "reload" ]]; then 
       # Caso en el que haremos un reload de waybar
       pkill waybar || true
     fi
 
-    if [[ ${2:2} =~ ^(top|buttom|newtop|transparenttop)$ && $3 =~ ^(andromeda|andromeda_colorizer|carbonfox|catppucin|onedark|oxocarbon|palenight|tokyonight) ]]; then 
+    if [[ $theme_bar =~ ^(top|buttom|newtop|transparenttop)$ && $theme_color =~ ^(andromeda|andromeda_colorizer|carbonfox|catppucin|onedark|oxocarbon|palenight|tokyonight) && $position =~ ^(top|bottom) ]]; then 
       set_paths $2
       save_json bar $2
       save_json color $3
-      if [[ "${2:2}" == "transparenttop" ]]; then
+      set_waybar_position position $4
+      if [[ "$theme_bar" == "transparenttop" ]]; then
         $HOME/.config/hypr/start_scripts/scripts/theme $3 "$transparent_value"
       else 
         $HOME/.config/hypr/start_scripts/scripts/theme $3
       fi
       $HOME/.config/hypr/start_scripts/scripts/set_all_themes $3
       notify-send "Theme" "Theme $3 theme successfully set"
-    elif [[ ${2:2} =~ "" && $3 =~ "" ]]; then
-      set_position_is_good
-      save_json bar $POSITION
+    elif [[ $theme_bar =~ "" && $theme_color =~ "" && $position =~ "" ]]; then
+      set_themebar_is_good
+      save_json bar $THEME_BAR
       save_json color $COLOR
+      set_waybar_position position $POSITION
     else 
-      echo "Parametro no valido para la posicion de la barra"
-      exit 1
+      handle_error "Parametro no valido para la posicion de la barra"
     fi
     
     show_waybar
