@@ -46,11 +46,12 @@ declare -A map_properties_theme=(
 mako_file="$HOME/.config/mako/config"
 mako_keys=("background-color" "border-color" "[urgency=low]" "[urgency=normal]" "[urgency=high]")
 declare -A mako_map=(
-  ["background-color"]="bg"
+  ["background-color"]="black1"
   ["border-color"]="focus"
   ["[urgency=low]"]="bg"
   ["[urgency=normal]"]="focus"
   ["[urgency=high]"]="red2"
+  ["[urgency=critical]"]=red2
 )
 
 # ----------------------------------------------------- 
@@ -159,6 +160,11 @@ create_mako_content() {
     if [[ $m_proper == "[urgency=low]" || $m_proper == "[urgency=normal]" || $m_proper == "[urgency=high]" ]]; then
       line+="$m_proper"$'\n'
       line+="border-color=${json_content["${mako_map["$m_proper"]}"]}"
+      printf "%s\n" "$line" >> $mako_file
+      continue
+    elif [[ $m_proper == "[urgency=critical]" ]]; then 
+      line+="$m_proper"$'\n'
+      line+="background-color=${json_content["${mako_map["$m_proper"]}"]}"
       printf "%s\n" "$line" >> $mako_file
       continue
     fi

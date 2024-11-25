@@ -9,6 +9,10 @@ inactive-tab-bg: #151516FF;
 focus: #3ddbd9FF;
 black1: #252525FF;
 black2: #3F3F3FFF;
+black3: #292929FF;
+black4: #363636FF;
+black5: #252525FF;
+black6: #131313FF;
 blue1: #2f84ffFF;
 blue2: #0f62feFF;
 blue3: #82cfffFF;
@@ -31,4 +35,5 @@ magneta1: #673AB7FF;
 magneta2: #9A6DEAFF;
 white1: #ffffffFF;
 white2: #FAFAFAFF;
+white3: #b2b8caFF;
 }

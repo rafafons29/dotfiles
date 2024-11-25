@@ -1,9 +1,5 @@
 #!/bin/bash
 
-#wallpaper fetcher and wallpaper rotator
-#type "var" in a terminal to change settings - example
-#variety &
-
 SCRIPTSDIR=$HOME/.config/hypr/start_scripts/scripts
 
 # Kill already running process
@@ -14,16 +10,7 @@ for _prs in "${_ps[@]}"; do
 	fi
 done
 
-# Apply themes
-#${SCRIPTSDIR}/gtkthemes &
-
-# Lauch notification daemon (mako)
-#${SCRIPTSDIR}/notifications &
-
 ${SCRIPTSDIR}/statusbar &  # Lauch statusbar (waybar)
-
-# Xauthority
-#${SCRIPTSDIR}/xauthority &
 
 function run {
 	if ! pgrep -x $(basename $1 | head -c 15) 1>/dev/null; then
@@ -35,5 +22,6 @@ waypaper --backend swaybg --restore # Set last wallpaper
 dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 run nm-applet & # Network manager
-run avizo-service # Volume and notify deamon
+run avizo-service & # Volume and notify deamon
+run blueman-applet & # systray app for Bluetooth
 # numlockx on &

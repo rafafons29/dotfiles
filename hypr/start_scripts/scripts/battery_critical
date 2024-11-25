@@ -1,0 +1,9 @@
+#!/bin/bash
+
+while true; do
+    battery_level=$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep percentage | awk '{print $2}')
+    if [ "$battery_level" -le 20 ]; then
+        notify-send --urgency=critical "Batería Baja" "Nivel de batería: ${battery_level}%"
+    fi
+    sleep 60 # Espera 60 segundos antes de volver a comprobar
+done

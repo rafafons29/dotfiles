@@ -12,7 +12,7 @@ declare -A paths=(
   ["transparenttop"]="$HOME/.config/hypr/waybar/transparenttop"
 )
 
-transparent_value="0.5"
+transparent_value="0.6"
 
 set_paths() {
   local theme_bar="${1:2}"
@@ -82,7 +82,7 @@ main() {
       pkill waybar || true
     fi
 
-    if [[ $theme_bar =~ ^(top|buttom|newtop|transparenttop)$ && $theme_color =~ ^(andromeda|andromeda_colorizer|carbonfox|catppucin|onedark|oxocarbon|palenight|tokyonight) && $position =~ ^(top|bottom) ]]; then 
+    if [[ $theme_bar =~ ^(top|buttom|newtop|transparenttop)$ && $theme_color =~ ^(andromeda|andromeda_colorizer|carbonfox|catppuccin|onedark|oxocarbon|palenight|tokyonight) && $position =~ ^(top|bottom) ]]; then 
       set_paths $2
       save_json bar $2
       save_json color $3

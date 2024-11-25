@@ -1,4 +1,4 @@
-@define-color bar-op-bg rgba(22, 22, 22, 0.5);
+@define-color bar-op-bg rgba(22, 22, 22, 0.6);
 @define-color bg #161616;
 @define-color bar-bg #161616;
 @define-color kitty-bg #151515;
@@ -9,6 +9,10 @@
 @define-color focus #3ddbd9;
 @define-color black1 #252525;
 @define-color black2 #3F3F3F;
+@define-color black3 #292929;
+@define-color black4 #363636;
+@define-color black5 #252525;
+@define-color black6 #131313;
 @define-color blue1 #2f84ff;
 @define-color blue2 #0f62fe;
 @define-color blue3 #82cfff;
@@ -31,3 +35,4 @@
 @define-color magneta2 #9A6DEA;
 @define-color white1 #ffffff;
 @define-color white2 #FAFAFA;
+@define-color white3 #b2b8ca;

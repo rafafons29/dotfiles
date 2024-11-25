@@ -50,7 +50,7 @@ export BtnCol="white"  # Default button color
 # Evaluate hypr border radius
 hypr_border="$(hyprctl -j getoption decoration:rounding | jq '.int')"
 export hypr_border
-export active_rad=$(( hypr_border * 5 ))
+export active_rad=$(( hypr_border * 1 ))
 export button_rad=$(( hypr_border * 8 ))
 
 # Evaluate config files

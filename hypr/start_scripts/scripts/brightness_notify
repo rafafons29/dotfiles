@@ -40,6 +40,7 @@ calc_poc_brightnes() {
 }
 
 iod="${1:2}" # flag para saber si vamos a incrementar o decrementar
+brightnessctl -n 2880
 
 case "$iod" in 
   inc) calc_poc_brightnes +5% ;;
