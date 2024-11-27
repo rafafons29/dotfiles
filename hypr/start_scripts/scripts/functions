@@ -62,12 +62,26 @@ send_notification() {
   local icon="$3"
   local urgency="${4:-normal}"
   local notify_id="${json_content["notify_id"]}"
+  local hint=$"int:value:$body"
 
-  if [[ -n $notify_id ]]; then
-    notify_id=$(notify-send -u $urgency -r $notify_id -p "$message" "$body" -i $icon)
-  else 
-    notify_id=$(notify-send -u $urgency -i $icon -p "$message" "$body")
-  fi
+  # Comprobar que tipo de mesaje queremos enviar
+  case "$message" in
+    Volumen|Brillo)
+      if [[ -n $notify_id ]]; then
+        notify_id=$(notify-send -u $urgency -r $notify_id -p "$body%" -i $icon -h $hint)
+      else 
+        notify_id=$(notify-send -u $urgency -p  "$body" -i $icon)
+      fi
+      ;;
+    *)
+      if [[ -n $notify_id ]]; then
+        notify_id=$(notify-send -u $urgency -r $notify_id -p "$body" -i $icon)
+      else 
+        notify_id=$(notify-send -u $urgency -p  "$body" -i $icon)
+      fi
+      ;;
+  esac
+  
 
   save_json notify_id $notify_id
 }

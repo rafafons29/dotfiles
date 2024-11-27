@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Nombres de los temas de colores
-name_themes=("andromeda" "andromeda_colorizer" "onedark" "palenight" "tokyonight" "catppuccin" "oxocarbon")
+name_themes=("andromeda" "andromeda_colorizer" "onedark" "palenight" "tokyonight" "catppuccin" "oxocarbon" "carbonfox")
 
 theme="$1"
 find_theme=0

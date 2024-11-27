@@ -7,81 +7,13 @@ THEMES="/home/rafa/.config/colors"
 CSS_THEME="/home/rafa/.config/hypr/waybar/colors.css"
 ROFI_THEME="/home/rafa/.config/rofi/color.rasi"
 
+# Ruta de los archivos a modificar
+MAKO_FILE="$HOME/.config/mako/config"
+SWAY_FILE="$HOME/.config/swaylock/config"
+KITTY_CONFI_THEME="$HOME/.config/kitty/theme.conf"
+
 # Creamos un mapa para manajar la informacion del json como key, value y las key las almacenasmos en el orden leido
 keys=()
-
-# ----------------------------------------------------- 
-# Mapeos para swaylock
-# -----------------------------------------------------
-sway_file="$HOME/.config/swaylock/config"
-properties=("color" "inside-color" "inside-clear-color" "inside-ver-color" "inside-wrong-color" 
-            "key-hl-color" "bs-hl-color" "separator-color" "line-color" "text-color" 
-            "text-clear-color" "text-caps-lock-color" "text-ver-color" "text-wrong-color" 
-            "ring-color" "ring-ver-color" "ring-clear-color" "ring-wrong-color")
-
-declare -A map_properties_theme=(
-  ["color"]="bg"
-  ["inside-color"]="bg"
-  ["inside-clear-color"]="bg"
-  ["inside-ver-color"]="bg"
-  ["inside-wrong-color"]="bg"
-  ["line-color"]="bg"
-  ["key-hl-color"]="focus"
-  ["bs-hl-color"]="focus"
-  ["separator-color"]="inactive"
-  ["text-color"]="active"
-  ["text-clear-color"]="red1"
-  ["text-caps-lock-color"]="yellow"
-  ["text-ver-color"]="focus"
-  ["text-wrong-color"]="red2"
-  ["ring-color"]="bg"
-  ["ring-ver-color"]="green1"
-  ["ring-clear-color"]="red1"
-  ["ring-wrong-color"]="red2"
-)
-
-# ----------------------------------------------------- 
-# Mapeos para mako
-# -----------------------------------------------------
-mako_file="$HOME/.config/mako/config"
-mako_keys=("background-color" "border-color" "[urgency=low]" "[urgency=normal]" "[urgency=high]")
-declare -A mako_map=(
-  ["background-color"]="black1"
-  ["border-color"]="focus"
-  ["[urgency=low]"]="bg"
-  ["[urgency=normal]"]="focus"
-  ["[urgency=high]"]="red2"
-  ["[urgency=critical]"]=red2
-)
-
-# ----------------------------------------------------- 
-# Función para borrar temas en un archivo determinado
-# ----------------------------------------------------- 
-clear_file_theme() {
-  # Verifica que se hayan pasado los parámetros necesarios
-  if [[ $# -ne 2 ]]; then
-    handle_error "Uso: clear_file_theme <archivo> <palabra_clave>"
-  fi
-
-  local temp_file=$(mktemp) || { handle_error "Error al crear archivo temporal"; }
-  local file="$1"
-  local word_break="$2"
-
-  # Verifica si el archivo existe
-  if [[ ! -f "$file" ]]; then
-    handle_error "El archivo '$file' no existe."
-  fi
-
-  while IFS= read -r line; do
-    echo "$line" >> "$temp_file"
-
-    if [[ "$line" == *"$word_break"* ]]; then
-      break
-    fi
-  done < $file
-
-  mv "$temp_file" "$file"
-}
 
 # ----------------------------------------------------- 
 # Función para convertir hex a rgba
@@ -128,50 +60,80 @@ rofi_format() {
 # Configuración para swaylock
 # ----------------------------------------------------- 
 set_sway_content() {
-  local content=""
+  > $SWAY_FILE
 
-  for propertie in ${properties[@]}; do
-    local c="${json_content["${map_properties_theme["$propertie"]}"]}"
+  {
+    echo "ignore-empty-password"
 
-    case "$propertie" in
-      key-hl-color|bs-hl-color) c+="aa";;
-      separator-color|ring-color) c+="55";;
-      ring-clear-color) c+="11";;
-    esac
+    echo "indicator-idle-visible"
+    echo "indicator-radius=140"
+    echo "indicator-thickness=10"
 
-    content+="$propertie=$c"$'\n'
-  done
+    echo "line-uses-ring"
+    echo "screenshots"
+    echo "effect-blur=8x5"
+    echo "clock"
 
-  # clear_sway_theme 
-  clear_file_theme "$sway_file" "clock"
-  echo -e "$content" >> "$sway_file"
+    echo "color=${json_content["bg"]}"
+    echo "inside-color=${json_content["bg"]}"
+    echo "inside-clear-color=${json_content["bg"]}"
+    echo "inside-ver-color=${json_content["bg"]}"
+    echo "inside-wrong-color=${json_content["bg"]}"
+    echo "key-hl-color=${json_content["focus"]}aa"
+    echo "bs-hl-color=${json_content["focus"]}aa"
+    echo "separator-color=${json_content["inactive"]}55"
+    echo "line-color=${json_content["bg"]}"
+    echo "text-color=${json_content["active"]}"
+    echo "text-clear-color=${json_content["red1"]}"
+    echo "text-caps-lock-color=${json_content["yellow"]}"
+    echo "text-ver-color=${json_content["focus"]}"
+    echo "text-wrong-color=${json_content["red2"]}"
+    echo "ring-color=${json_content["bg"]}55"
+    echo "ring-ver-color=${json_content["green1"]}"
+    echo "ring-clear-color=${json_content["red1"]}11"
+    echo "ring-wrong-color=${json_content["red2"]}"
+  } > $SWAY_FILE
 }
 
 # ----------------------------------------------------- 
 # Configuración para mako
 # ----------------------------------------------------- 
-create_mako_content() {
-  # Lo primero borrar el contenido anterior para actualizarlo
-  clear_file_theme "$mako_file" "font=VictorMono NF Italic 12"
+create_mako_content() { 
+  > "$MAKO_FILE"
 
-  for m_proper in ${mako_keys[@]}; do
-    local line="" # Contruimos cada una de las lineas que usamremos
+  {
+    # Configuración básica
+    echo "sort=-time"
+    echo "layer=overlay"
+    echo "width=200"
+    echo "height=70"
+    echo "border-size=0"
+    echo "border-radius=5"
+    echo "anchor=top-center"
+    echo "icons=1"
+    echo "max-icon-size=30"
+    echo "markup=1"
+    echo "default-timeout=1500"
+    echo "ignore-timeout=1"
+    echo "font=VictorMono NF Italic 12"
 
-    if [[ $m_proper == "[urgency=low]" || $m_proper == "[urgency=normal]" || $m_proper == "[urgency=high]" ]]; then
-      line+="$m_proper"$'\n'
-      line+="border-color=${json_content["${mako_map["$m_proper"]}"]}"
-      printf "%s\n" "$line" >> $mako_file
-      continue
-    elif [[ $m_proper == "[urgency=critical]" ]]; then 
-      line+="$m_proper"$'\n'
-      line+="background-color=${json_content["${mako_map["$m_proper"]}"]}"
-      printf "%s\n" "$line" >> $mako_file
-      continue
-    fi
+    echo "background-color=${json_content["black6"]}"
+    echo "border-color=${json_content["focus"]}"
+    echo "progress-color=over ${json_content["focus"]}88"
 
-    line+="$m_proper=${json_content["${mako_map["$m_proper"]}"]}"
-    printf "%s\n" "$line" >> $mako_file
-  done
+    echo "[urgency=low]"
+    echo "border-color=${json_content["bg"]}"
+    echo "text-color=${json_content["focus"]}"
+
+    echo "[urgency=normal]"
+    echo "border-color=${json_content["focus"]}"
+    echo "text-color=${json_content["active"]}"
+
+    echo "[urgency=high]"
+    echo "border-color=${json_content["red2"]}"
+    echo "text-color=${json_content["red2"]}"
+
+  } >> "$MAKO_FILE"
 
   makoctl reload  # Hacemos que mako se reinicie y se actualicen los cambios
 }
@@ -193,16 +155,8 @@ reload_all_kitty_instance() {
 }
 
 create_kitty_theme() {
-  # Ruta al archivo JSON de colores
-  local COLOR_JSON="$THEMES/$1.json"
-
-  # Ruta al archivo de configuración de Kitty
-  KITTY_CONFI_THEME="$HOME/.config/kitty/theme.conf"
-
-  # Limpiar el archivo de configuración existente
   > "$KITTY_CONFI_THEME"
 
-  # Leer colores del archivo JSON y escribir en el archivo de configuración de Kitty
   {
     # Configuración básica
     echo "background_opacity $transparencia"
@@ -258,7 +212,6 @@ create_kitty_theme() {
   } >> "$KITTY_CONFI_THEME"
 
   reload_all_kitty_instance
-  echo "Archivo de configuración para Kitty generado en $KITTY_CONFI_THEME."
 }
 # ----------------------------------------------------- 
 # Crear archivos de tema

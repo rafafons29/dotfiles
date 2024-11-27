@@ -189,6 +189,8 @@ fastfetch
 
 zoxide init fish | source
 
+set -gx PKG_CONFIG_PATH /usr/lib/pkgconfig $PKG_CONFIG_PATH
+
 set fish_cursor_default block
 set fish_cursor_isert line
 set fish_cursor_replace_one underscore

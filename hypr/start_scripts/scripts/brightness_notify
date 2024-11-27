@@ -14,8 +14,8 @@ notify-brightness() {
   elif [[ $((brightness)) -lt 50 ]]; then
     brightness_icon=~/.local/share/icons/Icons/brightness-5_117070.png
   fi
-  # notify-send -u low "Brillo" "Nivel: ${brightness}%" -i $brightness_icon
-  send_notification "Brillo" "Nivel: ${brightness}%" $brightness_icon
+
+  send_notification "Brillo" "${brightness}" $brightness_icon
 }
 
 calc_poc_brightnes() {

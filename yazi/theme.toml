@@ -6,7 +6,7 @@
 
 
 [flavor]
-use = "catppuccin"
+use = "tokyonight"
 
 # # : Manager {{{
 #

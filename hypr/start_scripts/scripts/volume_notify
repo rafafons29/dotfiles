@@ -7,15 +7,17 @@ iod="${1:2}" # Tomar un parametro para saber si vamos a aumentar o disminuir el 
 
 notify_volume() {
   local volume="$1" 
-  if [[ $((volume)) -ge 50 ]]; then
-    volume_icon=/home/rafa/.local/share/icons/awesome-wm-widgets-master/volume-widget/icons/audio-volume-high-symbolic.svg
-  elif [[ $((volume)) -eq 0 ]]; then
-    volume_icon=/home/rafa/.local/share/icons/awesome-wm-widgets-master/volume-widget/icons/audio-volume-muted-symbolic.svg
-  elif [[ $((volume)) -lt 50 ]]; then
-    volume_icon=/home/rafa/.local/share/icons/awesome-wm-widgets-master/volume-widget/icons/audio-volume-low-symbolic.svg
+  if (( volume >= 80 )); then
+    volume_icon=/home/rafa/.local/share/icons/Icons/volume_icons/87627_audio_high_panel_volume_icon.png
+  elif (( volume == 0 )); then
+    volume_icon=/home/rafa/.local/share/icons/Icons/volume_icons/87632_audio_muted_panel_volume_icon.png
+  elif (( volume <= 20 )); then
+    volume_icon=/home/rafa/.local/share/icons/Icons/volume_icons/87628_audio_low_panel_volume_icon.png
+  elif (( volume > 20 || volume < 80 )); then
+    volume_icon=/home/rafa/.local/share/icons/Icons/volume_icons/87630_audio_medium_panel_volume_icon.png
   fi
 
-  send_notification "Volumen" "Nivel: ${volume}%" "$volume_icon"
+  send_notification "Volumen" "${volume}" "$volume_icon"
 }
 
 set_print_vol() {

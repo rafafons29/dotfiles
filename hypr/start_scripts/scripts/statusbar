@@ -93,7 +93,7 @@ main() {
         $HOME/.config/hypr/start_scripts/scripts/theme $3
       fi
       $HOME/.config/hypr/start_scripts/scripts/set_all_themes $3
-      notify-send "Theme" "Theme $3 theme successfully set"
+      notify-send -u low "Tema" "$3 establecido"
     elif [[ $theme_bar =~ "" && $theme_color =~ "" && $position =~ "" ]]; then
       set_themebar_is_good
       save_json bar $THEME_BAR
