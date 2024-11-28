@@ -10,15 +10,14 @@ for _prs in "${_ps[@]}"; do
 	fi
 done
 
-${SCRIPTSDIR}/statusbar &  # Lauch statusbar (waybar)
-
 function run {
 	if ! pgrep -x $(basename $1 | head -c 15) 1>/dev/null; then
 		$@ &
 	fi
 }
 
-waypaper --backend swaybg --restore # Set last wallpaper
+waypaper --backend swaybg --restore & # Set last wallpaper
+${SCRIPTSDIR}/statusbar --save_ok  # Lauch statusbar (waybar)
 dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 run nm-applet & # Network manager

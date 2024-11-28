@@ -1,6 +1,7 @@
 {
   "bar": "--transparenttop",
-  "color": "tokyonight",
+  "color": "catppuccin",
   "position": "top",
-  "notify_id": "4"
+  "notify_id": "37",
+  "save_ok": true
 }

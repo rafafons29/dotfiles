@@ -52,6 +52,16 @@ show_waybar() {
 }
 
 main() {
+  if [[ "${1:2}" == "save_ok" ]]; then
+    read_json "$CONFIG_FILE"
+    if [[ "${json_content["save_ok"]}" == "true" ]]; then
+      show_waybar
+      return
+    fi
+  fi
+
+  local success=true # Variable para rastrear el éxito de las operaciones
+
   if [ "$#" -eq 0 ]; then 
     # Caso en el que no se hayan pasado parametros
     # "$HOME/.config/hypr/start_scripts/scripts/theme" $COLOR
@@ -62,7 +72,6 @@ main() {
     fi
     set_themebar_is_good
     show_waybar
-    return
   elif [ "${1:2}" == "hs" ]; then 
     if pgrep -x "waybar"; then 
       killall waybar
@@ -78,21 +87,22 @@ main() {
     local position="$4"
 
     if [[ $reload == "reload" ]]; then 
-      # Caso en el que haremos un reload de waybar
       pkill waybar || true
     fi
 
     if [[ $theme_bar =~ ^(top|buttom|newtop|transparenttop)$ && $theme_color =~ ^(andromeda|andromeda_colorizer|carbonfox|catppuccin|onedark|oxocarbon|palenight|tokyonight) && $position =~ ^(top|bottom) ]]; then 
       set_paths $2
-      save_json bar $2
-      save_json color $3
-      set_waybar_position position $4
+      save_json bar $2 || success=false # Guardar y verificar éxito
+      save_json color $3 || success=false # Guardar y verificar éxito
+      set_waybar_position position $4 || success=false # Verificar éxito
+
       if [[ "$theme_bar" == "transparenttop" ]]; then
         $HOME/.config/hypr/start_scripts/scripts/theme $3 "$transparent_value"
       else 
         $HOME/.config/hypr/start_scripts/scripts/theme $3
       fi
-      $HOME/.config/hypr/start_scripts/scripts/set_all_themes $3
+
+      $HOME/.config/hypr/start_scripts/scripts/set_all_themes $3 || success=false # Verificar éxito
       notify-send -u low "Tema" "$3 establecido"
     elif [[ $theme_bar =~ "" && $theme_color =~ "" && $position =~ "" ]]; then
       set_themebar_is_good
@@ -101,9 +111,16 @@ main() {
       set_waybar_position position $POSITION
     else 
       handle_error "Parametro no valido para la posicion de la barra"
+      success=false
     fi
     
     show_waybar
+  fi
+
+  if [[ "$success" == true ]]; then
+    save_json save_ok true
+  else
+    save_json save_ok false
   fi
 }
 
