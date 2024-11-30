@@ -20,8 +20,8 @@
   "pulseaudio": {
     "format": "{icon}",
     "format-muted": "󰖁",
-    "format-bluetooth": "",
-    "format-bluetooth-muted": "",
+    "format-bluetooth": "󰗾",
+    "format-bluetooth-muted": "󰗿",
     "format-source": "",
     "format-source-muted": "",
     "format-icons": {
@@ -40,7 +40,8 @@
     "on-scroll-down": "~/.config/hypr/start_scripts/scripts/volume_notify --dec",
     "smooth-scrolling-threshold": 1,
     "menu": "pavucontrol",
-    "tooltip": true
+    "tooltip": true,
+    "tooltip-format": "Volume: {volume}%"
   },
   "battery": {
     "interval": 15,
@@ -60,7 +61,7 @@
     "format-alt": "{icon}<span font='8'>{capacity}%</span>",
     "format-icons": ["󰁺", "󰁼", "󰁾", "󰂁", "󰁹"],
     "format-time": "{H}h {M}min",
-    "tooltip": true
+    "tooltip-format": "Battery Level: {capacity}%"
     // "on-click-right": "~/.config/hypr/scripts/glassmorphismToggle"
   },
   "clock": {
@@ -68,10 +69,10 @@
     "align": 0,
     "rotate": 0,
     "format": "{:%I:%M:%S}",
-    "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>"
+    "tooltip-format": "<big>{:%B %Y}</big>\n\n<tt><small>{calendar}</small></tt>"
   },
   "tray": {
-    "icon-size": 16,
+    "icon-size": 18,
     "spacing": 10
   },
   "custom/l_end": {

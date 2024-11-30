@@ -55,6 +55,7 @@ main() {
   if [[ "${1:2}" == "save_ok" ]]; then
     read_json "$CONFIG_FILE"
     if [[ "${json_content["save_ok"]}" == "true" ]]; then
+      set_themebar_is_good
       show_waybar
       return
     fi

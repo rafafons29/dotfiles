@@ -1,0 +1,34 @@
+#!/bin/bash
+
+find_a_value_from_battery() {
+  echo "$(upower -i $(upower -e | grep BAT) | grep "$1" | awk '{print $2}' | tr -d '%')"
+}
+
+current_battery_info() {
+  local current_bat_value=$(find_a_value_from_battery percentage)
+  local current_bat_state=$(find_a_value_from_battery state)
+
+  echo "$current_bat_value $current_bat_state"  # Devolvemos ambos valores en una sola línea
+}
+
+low_notification_sent=false  # Variable para controlar si se envió la notificación de bajo nivel
+
+while true; do
+  # Obtenemos ambos valores en una sola línea y los separamos
+  read bat bat_state <<< $(current_battery_info)
+
+  # Verificamos que la batería esté en estado de descarga
+  if [[ "$bat_state" == "discharging" ]]; then
+    if [[ "$bat" -eq 15 && "$low_notification_sent" == false ]]; then
+      notify-send "Bat" "Batería baja: $bat%."
+      low_notification_sent=true  # Cambiamos el estado a verdadero para no enviar otra notificación
+    elif [[ "$bat" -le 5 ]]; then
+      notify-send "Bat Crítico" "Batería crítica: $bat%."
+      sleep 5  # Esperamos 5 segundos antes de continuar para evitar spam de notificaciones
+    else
+      low_notification_sent=false  # Reiniciamos la variable si la batería sube por encima del umbral
+    fi
+  fi
+
+  sleep 5
+done

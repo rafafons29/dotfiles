@@ -64,6 +64,9 @@ function M.setup()
         hl.TelescopeResultsNormal = { bg = c.black6, fg = c.white3 }
         hl.TelescopeResultsBorder = { bg = c.black6, fg = c.black6 }
 
+        hl.CmpNormal              = { fg = c.active }
+        hl.MyBorder               = { fg = c.black2 }
+
         return hl
       end)({}, colors)
     },
