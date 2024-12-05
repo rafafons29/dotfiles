@@ -180,7 +180,7 @@ window#waybar.hidden {
 
 #custom-menu:hover {
   animation: ws_hover 20s ease-in-out 1;
-  transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
+  transition: all 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.682);
   padding: 0px 9px 0px 9px;
   background-color: @bar-bg;
 }
@@ -198,7 +198,7 @@ window#waybar.hidden {
   padding: 0px 15px 0px 15px;
   border-bottom-left-radius: 20px;
   transition-property: background-color;
-  transition-duration: 2.5s;
+  transition: all 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.682);
   color: @red1;
 }
 /*--------------------------------------------------*/
