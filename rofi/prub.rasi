@@ -1,0 +1,173 @@
+
+configuration {
+	modi:                       "drun";
+  show-icons:                 true;
+  display-drun:               "🔍";
+	drun-display-format:        "{name}";
+}
+
+@import                          "./color.rasi"
+
+/*****----- Main Window -----*****/
+window {
+    transparency:                "real";
+    location:                    center;
+    anchor:                      center;
+    fullscreen:                  true;
+    x-offset:                    0px;
+    y-offset:                    0px;
+
+    enabled:                     true;
+    margin:                      0px;
+    padding:                     0px;
+    border:                      0px solid;
+    border-radius:               0px;
+    border-color:                @focus;
+    background-color:            @bg;
+    cursor:                      "default";
+}
+
+/*****----- Main Box -----*****/
+mainbox {
+    enabled:                     true;
+    spacing:                     50px;
+    margin:                      0px;
+    padding:                     20px;
+    border:                      0px solid;
+    border-radius:               0px 0px 0px 0px;
+    border-color:                inherit;
+    background-color:            transparent;
+    children:                    [ "inputbar", "listview" ];
+}
+
+/*****----- Inputbar -----*****/
+inputbar {
+    enabled:                     true;
+    spacing:                     0px;
+    margin:                      0px;
+    padding:                     15px;
+    border:                      0px solid;
+    border-color:                transparent;
+    background-color:            transparent;
+    text-color:                  @active;
+    children:                    [ "prompt", "entry" ];
+}
+
+prompt {
+    enabled:                     false;
+    background-color:            @bg;
+    text-color:                  inherit;
+    padding:                     10px;
+    margin:                      0 0 0 40%;
+    border-radius:               10px 0px 0px 10px;
+}
+textbox-prompt-colon {
+    enabled:                     true;
+    expand:                      false;
+    str:                         "::";
+    background-color:            transparent;
+    text-color:                  inherit;
+}
+entry {
+    enabled:                     true;
+    background-color:            transparent;
+    text-color:                  @active;
+    cursor:                      text;
+    padding:                     10px;
+    border-radius:               10px 10px 10px 10px;
+    margin:                      0 40% 0 40%;
+    placeholder:                 "";
+    placeholder-color:           inherit;
+    background-color:            @bg;
+}
+
+/*****----- Listview -----*****/
+listview {
+    enabled:                     true;
+    columns:                     5;
+    lines:                       3;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    reverse:                     false;
+    fixed-height:                true;
+    fixed-columns:               true;
+    
+    spacing:                     20px;
+    margin:                      0px;
+    padding:                     0px;
+    border:                      0px solid;
+    border-radius:               0px;
+    border-color:                inherit;
+    background-color:            transparent;
+    text-color:                  inherit;
+    cursor:                      "default";
+}
+scrollbar {
+    handle-width:                5px ;
+    handle-color:                @active;
+    border-radius:               0px;
+    background-color:            @bar-bg;
+}
+
+/*****----- Elements -----*****/
+element {
+    enabled:                     true;
+    spacing:                     15px;
+    margin:                      0px;
+    padding:                     20px;
+    border:                      0px solid;
+    border-radius:               10px;
+    border-color:                inherit;
+    background-color:            transparent;
+    text-color:                  inherit;
+    orientation:                 vertical;
+    cursor:                      pointer;
+}
+
+element normal.normal {
+    background-color:            transparent;
+    text-color:                  @active;
+}
+element alternate.normal {
+    background-color:            transparent;
+    text-color:                  @active;
+}
+element selected.normal {
+    background-color:            @inactive; 
+    text-color:                  @active;
+}
+
+element-icon {
+    background-color:            transparent;
+    text-color:                  inherit;
+    size:                        48px;
+    cursor:                      inherit;
+}
+element-text {
+    background-color:            transparent;
+    text-color:                  inherit;
+    highlight:                   inherit;
+    cursor:                      inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.5;
+    font:                        "VictorMono NF Bold 12";
+}
+
+/*****----- Message -----*****/
+error-message {
+    padding:                     15px;
+    border:                      2px solid;
+    border-radius:               10px;
+    border-color:                @focus;
+    background-color:            black / 10%;
+    text-color:                  @active;
+}
+textbox {
+    background-color:            transparent;
+    text-color:                  @active;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+    highlight:                   none;
+}

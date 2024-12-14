@@ -1,7 +1,7 @@
 {
   "include": "~/.config/hypr/waybar/newtop/modules.jsonc",
   "layer": "top",
-  "position": "top",
+  "position": "bottom",
   "height": 35,
   "spacing": 2,
   "fixed-center": true,

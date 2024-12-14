@@ -3,7 +3,7 @@
   "layer": "top",
   "exclusive": true,
   "passthrough": false,
-  "position": "top",
+  "position": "bottom",
   "height": 18,
   "spacing": 3,
   "fixed-center": true,

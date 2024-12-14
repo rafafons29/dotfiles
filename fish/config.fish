@@ -191,6 +191,9 @@ zoxide init fish | source
 
 set -gx PKG_CONFIG_PATH /usr/lib/pkgconfig $PKG_CONFIG_PATH
 
+# set -x MESA_GL_VERSION_OVERRIDE 4.6
+# set -x MESA_LOADER_DRIVER_OVERRIDE i965
+
 set fish_cursor_default block
 set fish_cursor_isert line
 set fish_cursor_replace_one underscore

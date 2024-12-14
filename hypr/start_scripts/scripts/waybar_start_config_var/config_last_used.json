@@ -1,7 +1,7 @@
 {
-  "bar": "--transparenttop",
-  "color": "carbonfox",
-  "position": "top",
-  "notify_id": "4",
+  "bar": "--buttom",
+  "color": "onedark",
+  "position": "bottom",
+  "notify_id": "10",
   "save_ok": true
 }

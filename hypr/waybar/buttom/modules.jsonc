@@ -95,6 +95,6 @@
   "custom/menu": {
     "format": "<span font='22'></span>",
     "tooltip": false,
-    "on-click": "~/.config/hypr/start_scripts/scripts/menu"
+    "on-click": "rofi -show drun -config ~/.config/rofi/prub.rasi"
   }
 }

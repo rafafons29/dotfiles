@@ -217,3 +217,16 @@ window#waybar.hidden {
   background-color: @inactive;
 }
 /*-------------------------------------------------*/
+
+/* Estilo general para los tooltips */
+tooltip {
+  border-radius: 2px; /* Bordes redondeados */
+  padding: 5px; /* Espaciado interno */
+  background-color: @bg; /* Color de fondo */
+  border: 1px solid @focus; /* Borde blanco */
+}
+
+/* Estilo específico para el texto dentro del tooltip */
+tooltip label {
+  color: @active; /* Color del texto */
+}
